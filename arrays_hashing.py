@@ -78,6 +78,61 @@ class Solution:
 
         return False
 
+    def longestConsecutive(self, nums: List[int]) -> int:
+        """
+        https://leetcode.com/problems/longest-consecutive-sequence/description/
+
+        Args:
+            nums (List[int])
+
+        Returns:
+            num_sequence
+
+        Approach
+            1. find unique elements
+            2. sort
+            3. go through array, check if consecutive, keep track output
+        """
+        # get unique
+        nums_dict = {}
+        for i in nums:
+            if i not in nums_dict.keys():
+                nums_dict[i] = 1
+        
+        nums_set = []
+        for i in nums_dict.keys():
+            nums_set.append(i)
+
+        len_nums_set = len(nums_set)
+
+        """
+        go through set, see if it has a left neighbor
+        if no left neighbor, it is start of consecutive, 
+        loop through to see where it sends
+        """
+        max_consecutive = 0
+
+        if len_nums_set == 0:
+            return 0
+
+        for i in nums_set:
+            if nums_dict.get(i-1,0) == 0:
+                # no left neighbor
+                consecutive_flag = True
+                num_consecutive = 1
+                nxt_num = i + 1
+                while consecutive_flag:
+                    if nums_dict.get(nxt_num,0) == 1:
+                        num_consecutive += 1
+                        nxt_num += 1
+                    else:
+                        consecutive_flag = False
+                
+                if num_consecutive > max_consecutive:
+                    max_consecutive = num_consecutive
+
+        return max_consecutive
+
 class Codec:
     """
     https://leetcode.com/problems/encode-and-decode-strings
