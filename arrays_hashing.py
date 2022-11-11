@@ -77,3 +77,30 @@ class Solution:
                 num_dict[i] = 'found'
 
         return False
+
+class Codec:
+    """
+    https://leetcode.com/problems/encode-and-decode-strings
+    """
+    def encode(self, strs: List[str]) -> str:
+        """Encodes a list of strings to a single string.
+        """
+        encode_str = ""
+        for i in strs:
+            encode_str += i
+            encode_str += "<eos>"
+
+        return encode_str
+
+    def decode(self, s: str) -> List[str]:
+        """Decodes a single string to a list of strings.
+        """
+        decode_array = []
+        ind_str = ""
+        for i in s:
+            ind_str+=i
+            if len(ind_str)>= 5 and ind_str[-5:] == '<eos>':
+                decode_array.append(ind_str[:-5])
+                ind_str = ""
+                
+        return decode_array
