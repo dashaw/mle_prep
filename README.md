@@ -10,4 +10,4 @@
 * *longest-consecutive-sequence (medium/hard): array, hashing, O(n) time constraint, tricky to start then easy
 * *product-of-array-except (medium/hard): array, hashing, O(n) time constraint, tricky then easy
 
-\* had to look at solution initially
+\* needed hints
