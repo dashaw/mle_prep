@@ -7,6 +7,7 @@
 * contains-duplicate (easy): array, hashing
 * top-k-frequent-elements (medium): bucket sort, bubble sort, array, hashing
 * encode-and-decode-strings (medium): array, hashing, pretty easy
-* *longest-consecutive-sequence (medium/hard): array, hashing, tricky to start then easy
+* *longest-consecutive-sequence (medium/hard): array, hashing, O(n) time constraint, tricky to start then easy
+* *product-of-array-except (medium/hard): array, hashing, O(n) time constraint, tricky then easy
 
 \* had to look at solution initially

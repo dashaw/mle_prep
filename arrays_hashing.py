@@ -133,6 +133,62 @@ class Solution:
 
         return max_consecutive
 
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        """
+        https://leetcode.com/problems/product-of-array-except-self/description/
+
+        example [1,2,3,4]
+        [2*3*4,1*3*4,1*2*4,1*2*3]
+
+        prefix = [1,2,6,24]
+
+        postfix = [1,24,12,4]
+
+        brute force:
+        for i -> 1:n
+            for j -> 1:n
+            perform multiplcation but skip ith element
+
+        [[2,3,4],[1,3,4],[1,2,4],[1,2,3]]
+        """
+        # initialize
+        len_nums = len(nums)
+        pre_array = [0]*len_nums
+        post_array = [0]*len_nums
+
+        # seed
+        pre_array[0] = nums[0]
+        post_array[len_nums-1] = nums[len_nums-1]
+   
+        """
+        nums = [1,2,3,4]
+        post_array = [0,0,0,4]
+        len_nums = 4
+        i = 1
+
+        pre_array = [1,2,6,24]
+
+        post_array = [24,24,12,4]
+
+        answer = [24,1*12,2*4]
+        """
+
+        # cumulative multiplication
+        for i in range(1,len_nums):
+            pre_array[i] = pre_array[i-1]*nums[i]
+            post_array[len_nums-i-1] = post_array[len_nums-i]*nums[len_nums-i-1]
+        print(pre_array)
+        print(post_array)
+
+        answer = []
+        answer.append(post_array[1])
+        for i in range(1,len_nums-1):
+            answer.append(pre_array[i-1]*post_array[i+1])
+        answer.append(pre_array[len_nums-2])
+
+        return answer
+
+
 class Codec:
     """
     https://leetcode.com/problems/encode-and-decode-strings
