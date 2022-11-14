@@ -11,4 +11,7 @@
 * *longest-consecutive-sequence (medium/hard): array, hashing, O(n) time constraint, tricky to start then easy
 * *product-of-array-except (medium/hard): array, hashing, O(n) time constraint, tricky then easy
 
+##### Stack
+* *generate-parentheses (medium): backtracking, recursion, dfs
+
 \* needed hints
