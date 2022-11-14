@@ -14,5 +14,6 @@
 ##### Stack
 * *generate-parentheses (medium): backtracking, recursion, dfs
 * car-fleet (medium): stack, monotonic stack, math
+* daily-temperature (medium): monotonic decreasing stack, [GOOD]
 
 \* needed significant hints

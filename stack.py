@@ -90,3 +90,32 @@ class Solution:
             if len(stack) >= 2 and stack[-2] >= stack[-1]:
                 stack.pop(-1)
         return len(stack)
+
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        """
+        [30, 60, 90]
+        [1,1,0]
+
+        [73,74,75,71,69,72,76,73]
+        [1,1,4,2,1,1,0,0]
+
+
+
+        [[2,75],[3,71]]
+
+        5,72
+        """
+
+        num_temperatures = len(temperatures)
+        output_array = [0]*num_temperatures
+        set_temps = set(temperatures)
+        stack = []
+
+        for i,t in enumerate(temperatures):
+            while stack and stack[-1][1] < t:
+                output_array[stack[-1][0]] = i - stack[-1][0]
+                stack.pop(-1)
+                
+            stack.append([i,t])
+
+        return output_array
