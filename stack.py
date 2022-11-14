@@ -79,3 +79,14 @@ class Solution:
         dfs(root_soln,"(")
         
         return soln
+
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        combined = [[p,s] for p,s in zip(position,speed)]
+        combined_sorted = sorted(combined, reverse = True)
+        stack = []
+
+        for c in combined_sorted:
+            stack.append((target - c[0]) / c[1])
+            if len(stack) >= 2 and stack[-2] >= stack[-1]:
+                stack.pop(-1)
+        return len(stack)

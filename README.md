@@ -13,5 +13,6 @@
 
 ##### Stack
 * *generate-parentheses (medium): backtracking, recursion, dfs
+* car-fleet (medium): stack, monotonic stack, math
 
-\* needed hints
+\* needed significant hints
