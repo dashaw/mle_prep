@@ -119,3 +119,54 @@ class Solution:
             stack.append([i,t])
 
         return output_array
+
+    def isValid(self, s: str) -> bool:
+        """
+        RULES:
+        1. open brackets must be closed by same type of bracket
+        2. open backet must be closed in the correct order
+        3. every close bracket as corresponding open of same type
+        """
+        length = len(s)
+        stack = []
+
+        def check_is_closed(i):
+            if i == ')' or i =='}' or i == ']':
+                return True
+            return False
+
+        def check_matching(i,j):
+            if i+j == "()" or i+j == "[]" or i+j == "{}":
+                return True
+            return False
+
+        if s[0] != '(' and s[0] != '[' and s[0] != '{':
+            return False
+
+        elif s[-1] == '(' or s[-1] == '[' or s[-1] == '{':
+            return False
+
+        else:
+            for i in range(length):
+                # push to stack
+                stack.append(s[i])
+
+                # is this a closing character
+                is_closed = check_is_closed(s[i])
+
+                if is_closed:
+                    if len(stack) < 2:
+                        return False
+                    is_matching = check_matching(stack[-2],stack[-1])
+
+                    if not is_matching:
+                        return False
+                    else:
+                        stack.pop(-1)
+                        stack.pop(-1)
+
+            
+            if len(stack) == 0:
+                return True
+            else:
+                return False
