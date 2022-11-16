@@ -21,4 +21,7 @@
 * maximum-depth-of-binary-tree (easy): dfs
 * lowest-common-ancestor-of-a-binary-search-tree (medium): binary search tree property
 
+##### Binary Search
+* binary-search (easy): basic binary search implementation
+
 \* needed significant hints
