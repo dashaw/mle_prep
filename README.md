@@ -17,4 +17,7 @@
 * daily-temperature (medium): monotonic decreasing stack, [GOOD]
 * valid-parantheses (easy): stack
 
+##### Trees
+* maximum-depth-of-binary-tree (easy): dfs
+
 \* needed significant hints
