@@ -23,5 +23,6 @@
 
 ##### Binary Search
 * binary-search (easy): basic binary search implementation
+* search-a-2d-matrix (medium): binary search, 2d
 
 \* needed significant hints
