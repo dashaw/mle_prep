@@ -43,3 +43,26 @@ class Solution:
 
         return depth
 
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+
+        """
+        BST propery:
+        left subtree are values less than node
+        right subtree are values greater than node
+        left/right subtrees are also BST
+
+        Time complexity = O(n)
+        Space complexity = O(1)
+        """
+        
+        node = root
+        p_val = p.val
+        q_val = q.val
+
+        while node:
+            if p_val > node.val and q_val > node.val:
+                node = node.right
+            elif p_val < node.val and q_val < node.val:
+                node = node.left
+            else:
+                return node
