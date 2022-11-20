@@ -15,6 +15,9 @@
 * valid-palindrome (easy): string manipulation, reverse array
 * 3sum (medium): next step of two-step ii, hash, left & right pointer
 
+#### Sliding Window
+* best-time-to-buy-and-sell-stock (easy): iterate, compare mins and maxs
+
 ##### Stack
 * *generate-parentheses (medium): backtracking, recursion, dfs
 * car-fleet (medium): stack, monotonic stack, math
