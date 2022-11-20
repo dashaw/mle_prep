@@ -13,6 +13,7 @@
 
 #### Two Pointers
 * valid-palindrome (easy): string manipulation, reverse array
+* 3sum (medium): next step of two-step ii, hash, left & right pointer
 
 ##### Stack
 * *generate-parentheses (medium): backtracking, recursion, dfs
