@@ -25,4 +25,8 @@
 * binary-search (easy): basic binary search implementation
 * search-a-2d-matrix (medium): binary search, 2d
 
+
+#### Backtracking
+* subsets (medium): dfs, recursion, 2^n
+
 \* needed significant hints
