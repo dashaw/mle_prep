@@ -11,11 +11,11 @@
 * *longest-consecutive-sequence (medium/hard): array, hashing, O(n) time constraint, tricky to start then easy
 * *product-of-array-except (medium/hard): array, hashing, O(n) time constraint, tricky then easy
 
-#### Two Pointers
+##### Two Pointers
 * valid-palindrome (easy): string manipulation, reverse array
 * 3sum (medium): next step of two-step ii, hash, left & right pointer
 
-#### Sliding Window
+##### Sliding Window
 * best-time-to-buy-and-sell-stock (easy): iterate, compare mins and maxs
 
 ##### Stack
@@ -33,7 +33,7 @@
 * search-a-2d-matrix (medium): binary search, 2d
 
 
-#### Backtracking
+##### Backtracking
 * subsets (medium): dfs, recursion, 2^n
 
 \* needed significant hints
