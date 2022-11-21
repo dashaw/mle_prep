@@ -33,6 +33,8 @@
 * binary-search (easy): basic binary search implementation
 * search-a-2d-matrix (medium): binary search, 2d
 
+##### Linked List
+* reverse-linked-list (easy): example how to use linkedlist class and reverse
 
 ##### Backtracking
 * subsets (medium): dfs, recursion, 2^n
