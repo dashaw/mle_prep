@@ -66,3 +66,68 @@ class Solution:
                 node = node.left
             else:
                 return node
+
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+
+        """
+        [3,9,20,null,null,15,7]
+
+        queue = []
+        visited = {}
+        result = []
+        depth = 1
+
+        queue = [[1,3]]
+
+        foo = [1,3]
+        lvl = 1
+        node = 3
+
+        visited[1] = [3]
+
+        queue = [[2,9],[2,20]]
+        foo = [2,9]
+        lvl = 2
+        node = 9
+
+        visited[2] = [9]
+
+        queue = [[2,20]]
+        foo = [2,20]
+        lvl = 2
+        node = 20
+
+        visited[2] = [9,20]
+
+        queue = [[3,15],[3,7]]
+        """
+        queue = []
+        visited = {}
+        result = []
+        depth = 1
+
+        queue.append([1,root])
+
+        while queue:
+            foo = queue.pop(0)
+            lvl = foo[0]
+            node = foo[1]
+            # print(f'queue = {queue}')
+            # print(f'node = {node}')
+
+            if node:
+                # add to visited
+                if lvl in visited.keys():
+                    visited[lvl].append(node.val)
+                else:
+                    visited[lvl] = [node.val]
+
+                # add to queue
+                if node.left: queue.append([lvl+1,node.left])
+                if node.right: queue.append([lvl+1,node.right])
+
+        # prepare final result
+        for i in sorted(visited.keys()):
+            result.append(visited[i])
+
+        return result
