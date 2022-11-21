@@ -17,6 +17,7 @@
 
 ##### Sliding Window
 * best-time-to-buy-and-sell-stock (easy): iterate, compare mins and maxs
+* longest-repeating-character-replacement (medium): window, efficiency
 
 ##### Stack
 * *generate-parentheses (medium): backtracking, recursion, dfs
