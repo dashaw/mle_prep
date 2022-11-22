@@ -30,6 +30,9 @@
 * lowest-common-ancestor-of-a-binary-search-tree (medium): binary search tree property
 * binary-tree-level-order-traversal (medium): bfs
 
+##### Tries
+* /implement-trie-prefix-tree (medium): basic prefix trie, oop
+
 ##### Binary Search
 * binary-search (easy): basic binary search implementation
 * search-a-2d-matrix (medium): binary search, 2d
