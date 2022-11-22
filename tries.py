@@ -7,6 +7,9 @@ class Trie:
     """
     so we want to create a tree 
 
+
+    time complexity: O(W*L) W words, L average length
+    space compelxity: O(W*L)
     """
 
     def __init__(self):
