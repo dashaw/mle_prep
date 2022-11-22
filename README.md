@@ -31,7 +31,7 @@
 * binary-tree-level-order-traversal (medium): bfs
 
 ##### Tries
-* /implement-trie-prefix-tree (medium): basic prefix trie, oop
+* implement-trie-prefix-tree (medium): basic prefix trie, oop
 
 ##### Binary Search
 * binary-search (easy): basic binary search implementation
