@@ -61,3 +61,37 @@ class Solution:
 
         return sol
 
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        """
+        [2,7,11,15]
+
+        left_pointer = 0
+        right_pointer 3
+
+        val = 17
+
+        left_pointer = 1
+
+        time complexity = O(N?)
+        space_complexity = O(1)
+
+        """
+
+        left_pointer = 0
+        right_pointer = len(numbers) - 1
+
+        while left_pointer < right_pointer:
+            if left_pointer < 0 or right_pointer > len(numbers) - 1:
+                return 'exit'
+
+            val = numbers[left_pointer] + numbers[right_pointer]
+            if val == target:
+                return [left_pointer+1, right_pointer+1]
+
+            elif val < target:
+                left_pointer += 1
+
+            elif val > target:
+                right_pointer -= 1
+
+        return -1

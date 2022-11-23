@@ -13,6 +13,7 @@
 
 ##### Two Pointers
 * valid-palindrome (easy): string manipulation, reverse array
+* two-sum-ii-input-array-is-sorted (medium): two pointers, use sorted property
 * 3sum (medium): next step of two-step ii, hash, left & right pointer
 
 ##### Sliding Window
