@@ -50,3 +50,4 @@
 
 #### Resources
 * [Cracking the Coding Skills](https://drive.google.com/file/d/0BxTvoZCNzGBoRGIyUU5jSDY4RzA/view?resourcekey=0-q2yVDnZo-m2pjgxmXMKgAA)
+* [Meta Technical Screen Interview Prep Guide](https://drive.google.com/file/d/18Gn89EHYjFIhFk9vGgnb9m5EIEjZa40I/view)
