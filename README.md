@@ -32,6 +32,7 @@
 
 ##### Tries
 * implement-trie-prefix-tree (medium): basic prefix trie, oop
+* design-add-and-search-words-data-structure (medium): prefix trie, dfs
 
 ##### Heap
 * kth-largest-element-in-a-stream (easy): basic overview of how heap works
