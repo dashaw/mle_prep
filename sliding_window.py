@@ -59,3 +59,89 @@ class Solution:
             if len(foo) - max_count > k:
                 # not a viable solution
                 left_pointer += 1
+
+# --------
+# longest-substring-without-repeating-characters
+# --------
+class Solution:
+    def __init__(self):
+        self.seen_substr = {}
+
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        """
+        approach
+        - start small window
+        - check condition
+        - if valid at to max calc
+        - if not valid then perturb sliding window
+        
+        s = "abcabcbb"
+        "a"
+        "ab"
+        "abc"
+        "abca" not valid --> do not add --> change window
+        "bca" valid --> add
+        "bcab" not valid --> change
+        "cab" valid add
+        "cabc" not valid
+        "abc" valid
+        "abcb" not valid
+        "bcb" not valid
+        "cbb" not valid
+
+        """
+
+        def check_unique(substring):
+            seen_dict = {}
+            for i in substring:
+                if i in seen_dict:
+                    self.seen_substr[substring] = False
+                    return False
+                else:
+                    seen_dict[i] = 1
+            self.seen_substr[substring] = True
+            return True
+
+        len_s = len(s)
+        start = 0
+        end = start + 1
+        max_substring = 1
+
+        """
+        abcabcbb
+
+        len_s = 8
+        foo = [a]
+
+        end = 2
+        [ab]
+        max_substring = 2
+        foo = [abc]
+        max_susbtring = 3
+        foo [abca]
+
+        start = 1
+        end = 4
+        foo = [bca]
+        foo = 
+
+        """
+
+        if s == "":
+            return 0
+
+        while end <= len_s:
+            foo = s[start:end]
+
+            if foo in self.seen_substr:
+                is_unique = self.seen_substr[foo]
+            else:
+                is_unique = check_unique(foo)
+
+            if is_unique:
+                max_substring = max(len(foo), max_substring)
+                end += 1
+            else:
+                start += 1
+        
+        return max_substring

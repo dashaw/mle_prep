@@ -18,6 +18,7 @@
 
 ##### Sliding Window
 * best-time-to-buy-and-sell-stock (easy): iterate, compare mins and maxs
+* longest-substring-without-repeating-characters (medium): great problem, usage of hash to reduce duplicated computing
 * longest-repeating-character-replacement (medium): window, efficiency
 
 ##### Stack
