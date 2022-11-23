@@ -47,3 +47,6 @@
 * single-numer (easy): xor tricky
 
 \* needed significant hints
+
+#### Resources
+* [Cracking the Coding Skills](https://drive.google.com/file/d/0BxTvoZCNzGBoRGIyUU5jSDY4RzA/view?resourcekey=0-q2yVDnZo-m2pjgxmXMKgAA)
