@@ -75,20 +75,8 @@ class Solution:
         - if valid at to max calc
         - if not valid then perturb sliding window
         
-        s = "abcabcbb"
-        "a"
-        "ab"
-        "abc"
-        "abca" not valid --> do not add --> change window
-        "bca" valid --> add
-        "bcab" not valid --> change
-        "cab" valid add
-        "cabc" not valid
-        "abc" valid
-        "abcb" not valid
-        "bcb" not valid
-        "cbb" not valid
-
+        time complexity = O(N)
+        space complexity = O(N-ish)
         """
 
         def check_unique(substring):
