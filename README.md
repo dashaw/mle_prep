@@ -33,6 +33,9 @@
 ##### Tries
 * implement-trie-prefix-tree (medium): basic prefix trie, oop
 
+##### Heap
+* kth-largest-element-in-a-stream (easy): basic overview of how heap works
+
 ##### Binary Search
 * binary-search (easy): basic binary search implementation
 * search-a-2d-matrix (medium): binary search, 2d
