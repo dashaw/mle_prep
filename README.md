@@ -28,6 +28,7 @@
 * valid-parantheses (easy): stack
 
 ##### Trees
+* invert-binary-tree (easy): classic, bfs, revisit this for warmup!
 * maximum-depth-of-binary-tree (easy): dfs
 * lowest-common-ancestor-of-a-binary-search-tree (medium): binary search tree property
 * binary-tree-level-order-traversal (medium): bfs

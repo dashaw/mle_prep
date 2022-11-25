@@ -131,3 +131,34 @@ class Solution:
             result.append(visited[i])
 
         return result
+
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        """
+        here "invert" seems to me to swap left and right children
+
+        so what we need to do is go through the tree and swap left/right children
+
+        does it matter if we traverse bfs vs. dfs?
+
+        seems like bfs is the way to go so we want to use a queue
+
+        """
+
+        if not root:
+            return root
+            
+        queue = []
+
+        queue.append(root)
+
+        while queue:
+            foo = queue.pop(0)
+            foo.left, foo.right = foo.right, foo.left
+
+            if foo.left:
+                queue.append(foo.left)
+
+            if foo.right:
+                queue.append(foo.right)
+
+        return root
