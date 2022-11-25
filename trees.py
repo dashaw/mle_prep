@@ -162,3 +162,42 @@ class Solution:
                 queue.append(foo.right)
 
         return root
+
+    def goodNodes(self, root: TreeNode) -> int:
+        """
+        this feels like a dfs search problem
+
+        approach
+        - root (always good)
+        - visit 1 (somehow keep track there was a 3 before, so not good)
+        - visit 3 (somehow keep track that this is the max) --> good
+        - visit 4 (keep track of others in path)
+        - 
+
+        so crux of this problem feels like find an elegant way to do is_max_path comparison.
+        how do we keep track of path?
+
+        so for everything we push onto stack maybe we can also keep track of max thus far
+        so stack would look like [[1,3],[1,4],[1,5]]
+        so propogate max thus far of parent, compare to current parent, push update max in path to stack
+
+        actually i think what we want here is recursive dfs
+
+        time complexity = O(N)
+        space complexity = O(N) <-- stack calls
+        """
+        max_in_path = int(-10**5)
+        num_good = 0
+
+        def dfs(max_in_path, node):
+            nonlocal num_good
+            if node.val >= max_in_path:
+                num_good += 1
+                max_in_path = node.val
+
+            if node.left: dfs(max_in_path, node.left)
+            if node.right: dfs(max_in_path, node.right)
+
+        dfs(max_in_path, root)
+
+        return num_good

@@ -32,6 +32,7 @@
 * maximum-depth-of-binary-tree (easy): dfs
 * lowest-common-ancestor-of-a-binary-search-tree (medium): binary search tree property
 * binary-tree-level-order-traversal (medium): bfs
+* count-good-nodes-in-binary-tree (medium): dfs keeping track of other variables
 
 ##### Tries
 * implement-trie-prefix-tree (medium): basic prefix trie, oop
