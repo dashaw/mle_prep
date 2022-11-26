@@ -242,3 +242,45 @@ class Solution:
             output.append(visited_dict[i])
 
         return output
+
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+
+        """
+        so seems like in-order traversal would work here
+
+        approach is go in order, once len(visited) = k --> output visited[k-1]
+
+        5, don't visited
+        push 3
+        push 2
+        push 4
+        push 1
+
+        5-->3-->2-->1
+
+        [1,2,3,4,5,6]
+
+        """
+
+        visited = []
+        output = 0
+
+
+        def dfs(node):
+            nonlocal output
+            if len(visited) > k:
+                return
+
+            if node.left: dfs(node.left)
+
+            visited.append(node.val)
+
+            if len(visited) == k:
+                output = visited[k-1]
+                return
+
+            if node.right: dfs(node.right)
+
+        dfs(root)
+            
+        return output
