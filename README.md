@@ -42,6 +42,7 @@
 
 ##### Heap
 * kth-largest-element-in-a-stream (easy): basic overview of how heap works
+* last-stone-weight (easy): max heap
 
 ##### Binary Search
 * binary-search (easy): basic binary search implementation
