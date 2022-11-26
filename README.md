@@ -44,6 +44,7 @@
 * kth-largest-element-in-a-stream (easy): basic overview of how heap works
 * last-stone-weight (easy): max heap
 * k-closest-points-to-origin (medium): min heap
+* kth-largest-element-in-an-array (medium): min heap (k-th largest)
 
 ##### Binary Search
 * binary-search (easy): basic binary search implementation
@@ -70,3 +71,4 @@
 
 #### Questions
 * remember the time/space complexity for heapq heap build, insert, remove
+* practice other sort/search algos

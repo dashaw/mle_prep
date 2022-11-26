@@ -67,3 +67,19 @@ class Solution:
             output.append([foo[1],foo[2]])
 
         return output
+
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+    """
+    time compelxity: N*log(k)
+    space: O(k)
+    """
+
+        foo = []
+        heapq.heapify(foo)
+        for i in range(len(nums)):
+            heapq.heappush(foo,nums[i])
+
+            if len(foo) > k:
+                heapq.heappop(foo)
+
+        return heapq.heappop(foo)
