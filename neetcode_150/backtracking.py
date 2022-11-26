@@ -147,3 +147,63 @@ class Solution:
         print(output)
 
         return output
+
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+
+        """
+        time complexity: O(2**N) as for each num in candidate we can either include or not
+        space complexity: O(N) though less tidy on this
+        """
+
+        # params
+        soln_dict = {}
+        explored_dict = {}
+        output = []
+        candidates = sorted(candidates)
+        new_candidates = []
+
+        # if total candidates don't add to target return empty set
+        if sum(candidates) < target:
+            return []
+
+        # remove candidates > target
+        for i in candidates:
+            if i <= target:
+                new_candidates.append(i)
+
+        def dfs(current_soln,remain_cand):
+            sum_soln = sum(current_soln)
+            current_soln = sorted(current_soln)
+            str_current_soln = str(current_soln)
+
+            # keep track of what has been explored
+            explored_dict[str_current_soln] = 1
+
+
+            # what to do next?
+            if sum_soln == target and str_current_soln not in soln_dict:
+                # add solution
+                output.append(current_soln)
+                soln_dict[str_current_soln] = 1
+                print(output)
+                return
+
+            elif len(remain_cand) == 0:
+                # stop explore this path
+                return
+
+            elif sum_soln > target:
+                # stop exploring this path
+                return
+
+            else:
+                # explore with remaining candidates
+                for i in range(len(remain_cand)):
+                    new_soln = sorted(current_soln + [remain_cand[i]])
+                    new_cand = sorted(remain_cand[0:i] + remain_cand[i+1:])
+                    if str(new_soln) not in explored_dict:
+                        dfs(new_soln, new_cand)
+
+
+        dfs([],new_candidates)
+        return output

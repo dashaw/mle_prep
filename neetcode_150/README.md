@@ -59,6 +59,7 @@
 * subsets-ii (medium): backtracking using dfs, n*2^n
 * combination-sum (medium): backtracking + needing to simplfy exploration space
 * permutations (medium): backtracking, permutation, N!/(N-k)!
+* combination-sum-ii (medium): backtracking combinations, O(2^N)
 
 ##### Bit Manipulation
 * single-numer (easy): xor tricky
@@ -74,3 +75,4 @@
 #### Questions
 * remember the time/space complexity for heapq heap build, insert, remove
 * practice other sort/search algos
+* backtracking: need to clear up space/time complexity for some approachs. also remember permutation and combination equations
