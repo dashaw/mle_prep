@@ -63,6 +63,7 @@
 
 ##### Bit Manipulation
 * single-numer (easy): xor tricky
+* number-of-1-bits (easy): bit shift number and use mod to see if ends in 0 or 1
 
 \* needed significant hints
 
