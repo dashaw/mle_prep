@@ -119,3 +119,31 @@ class Solution:
         dfs([], candidates)
 
         return output
+
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        """
+        solve using backtracking
+
+        start with set of candidates, dfs with new solution and remaining candidate set
+
+        time complexity: O(N!/(N-k)!)
+        space complexity: would be do to recursive calls, how many recursive calls? is it also O(N!)? that feels wrong
+
+        """
+        output = []
+        
+        def dfs(soln,candidates):
+            if len(candidates) == 0:
+                # add to solution
+                output.append(soln)
+            else:
+                for i in range(len(candidates)):
+                    remaining_candidates = candidates[0:i]+candidates[i+1:]
+                    new_solution = soln+[candidates[i]]
+                    dfs(new_solution,remaining_candidates)
+                    
+                    
+        dfs([],nums)
+        print(output)
+
+        return output

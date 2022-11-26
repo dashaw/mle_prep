@@ -57,6 +57,8 @@
 ##### Backtracking
 * subsets (medium): dfs, recursion, 2^n
 * subsets-ii (medium): backtracking using dfs, n*2^n
+* combination-sum (medium): backtracking + needing to simplfy exploration space
+* permutations (medium): backtracking, permutation, N!/(N-k)!
 
 ##### Bit Manipulation
 * single-numer (easy): xor tricky
