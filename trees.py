@@ -201,3 +201,44 @@ class Solution:
         dfs(max_in_path, root)
 
         return num_good
+
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+
+        """
+        initial take, sounds like a bfs problem where we keep track of the first (?) or last(?)
+        visited nodes for that level
+
+        queue = [1]
+        visited = [1]
+        queue = [2,3,5]
+        visited = [1,3]
+        """
+        output = []
+        visited_dict = {}
+        queue = []
+        queue.append([0,root])
+        
+        while len(queue) > 0:
+            foo = queue.pop(0)
+            lvl = foo[0]
+            node = foo[1]
+            if not node:
+                print("what's going on here")
+            if node:
+
+                # add to (levle, node) visited dict
+                visited_dict[lvl] = node.val
+
+                # 
+                if node.left: queue.append([lvl+1,node.left])
+                if node.right: queue.append([lvl+1,node.right])
+                
+                print('--------------')
+                print(len(queue))
+                print(f'queue: {queue}')
+                print('--------------')
+            
+        for i in sorted(visited_dict.keys()):
+            output.append(visited_dict[i])
+
+        return output
