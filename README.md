@@ -43,6 +43,7 @@
 ##### Heap
 * kth-largest-element-in-a-stream (easy): basic overview of how heap works
 * last-stone-weight (easy): max heap
+* k-closest-points-to-origin (medium): min heap
 
 ##### Binary Search
 * binary-search (easy): basic binary search implementation
@@ -66,3 +67,6 @@
 * [Meta Technical Screen Interview Prep Guide](https://drive.google.com/file/d/18Gn89EHYjFIhFk9vGgnb9m5EIEjZa40I/view)
 * [Tweep-Sourced MLE Prep](https://docs.google.com/document/d/1IlI5vOsJbYhvxSdIb5fpwebtyo9vmmgZZBwZEqWpSZo/edit)
 * [System Design Interview by Alex Xu](https://bytebytego.com/courses/system-design-interview/scale-from-zero-to-millions-of-users)
+
+#### Questions
+* remember the time/space complexity for heapq heap build, insert, remove

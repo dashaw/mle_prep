@@ -41,3 +41,29 @@ class Solution:
         else:
             return 0
 
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+
+        """
+        time complexity = n (build distance) + n*logn (build heap) + k*log(n) (extract and re-build)
+        
+        O(k*log(n))
+
+        space = O(1)
+        """
+        dist = []
+        for i in range(len(points)):
+            x = points[i][0]
+            y = points[i][1]
+            dist.append([((-x)**2 + (-y)**2)**(1/2),x,y])
+
+
+        # heapify O(n*logn)
+        heapq.heapify(dist)
+
+        output = []
+        for i in range(k):
+            foo = heapq.heappop(dist)
+            print(foo)
+            output.append([foo[1],foo[2]])
+
+        return output
