@@ -65,3 +65,27 @@ class Solution:
         return island_cnt
 
 
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        """
+        approach
+        - bfs graph, build new graph as we go
+
+        time complexity = O(V+E)
+        space complexity = O(V+E)
+        """
+        newToOld = {}
+
+        def dfs(node):
+            if node in newToOld:
+                return newToOld[node]
+
+            if node:
+                copy = Node(node.val)
+                newToOld[node] = copy
+
+                for nei in node.neighbors:
+                    copy.neighbors.append(dfs(nei))
+
+                return copy
+
+        return dfs(node)
