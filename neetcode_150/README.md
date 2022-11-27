@@ -64,6 +64,7 @@
 #### Graphs:
 * number-of-islands (medium): dfs, O(MxN)
 * clone-graph (medium): deep copy, DFS graph
+* max-area-of-island (medium): dfs, O(RxC), next version of number-of-islands
 
 ##### Bit Manipulation
 * single-numer (easy): xor tricky
