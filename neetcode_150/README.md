@@ -61,6 +61,9 @@
 * permutations (medium): backtracking, permutation, N!/(N-k)!
 * combination-sum-ii (medium): backtracking combinations, O(2^N)
 
+#### Graphs:
+* number-of-islands (medium): dfs, O(MxN)
+
 ##### Bit Manipulation
 * single-numer (easy): xor tricky
 * number-of-1-bits (easy): bit shift number and use mod to see if ends in 0 or 1
