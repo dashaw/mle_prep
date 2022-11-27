@@ -167,3 +167,102 @@ class Solution:
                 dfs(r,c-1)
 
         return max_island
+
+        """
+        brute force
+        go through each cell, loop through each other cell and see if it eventually leads to pacific and atlantic
+
+        alt approach
+        dfs from each cell, only continue dfs if height <= original dfs location
+        so this would be m*n occurences of dfs
+        also lots of duplication, could probably simplify
+
+        time complexity = O(R*C)
+        space complexity = O(R*C)
+        """
+
+        output_dict = {}
+        explored_dict = {} # not sure exactly how this is used, but I imagine it will save some interim result + the max height encountered
+        output = []
+        m = len(heights)
+        n = len(heights[0])
+
+        def _early_stopping_dup(r,c):
+            cell_str = str([r,c])
+
+            if cell_str not in explored_dict:
+                explored_dict[cell_str] = 1
+                return False
+            else:
+                return True
+
+        def _early_stopping_soln(r,c,original_r,original_c):
+            new_cell_str = str([r,c])
+            orig_cell_str = str([original_r,original_c])
+
+            if new_cell_str in output_dict and 'atlantic' in output_dict[new_cell_str]['ocean'] and 'pacific' in output_dict[new_cell_str]['ocean']:
+                output_dict[orig_cell_str] = {'r': original_r, 'c': original_c, 'ocean': ['atlantic','pacific']}
+                return True
+
+            else:
+                return False
+
+        def _add_solution(r,c,ocean):
+            """
+            for a solution we want to know
+            1. starting cell
+            2. max height encountered
+            3. ocean if flowed into
+            """
+            cell_str = str([r,c])
+
+            if cell_str not in output_dict:
+                output_dict[cell_str] = {'r': r, 'c': c, 'ocean': [ocean]}
+            else:
+                output_dict[cell_str]['ocean'].append(ocean)
+
+
+        def dfs(r,c,height,original_r,original_c):
+            # pacific
+            if r < 0 or c < 0:
+                _add_solution(original_r,original_c,'pacific')
+                return
+
+            # atlantic
+            elif r >= m or c >= n:
+                _add_solution(original_r,original_c,'atlantic')
+                return
+
+            # not a valid explore
+            elif heights[r][c] > height:
+                return
+            
+            else:
+                # explore or duplicate?
+                early_stopping_flag = _early_stopping_dup(r,c)
+                if early_stopping_flag: return
+
+                # stop early because already successful path found
+                early_stopping_flag = _early_stopping_soln(r,c,original_r,original_c)
+                if early_stopping_flag: return
+
+                # dfs
+                dfs(r-1,c,heights[r][c],original_r,original_c)
+                dfs(r+1,c,heights[r][c],original_r,original_c)
+                dfs(r,c+1,heights[r][c],original_r,original_c)
+                dfs(r,c-1,heights[r][c],original_r,original_c)
+
+        for i in range(m):
+            for j in range(n):
+                explored_dict = {}
+                dfs(i+1,j,heights[i][j],i,j)
+                dfs(i-1,j,heights[i][j],i,j)
+                dfs(i,j+1,heights[i][j],i,j)
+                dfs(i,j-1,heights[i][j],i,j)
+                
+        # figure out which cells have both atlantic and pacific
+        for k, v in output_dict.items():
+            if 'pacific' in v['ocean'] and 'atlantic' in v['ocean']:
+                output.append([v['r'], v['c']])
+
+        return output
