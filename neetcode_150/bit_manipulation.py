@@ -27,3 +27,18 @@ class Solution:
             n = n >> 1
 
         return cnt
+
+    def countBits(self, n: int) -> List[int]:
+        """
+        time complexity = O(n)
+        space complexity = O(1) output array does not count in space complexity
+        """
+        output = []
+        for i in range(n+1):
+            cnt = 0
+            while i:
+                cnt += i%2
+                i = i >> 1
+            output.append(cnt)
+
+        return output
