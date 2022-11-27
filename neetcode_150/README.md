@@ -67,6 +67,9 @@
 * max-area-of-island (medium): dfs, O(RxC), next version of number-of-islands
 * pacific-atlantic-water-flow (medium): dfs or bfs, O(RxC), early stopping
 
+#### Greedy:
+* maximum-subarray (medium): sliding window mixed with dynamic programming
+
 ##### Bit Manipulation
 * single-numer (easy): xor tricky
 * number-of-1-bits (easy): bit shift number and use mod to see if ends in 0 or 1
