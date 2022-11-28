@@ -1,5 +1,19 @@
 ## Notes
 
+### Abstractions
+
+#### Network Abstractions: Remote Procedure Calls
+Remote procedure calls (RPCs) provide an abstraction of a local procedure call to the developers by hiding the complexities of packing and sending function arguments to the remote server, receiving the return values, and managing any network retries.
+
+RPC is an interprocess communication protocol that’s widely used in distributed systems. In the OSI model of network communication, RPC spans the transport and application layers.
+
+RPC mechanisms are employed when a computer program causes a procedure or subroutine to execute in a separate address space.
+
+##### Summary
+The RPC method is similar to calling a local procedure, except that the called procedure is usually executed in a different process and on a different computer.
+
+RPC allows developers to build applications on top of distributed systems. Developers can use the RPC method without knowing the network communication details. As a result, they can concentrate on the design aspects, rather than the machine and communication-level specifics.
+
 ### Non-functional System Characteristics
 
 #### Availability
