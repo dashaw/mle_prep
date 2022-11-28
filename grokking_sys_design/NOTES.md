@@ -98,6 +98,6 @@ Other data stores are still used for analytics—for example, Hadoop’s HDFS. S
 Coming back to the example of Facebook, we know that they’ve used servers with a storage capacity of up to 120 TB. With the number of servers in use, Facebook is able to house exabytes of storage.
 
 
-![test](important_latencies.png =100x20)
+![test](important_latencies.png=100x20)
 
 ![test](important_qps_rates.png)
