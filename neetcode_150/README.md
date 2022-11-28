@@ -69,6 +69,7 @@
 
 #### Greedy:
 * maximum-subarray (medium): sliding window mixed with dynamic programming
+* jump-game (medium): dfs backtracking option, takes tweak to get in time limit
 
 ##### Bit Manipulation
 * single-numer (easy): xor tricky
