@@ -100,4 +100,4 @@ Coming back to the example of Facebook, we know that they’ve used servers with
 
 ![test](important_latencies.png)
 
-![test](importance_qps_rates.png)
+![test](important_qps_rates.png)
