@@ -61,15 +61,18 @@
 * permutations (medium): backtracking, permutation, N!/(N-k)!
 * combination-sum-ii (medium): backtracking combinations, O(2^N)
 
-#### Graphs:
+##### Graphs:
 * number-of-islands (medium): dfs, O(MxN)
 * clone-graph (medium): deep copy, DFS graph
 * max-area-of-island (medium): dfs, O(RxC), next version of number-of-islands
 * pacific-atlantic-water-flow (medium): dfs or bfs, O(RxC), early stopping
 
-#### Greedy:
+##### Greedy:
 * maximum-subarray (medium): sliding window mixed with dynamic programming
 * jump-game (medium): dfs backtracking option, takes tweak to get in time limit
+
+##### Math & Geometry:
+* plus-one (easy): basic for loop and check condition
 
 ##### Bit Manipulation
 * single-numer (easy): xor tricky
