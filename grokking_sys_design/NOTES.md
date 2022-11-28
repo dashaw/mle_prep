@@ -78,7 +78,8 @@ Choosing an unreasonable number for such calculations can lead to a flawed desig
 * The estimation of RPS that a server can handle.
 Examples of bandwidth, servers, and storage estimation.
 
-![test](resource_by_server_type_general.png)
+<img src="resource_by_server_type_general.png" alt="drawing" width="500"/>
+
 
 ##### Web servers
 For scalability, the web servers are decoupled from the application servers. Web servers are the first point of contact after load balancers. Data centers have racks full of web servers that *usually handle API calls from the clients*. Depending on the service that’s offered, the memory and storage resources in web servers can be small to medium. However, such servers require good computational resources. For example, Facebook has used a web server with 32 GB of RAM and 500 GB of storage space. But for its high-end computational needs, it partnered with Intel to build a custom 16-core processor.
@@ -98,8 +99,6 @@ Other data stores are still used for analytics—for example, Hadoop’s HDFS. S
 Coming back to the example of Facebook, we know that they’ve used servers with a storage capacity of up to 120 TB. With the number of servers in use, Facebook is able to house exabytes of storage.
 
 
-![test](important_latencies.png=100x20)
-
 <img src="important_latencies.png" alt="drawing" width="500"/>
 
-![test](important_qps_rates.png)
+<img src="important_qps_rates.png" alt="drawing" width="500"/>
