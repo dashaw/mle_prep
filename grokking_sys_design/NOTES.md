@@ -102,3 +102,30 @@ Coming back to the example of Facebook, we know that they’ve used servers with
 <img src="important_latencies.png" alt="drawing" width="500"/>
 
 <img src="important_qps_rates.png" alt="drawing" width="500"/>
+
+##### Request estimation
+This section discusses the number of requests a typical server can handle in a second. Within a server, there are limited resources and depending on the type of client requests, different resources can become a bottleneck. Let’s understand two types of requests.
+
+CPU-bound requests: These are the type of requests where the limiting factor is the CPU.
+Memory-bound requests: These are the types of requests that are limited by the amount of memory a machine has.
+Let’s approximate the RPS for each type of request. But before that, we need to assume the following:
+
+Our server has the specifications of the typical server that we defined in the table above.
+* Operating systems and other auxiliary processes have consumed a total of 16 GB of RAM.
+* Each worker consumes 300 MBs of RAM storage to complete a request.
+*  For simplicity, we assume that the CPU obtains data from the RAM. Therefore, a caching system ensures that all the required content is available for serving, without there being a need to access the storage layer.
+* Each CPU-bound request takes 200 milliseconds, whereas a memory-bound request takes 50 milliseconds to complete.
+
+Let’s do the computation for each type of request.
+
+#### Example of resource estimation
+
+##### Storage
+<img src="estimate_tweet_storage.png" alt="drawing" width="500"/>
+
+##### Bandwidth
+<img src="estimate_incoming_twitter.png" alt="drawing" width="500"/>
+
+<img src="estimate_outgoing_twitter.png" alt="drawing" width="500"/>
+
+
