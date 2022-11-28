@@ -71,6 +71,9 @@
 * maximum-subarray (medium): sliding window mixed with dynamic programming
 * jump-game (medium): dfs backtracking option, takes tweak to get in time limit
 
+##### Intervals:
+* meeting-rooms (easy): sort, basic math
+
 ##### Math & Geometry:
 * plus-one (easy): basic for loop and check condition
 * happy-number (easy): basic for loop, detect cycle
