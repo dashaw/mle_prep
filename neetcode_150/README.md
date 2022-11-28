@@ -73,6 +73,7 @@
 
 ##### Math & Geometry:
 * plus-one (easy): basic for loop and check condition
+* happy-number (easy): basic for loop, detect cycle
 
 ##### Bit Manipulation
 * single-numer (easy): xor tricky
