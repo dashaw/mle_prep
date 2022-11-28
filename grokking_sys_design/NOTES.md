@@ -59,3 +59,23 @@ We create multiple copies of our data in separate storage. All copies need to up
 Checkpointing is a technique that saves the system’s state in stable storage when the system state is consistent. Checkpointing is performed in many stages at different time intervals. The primary purpose is to save the computational state at a given point. When a failure occurs in the system, we can get the last computed data from the previous checkpoint and start working from there.
 
 Checkpointing also comes with the same problem that we have in replication. When the system has to perform checkpointing, it makes sure that the system is in a consistent state, meaning that all processes are stopped. This type of checkpointing is known as synchronous checkpointing. On the other hand, checkpointing in an inconsistent state leads to data inconsistency problems. Let’s look at the illustration below to understand the difference between a consistent and an inconsistent state:
+
+### Back of the envelope
+
+#### In perspective
+A distributed system has compute nodes connected via a network. There’s a wide variety of available compute nodes and they can be connected in many different ways. Back-of-the-envelope calculations help us ignore the nitty-gritty details of the system (at least at the design level) and focus on more important aspects.
+
+Some examples of a back-of-the-envelope calculation could be:
+
+* The number of concurrent TCP connections a server can support.
+* The number of requests per second (RPS) a web, database, or cache server can handle.
+* The storage requirements of a service.
+
+Choosing an unreasonable number for such calculations can lead to a flawed design. Since we need good estimations in many design problems, we’ll discuss all the relevant concepts in detail in this lesson. These concepts include:
+
+* The types of data center servers.
+* The realistic access latencies of different components.
+* The estimation of RPS that a server can handle.
+Examples of bandwidth, servers, and storage estimation.
+
+![test](resource_by_server_type_general.png)
