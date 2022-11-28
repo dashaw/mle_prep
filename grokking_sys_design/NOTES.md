@@ -100,6 +100,6 @@ Coming back to the example of Facebook, we know that they’ve used servers with
 
 ![test](important_latencies.png=100x20)
 
-<img src="important_latencies.png" alt="drawing" width="200"/>
+<img src="important_latencies.png" alt="drawing" width="500"/>
 
 ![test](important_qps_rates.png)
