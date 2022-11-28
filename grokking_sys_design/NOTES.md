@@ -78,7 +78,7 @@ Choosing an unreasonable number for such calculations can lead to a flawed desig
 * The estimation of RPS that a server can handle.
 Examples of bandwidth, servers, and storage estimation.
 
-<img src="resource_by_server_type_general.png" alt="drawing" width="500"/>
+<img src="resource_by_server_type_general.png" alt="drawing" width="700"/>
 
 
 ##### Web servers
