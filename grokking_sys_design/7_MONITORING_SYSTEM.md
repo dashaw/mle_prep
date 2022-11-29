@@ -39,7 +39,7 @@ Let’s sum up what we want our monitoring system to do for us:
 * Querying service: This is an API that can query on the time-series database and return the relevant information.
 
 
-<img src="monitoring_system.png" alt="drawing" width="700"/>
+<img src="diagrams/monitoring_system.png" alt="drawing" width="700"/>
 
 #### Summary
 * Monitoring systems are critical in distributed systems because they help in analyzing the system and alerting the stakeholders if a problem occurs.
@@ -50,7 +50,7 @@ Let’s sum up what we want our monitoring system to do for us:
 
 #### Client vs. Server errors
 
-<img src="client_server_errors.png" alt="drawing" width="700"/>
+<img src="diagrams/client_server_errors.png" alt="drawing" width="700"/>
 
 ##### Client
 n a distributed system, clients often access the service via an HTTP request. We can monitor our web and application servers’ logs if a request fails to process. If multiple requests fail, we can observe a spike in internal errors (error 500).

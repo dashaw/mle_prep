@@ -72,7 +72,7 @@ A NoSQL database is designed for a variety of data models to access and manage d
 
 * Cost: Licenses for many RDBMSs are pretty expensive, while many NoSQL databases are open source and freely available. Similarly, some RDBMSs rely on costly proprietary hardware and storage systems, while NoSQL databases usually use clusters of cheap commodity servers.
 
-<img src="nosql_db.png" alt="drawing" width="700"/>
+<img src="diagrams/nosql_db.png" alt="drawing" width="700"/>
 
 ##### Key-value DB
 Key-value databases use key-value methods like hash tables to store data in key-value pairs. We can see this depicted in the figure a couple of paragraphs below. Here, the key serves as a unique or primary key, and the values can be anything ranging from simple scalar values to complex objects. These databases allow easy partitioning and horizontal scaling of the data. Some popular key-value databases include Amazon DynamoDB, Redis, and Memcached DB.

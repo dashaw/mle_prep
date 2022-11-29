@@ -81,7 +81,7 @@ Choosing an unreasonable number for such calculations can lead to a flawed desig
 * The estimation of RPS that a server can handle.
 Examples of bandwidth, servers, and storage estimation.
 
-<img src="resource_by_server_type_general.png" alt="drawing" width="700"/>
+<img src="diagrams/resource_by_server_type_general.png" alt="drawing" width="700"/>
 
 
 ##### Web servers
@@ -102,9 +102,9 @@ Other data stores are still used for analytics—for example, Hadoop’s HDFS. S
 Coming back to the example of Facebook, we know that they’ve used servers with a storage capacity of up to 120 TB. With the number of servers in use, Facebook is able to house exabytes of storage.
 
 
-<img src="important_latencies.png" alt="drawing" width="500"/>
+<img src="diagrams/important_latencies.png" alt="drawing" width="500"/>
 
-<img src="important_qps_rates.png" alt="drawing" width="500"/>
+<img src="diagrams/important_qps_rates.png" alt="drawing" width="500"/>
 
 ##### Request estimation
 This section discusses the number of requests a typical server can handle in a second. Within a server, there are limited resources and depending on the type of client requests, different resources can become a bottleneck. Let’s understand two types of requests.
@@ -124,12 +124,12 @@ Let’s do the computation for each type of request.
 #### Example of resource estimation
 
 ##### Storage
-<img src="estimate_tweet_storage.png" alt="drawing" width="500"/>
+<img src="diagrams/estimate_tweet_storage.png" alt="drawing" width="500"/>
 
 ##### Bandwidth
-<img src="estimate_incoming_twitter.png" alt="drawing" width="500"/>
+<img src="diagrams/estimate_incoming_twitter.png" alt="drawing" width="500"/>
 
-<img src="estimate_outgoing_twitter.png" alt="drawing" width="500"/>
+<img src="diagrams/estimate_outgoing_twitter.png" alt="drawing" width="500"/>
 
 ### Building blocks
 1. Domain Name System: This building block focuses on how to design hierarchical and distributed naming systems for computers *connected to the Internet via different Internet protocols*.

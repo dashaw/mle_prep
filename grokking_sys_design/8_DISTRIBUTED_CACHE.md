@@ -34,7 +34,7 @@ When the size of data required in the cache increases, storing the entire data i
 * A system is designed in layers, and each layer should have its caching mechanism to ensure the decoupling of sensitive data from different layers.
 * Caching at different locations helps reduce the serving latency at that layer.
 
-<img src="caching_layers.png" alt="drawing" width="700"/>
+<img src="diagrams/caching_layers.png" alt="drawing" width="700"/>
 
 ### Writing policies
 Often, cache stores a copy (or part) of data, which is persistently stored in a data store. When we store data to the data store, some important questions arise:
@@ -151,7 +151,7 @@ The following are the functional requirements:
 
 #### High-level
 
-<img src="distributed_cache.png" alt="drawing" width="700"/>
+<img src="diagrams/distributed_cache.png" alt="drawing" width="700"/>
 
 * Cache client: This library resides in the service application servers. It holds all the information regarding cache servers. The cache client will choose one of the cache servers using a hash and search algorithm for each incoming insert and retrieve request. All the cache clients should have a consistent view of all the cache servers. Also, the resolution technique to move data to and from the cache servers should be the same. Otherwise, different clients will request different servers for the same data.
 
@@ -176,11 +176,11 @@ Each cache client should use three mechanisms to store and evict entries from th
 * Doubly linked list: If we have to evict data from the cache, we require a linked list so that we can order entries according to their frequency of access. The illustration below depicts how entries are connected using a doubly linked list.
 * Eviction policy: The eviction policy depends on the application requirements. Here, we assume the least recently used (LRU) eviction policy.
 
-<img src="cache_shard_cluster.png" alt="drawing" width="700"/>
+<img src="diagrams/cache_shard_cluster.png" alt="drawing" width="700"/>
 
 ##### Detailed design
 
-<img src="detailed_distributed_cache.png" alt="drawing" width="700"/>
+<img src="diagrams/detailed_distributed_cache.png" alt="drawing" width="700"/>
 
 * The client’s requests reach the service hosts through the load balancers where the cache clients reside.
 * Each cache client uses consistent hashing to identify the cache server. Next, the cache client forwards the request to the cache server maintaining a specific shard.

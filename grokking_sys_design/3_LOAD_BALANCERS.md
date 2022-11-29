@@ -11,7 +11,7 @@ The load balancing layer is the first point of contact within a data center afte
 * Availability: Even if some servers go down or suffer a fault, the system still remains available. One of the jobs of the load balancers is to hide faults and failures of servers.
 * Performance: Load balancers can forward requests to servers with a lesser load so the user can get a quicker response time. This not only improves performance but also improves resource utilization.
 
-<img src="load_balancer_simple.png" alt="drawing" width="700"/>
+<img src="diagrams/load_balancer_simple.png" alt="drawing" width="700"/>
 
 #### Placing LBs
 Generally, LBs sit between clients and servers. Requests go through to servers and back to clients via the load balancing layer. However, that isn’t the only point where load balancers are used.
@@ -64,9 +64,9 @@ As the name indicates, stateful load balancing involves maintaining a state of t
 
 Essentially, the stateful LBs retain a data structure that maps incoming clients to hosting servers. Stateful LBs increase complexity and limit scalability because session information of all the clients is maintained across all the load balancers. That is, load balancers share their state information with each other to make forwarding decisions.
 
-<img src="load_balance_stateful.png" alt="drawing" width="700"/>
+<img src="diagrams/load_balance_stateful.png" alt="drawing" width="700"/>
 
 #### Stateless
 Stateless load balancing maintains no state and is, therefore, faster and lightweight. Stateless LBs use consistent hashing to make forwarding decisions. However, if infrastructure changes (for example, a new application server joining), stateless LBs may not be as resilient as stateful LBs because consistent hashing alone isn’t enough to route a request to the correct application server. Therefore, a local state may still be required along with consistent hashing.
 
-<img src="load_balance_stateless.png" alt="drawing" width="700"/>
+<img src="diagrams/load_balance_stateless.png" alt="drawing" width="700"/>

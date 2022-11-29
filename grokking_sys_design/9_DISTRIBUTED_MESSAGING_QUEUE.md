@@ -1,7 +1,7 @@
 ### Intro
 A messaging queue is an intermediate component between the interacting entities known as producers and consumers. The producer produces messages and places them in the queue, while the consumer retrieves the messages from the queue and processes them. There might be multiple producers and consumers interacting with the queue at the same time.
 
-<img src="example_message_queue.png" alt="drawing" width="700"/>
+<img src="diagrams/example_message_queue.png" alt="drawing" width="700"/>
 
 #### Why?
 * Improved performance: Improved performance: A messaging queue enables asynchronous communication between the two interacting entities, producers and consumers, and eliminates their relative speed difference. A producer puts messages in the queue without waiting for the consumers. Similarly, a consumer processes the messages when they become available. Moreover, queues are often used to separate out slower operations from the critical path and, therefore, help reduce client-perceived latency. For example, instead of waiting for a specific task that’s taking a long time to complete, the producer process sends a message, which is kept in a queue if there are multiple requests, for the required task and continues its operations. The consumer can notify us about the fate of the processing, whether a success or failure, by using another queue.
@@ -46,7 +46,7 @@ A messaging queue has many use cases, both in single-server and distributed envi
 
 * Performance: The system should provide high throughput and low latency.
 
-<img src="single_message_queue.png" alt="drawing" width="700"/>
+<img src="diagrams/single_message_queue.png" alt="drawing" width="700"/>
 
 **Distributed messaging queue building blocks**
 * Database(s) will be required to store the metadata of queues and users.
@@ -80,14 +80,14 @@ Perform online sorting within a time-window approach to reduce latency.
 **Concurrency**
 One solution is to serialize requests using the system's buffer at both ends of the queue so that incoming messages are placed in an order and consumer processes also receive messages in their arrival sequence.
 
-<img src="message_queue_race_conditions.png" alt="drawing" width="700"/>
+<img src="diagrams/message_queue_race_conditions.png" alt="drawing" width="700"/>
 
 ### High level design
 Queue data is replicated using either a primary-secondary or quorum-like system inside a cluster (read through the Data Replication lesson for more details). Our service can use data partitioning if the queue gets too long to fit on a server. We can use a consistent hashing-like scheme for this purpose, or we may use a key-value store where the key might be the sequence numbers of the messages. In that case, each shard is appropriately replicated (refer to the Partition lesson for more details on this).
 
 We also assume that our system can auto-expand and auto-shrink the resources as per the need to optimally utilize resources.
 
-<img src="diagrams/message_queue_high_level_design.png" alt="drawing" width="700"/>
+<img src="diagrams/diagrams/message_queue_high_level_design.png" alt="drawing" width="700"/>
 
 ### Backend
 **Primary-secondary model**

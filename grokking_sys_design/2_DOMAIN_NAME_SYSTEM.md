@@ -24,7 +24,7 @@ There are mainly four types of servers in the DNS hierarchy:
 
 * Authoritative name servers: These are the organization’s DNS name servers that provide the IP addresses of the web or application servers.
 
-<img src="dns_hierarchy.png" alt="drawing" width="700"/>
+<img src="diagrams/dns_hierarchy.png" alt="drawing" width="700"/>
 
 #### Caching
 Caching refers to the temporary storage of frequently requested resource records. A record is a data unit within the DNS database that shows a name-to-value binding. Caching reduces response time to the user and decreases network traffic. When we use caching at different hierarchies, it can reduce a lot of querying burden on the DNS infrastructure. Caching can be implemented in the browser, operating systems, local name server within the user’s network, or the ISP’s DNS resolvers.
@@ -36,4 +36,4 @@ Although the DNS hierarchy facilitates the distributed Internet that we know tod
 * It achieves low query latency so users can get responses from nearby servers.
 * It gets a higher degree of flexibility during maintenance and updates or upgrades. For example, if one DNS server is down or overburdened, another DNS server can respond to user queries.
 
-<img src="dns_cache.png" alt="drawing" width="700"/>
+<img src="diagrams/dns_cache.png" alt="drawing" width="700"/>

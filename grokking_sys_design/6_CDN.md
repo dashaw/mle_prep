@@ -58,7 +58,7 @@ The following functional requirements will be a part of our design:
 
 * Management system: The management systems are important in CDNs from a business and managerial aspect where resource usage and statistics are constantly observed. This component measures important metrics, like latency, downtime, packet loss, server load, and so on. For third-party CDNs, accounting information can also be used for billing purposes.
 
-<img src="cdn_components.png" alt="drawing" width="700"/>
+<img src="diagrams/cdn_components.png" alt="drawing" width="700"/>
 
 1. The origin servers provide the URI namespace delegation of all objects cached in the CDN to the request routing system.
 
