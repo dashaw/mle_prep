@@ -87,7 +87,7 @@ Queue data is replicated using either a primary-secondary or quorum-like system 
 
 We also assume that our system can auto-expand and auto-shrink the resources as per the need to optimally utilize resources.
 
-<img src="message_queue_high_level_design.png" alt="drawing" width="700"/>
+<img src="diagrams/message_queue_high_level_design.png" alt="drawing" width="700"/>
 
 ### Backend
 **Primary-secondary model**
