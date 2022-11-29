@@ -66,6 +66,7 @@
 * clone-graph (medium): deep copy, DFS graph
 * max-area-of-island (medium): dfs, O(RxC), next version of number-of-islands
 * pacific-atlantic-water-flow (medium): dfs or bfs, O(RxC), early stopping
+* surrounded-regions (medium): dfs, islands, change board in memory, O(RxC), solved in < 30 min!
 
 ##### Greedy:
 * maximum-subarray (medium): sliding window mixed with dynamic programming

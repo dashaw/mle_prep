@@ -266,3 +266,106 @@ class Solution:
                 output.append([v['r'], v['c']])
 
         return output
+
+    def solve(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+
+        problems/surrounded-regions
+
+        How do we know if a region is captured? It seems the only way it wouldn't be captured is
+        if it is part of a region which has a border piece
+
+        Approach
+        - find the O's
+        - find which O's are a part of the same "island" by graph traversal
+        - find out if one of the O's is a border piece, if so --> not captured --> else, captured
+
+        Time complexity: O(R*C)
+        Space complexity: O(R*C) recursive stack calls
+        """
+
+        # set up vars
+        oh_dict = {}
+        cluster_dict = {} # let's use the idea of a cluster and label when a cluster has a border piece
+        explored_dict = {} # keep track of cells we have searched
+        num_ohs = 0
+        cluster_cnt = 0 # label clusters of ohs
+        m = len(board)
+        n = len(board[0])
+        target = "O"
+        new_value = "X"
+
+        # traverse board to find the ohs
+        for i in range(m):
+            for j in range(n):
+                cell_str = str([i,j])
+                if board[i][j] == target:
+                    num_ohs += 1
+                    oh_dict[cell_str] = {'r':i, 'c': j, 'cluster_assign': 0}
+
+        # so now we know where the ohs are at, if they belong to a given cluster, and how many ohs there are
+        def dfs(r,c):
+            nonlocal cluster_cnt, cluster_dict, explored_dict
+
+            # required vars
+            cell_str = str([r,c])
+
+            # have we explored this already?
+            if cell_str in explored_dict:
+                return
+
+            # is this out of bounds?
+            elif r < 0 or c < 0 or r > m - 1 or c > n - 1:
+                cluster_dict[cluster_cnt]['border_piece'] = True
+
+            # additional searching
+            elif board[r][c] == target:
+                explored_dict[cell_str] = 1 # update explore dict
+                cluster_dict[cluster_cnt]['points'].append([r,c]) # update cluster assignment
+                oh_dict[cell_str]['cluster_assign'] = cluster_cnt # update cluster assignment...again. 
+                """
+                todo: @darrens figure out if there is duplication in all this assignment
+                """
+
+                # keep exploring
+                dfs(r+1,c)
+                dfs(r-1,c)
+                dfs(r,c+1)
+                dfs(r,c-1)
+
+        # how do we want to search?
+        for oh in oh_dict:
+            r = oh_dict[oh]['r']
+            c = oh_dict[oh]['c']
+            cluster = oh_dict[oh]['cluster_assign']
+
+            if cluster == 0:
+                # then need to search as it hasn't been assigned yet
+                cluster_cnt += 1
+                cluster_dict[cluster_cnt] = {'points': [[r,c]], 'border_piece': False}
+                dfs(r+1,c)
+                dfs(r-1,c)
+                dfs(r,c+1)
+                dfs(r,c-1)
+
+        """
+        questions:
+        1. should we reset in data strucutres? example should we reset explored_dict after each outer-function call?
+
+        answer: no, why: a cell is added to explored_dict only if it is already not in it and it equals target
+
+        we do not want to re-explore ohs that have already been assigned to a cluster
+        """
+
+        # transform all ohs that do not belong to a cluster with a border piece to an ex
+        for clust in cluster_dict:
+            if cluster_dict[clust]['border_piece'] == False:
+                # then need to update
+                for p in cluster_dict[clust]['points']:
+                    r = p[0]
+                    c = p[1]
+                    board[r][c] = new_value
+
+        # return
+        return board
