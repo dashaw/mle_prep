@@ -1,4 +1,5 @@
 ## [Book pdf](http://ema.cri-info.cm/wp-content/uploads/2019/07/2019BurkovTheHundred-pageMachineLearning.pdf)
+## [Other github link](https://github.com/Chrisackerman1/The-Hundred-Page-Machine-Learning-Book)
 
 ## Chapter 1
 
@@ -84,7 +85,10 @@ Contrary to linear regression, there's no closed form solution to the above opti
 where ||x - x'||^2 = squared euclidean distance between two feature vectors
 
 ### k-Nearest Neighbors
+* Non-parametric learning algorithm
+* Keep all training examples in memory
+* Once new unseen example comes, find k training examples closest, return majority label
 
-
-
+* **Closeness** defined by distance function. Could be euclidean, cosine, etc.
+* Cosine similarity = x.y / |x|*|y|
 
