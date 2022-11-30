@@ -41,3 +41,20 @@ L = Product( f(x)^y * (1-f(x))^(1-y) )
 Contrary to linear regression, there's no closed form solution to the above optimization problem. Typically numerical optimization procedure used in such cases is gradient descent.
 
 ### Decision trees
+* Non-parametric model
+* Focus on ID3 learning algo
+  1. search through all features j= 1,..,_D_ and at all thresholds _t_, and split the set _S_ into two subsets
+  2. evaluate potential split
+  3. choose best split
+
+#### Goodness of split
+* For ID3, estimated using entropy
+* Entropy = measure of uncertainty about a random variable
+* Reaches maximum when all values of the RV are equiprobable
+* Reaches minimum when value of random variable can only have one value
+* Entropy = H(S) = -_f_*ln(_f_) - (1 - _f_)*ln(1-_f_)
+* Entropy for a given feature and threhsold is weighted sum of the two entropies
+* H(S-,S+) = |S-|/|S|*H(S-) + |S+|/|S|*H(S+)
+
+### Support Vector Machine
+
