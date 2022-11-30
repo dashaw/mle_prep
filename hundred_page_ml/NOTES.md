@@ -28,3 +28,16 @@ Parameter vs. instance-based models: parameter = has parameters, instance = used
 * No continuous derivative = function not smooth. Functions that are not smooth create unnecessary diculties when employing linear algebra to find closed form solutions to optimization problems. Closed form solutions to finding an optimum of a function are simple algebraic expressions and are often preferable to using complex numerical optimization methods, such as gradient descent (used, among others, to train neural networks).
 
 * Finally, why do we care about the derivative of the average loss? Remember from algebra that if we can calculate the gradien of the function in eq. 2, we can then set this gradient to zero2 and find the solution to a system of equations that gives us the optimal values **w** and **b**. 
+
+### Logisitc regression
+* Leverage simoid function = 1/(1+e^-x) to keep output values [0, 1]
+* So our model = 1/(1+e^-(wx+b))
+* In linear regression we minimized MSE. In logistic instead of using squared loss we maximize the likelihood of training set according to the model. I.e., in stats likliehood function defines how likely the observations are according to our model.
+* Optimization criterion = **maximum likliehood**: 
+
+L = Product( f(x)^y * (1-f(x))^(1-y) )
+--> maximize log(liklihood) = Sum( y*ln(f(x)) + (1-y)*ln(1-f(x))
+
+Contrary to linear regression, there's no closed form solution to the above optimization problem. Typically numerical optimization procedure used in such cases is gradient descent.
+
+### Decision trees
