@@ -91,6 +91,7 @@
 * [Meta Technical Screen Interview Prep Guide](https://drive.google.com/file/d/18Gn89EHYjFIhFk9vGgnb9m5EIEjZa40I/view)
 * [Tweep-Sourced MLE Prep](https://docs.google.com/document/d/1IlI5vOsJbYhvxSdIb5fpwebtyo9vmmgZZBwZEqWpSZo/edit)
 * [System Design Interview by Alex Xu](https://bytebytego.com/courses/system-design-interview/scale-from-zero-to-millions-of-users)
+* [Towards Data Science: How to get an MLE job](https://towardsdatascience.com/how-to-get-a-machine-learning-job-in-6-months-5aaa61b13af2)
 
 #### Questions
 * remember the time/space complexity for heapq heap build, insert, remove
