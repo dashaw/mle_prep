@@ -57,4 +57,34 @@ Contrary to linear regression, there's no closed form solution to the above opti
 * H(S-,S+) = |S-|/|S|*H(S-) + |S+|/|S|*H(S+)
 
 ### Support Vector Machine
+* To extend SVM to cases with data no linearly seperable we introduce the hinge loss function = max(0, 1-y(wx-b))
+* Hinge = 0 for data on correct side of decision boundary
+* For data on wrong side, function's value is proportional to distance from decision boundary
+* Goal is then to minimize following cost function:
+
+`C||w||^2 + 1/N SUM( max(0, 1-y(wx-b))`
+
+* Hyperparam C determines tradeoff between increasing size of decision boundary and ensuring x lies on correct side
+* SVMs that optimize hinge loss = soft-margin SVMs
+* C regulates tradeoff b/w classifiying training data well vs. generalizing
+
+#### Dealing with non-linearity
+* Goal = transform original space into space of higher dimensionality, which we hope is then linearly separable
+* In SVM, use a function to implicitly transform original space into higher dimension during the cost function optimization = **kernel trick**
+* But finding explicit mapping is hard
+* Instead, use kernel functions to efficiently work in higher-dimensional space without doing so explicitly
+
+* Traditional method to solve optimization problem in SVM is method of Lagrane multipliers
+* Instead of solving original problem, formulate as <see pdf>
+* Essentially we find out we are only interested in the dot-product between feature vectors
+* Most widely used kernel is RBF (radial basis function)
+
+`k(x, x') = exp(- ||x - x'||^2 / 2sigma^2)`
+
+where ||x - x'||^2 = squared euclidean distance between two feature vectors
+
+### k-Nearest Neighbors
+
+
+
 
