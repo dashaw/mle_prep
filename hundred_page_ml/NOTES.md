@@ -104,5 +104,6 @@ Gradient descent
 * many models, such as logistic regression or SVM, the optimization criterion is convex
 * convex functions have only one minimum, which is global. Optimization criteria for neural networks are not convex, but inpractice even finding a local minimum suffices
 
-<img src="images/gradient_descent_simple.png" alt="drawing" width="700"/>
+<img src="images/gradient_descent_basic.png" alt="drawing" width="700"/>
+
 * The gradient descent algorithm is sensitive to the choice of the step –. It is also slow for large datasets. Fortunately, several significant improvements to this algorithm have been proposed. Stochastic gradient descent (SGD) is a version of the algorithm that speeds up the computation by approximating the gradient using smaller batches (subsets) of the training data. SGD itself has various “upgrades”. Adagrad is a version of SGD that scales – for each parameter according to the history of gradients.As a result, – is reduced for very large gradients and vice-versa. Momentum is a method that helps accelerate SGD by orientingthe gradient descent in the relevant direction and reducing oscillations. In neural network training, variants of SGD such as RMSprop and Adam, are most frequently used.
