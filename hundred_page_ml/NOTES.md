@@ -319,3 +319,18 @@ Gradient descent
 
 * Authencoder
   * already mentioned, use low-dimensional bottleneck layer as a new vector
+
+## Chapter 10: Other forms of learning
+
+* Word embeddings
+  * word2vec and a version of this is skip-gram
+  * word embedding goal = build a model which we can use to convert a one-hot encoding of a word into a word embedding
+  * example: dictionary contains 10k words
+  * one-hot vector for each word is 10k dimensional vector of all zeroes except for one dimension that contains 1
+  * skip-gram = using a word to predict context
+  * skip gram with a given window size = [x-3, x-2, x-1, x, x+1, x+2, x+3]
+  * this type of learning is self-supervised: labeled examples get extracted from the unlabeled data such as text
+  * output layer is softmax, cost function is negative log-liklihood
+  * embedding for a word is obtained as the output fo the embedding layer with the one-hot encoding of the word is given as the input of the model
+
+<img src="images/skip_gram.png" alt="drawing" width="700"/>
