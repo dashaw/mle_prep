@@ -182,7 +182,7 @@ Gradient descent
 * Convolutional neural network
   * significantly reduces number of parameters in DNN
   * mostly used in imag eand text
-  * <see book for depictions on how convultional filters are used>
+  * see book for depictions on how convultional filters are used
 
 * Recurrent neural network (RNN)
   * used to label, classify, generate sequences
