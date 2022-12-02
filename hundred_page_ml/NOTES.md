@@ -194,3 +194,70 @@ Gradient descent
   * backpropagation through time = from pov of gradient calculation, longer the input sequence, the deeper is the unfolded network
   * as length of the input sequence grows, the feature vectors from the beginning of the sequence tend to be "forgotten" because the state of each unit, which serves as the network's memory, becomes significantly affected by the feature vectors read more recently
   * most effective are **gated RNNs**, which includes **long short-term memory (LSTM)** and networks based on the **gated recurrent unit (GRU)**
+
+## Chapter 7: Problems & Solutions
+
+* Multiclass classification
+  * one solution = extending by using softmax function instead of sigmoid
+  * others are more straightforward (think kNN)
+  * what should you do if you have multiclass problem, but binary classifiction? one strategy = **one versus rest**
+
+* Binary cross-entropy
+  * = -(y*ln(y_hat)) + (1-y)*ln(1-y_hat)
+
+* Boosting & bagging
+  * boosting = original training data and iteratively creating multiple models by using a weak learner. build each model to try and "Fix" errors in previous
+  * bagging = creating many copies of training data and then apply weak learner to each copy to obtain multiple weak mobels and then combine, example = random forest
+
+* Random Forest
+  * vanilla bagging algo works as follows: create B random samples of the training set and build ecision tree model using each
+  * sample with replacement
+  * after training we have _B_ decision trees. decision is average from the _B_ predictions
+  * random forest is different from vanilla bagging in just one way: at each split only a random subset of features are used.
+  * doing so avoids correlation b/w trees
+  * reduces variance = reduces overfitting
+
+* Gradient Boosting
+  * build initial model, compute y_hat = y - _f_(x)
+  * y_hat is now **residual**
+  * use modified training set, with residuals instead of original labels to build a new decision tree model
+  * so then boosting model is now f_0 + alpha*f_1 where alpha is a hyperparam
+  * continue on & on, e.g., next round will be _f_ = f_0 + alpha*f_1 + alpha*f_2
+  * instead of computing gardient directly we use its proxy in the form of residual
+  * boosting reduces the bias (or underfitting) instead of the variance as in bagging
+  * gradient boosting for classification is similar but slightly different
+  * assume _M_ regression decision trees. Similar to logistic regresison, the prediction of the ensemble of decision trees is modeled using the sigmoid function
+  * P = 1 / (1+e-(_f_(x)))
+  * where _f_(x) = SIGMA (f_m(x)) and each f_m is a regression tree
+  * to learn, start with _f_ = p / (1-p)
+  * at each iteration, a new tree f_m is added to the model
+  * to find the best f_m, first the partial derivative g_i of the current model is calcualted for each sample
+  * partial is = 1 / (exp^(f(x)) + 1)
+  * transform our training set by replacing the original label y with the corresponding partial and build a new tree
+  * then find optimal rho = argmax rho (overall likelihood)
+  * then update ensemble model f = f + alpha*rho*f(previous tree)
+
+* Sequence-to-sequence
+  * generaliation of sequence labeling problem
+  * in seq2seq, _X_ and _Y_ can have different lengths
+  * two parts: encoder & decoder
+  * encoder = read input and generate some sort of state, seen as numerical representation of the meaning of the input
+  * decoder = take embedding input as is capable of generating sequence of outputs
+  * both encoder and decoder traing simultaneously using training data. errors at the decoder output are propagated to the encoder via backprop
+  * more accurate predictions can be obtained using an architecture with **attention**
+  * attention mechanism is implemented by an additional set of parameters that combine some information from the encoder (in RNNs, this info is the list of state vectors of the last recurrent layer from all the encoder time steps) and the current state of the decoder to generate the label
+
+* Active learning
+  * supervised learning paradigm
+  * usually applied when obtaining labeled examples is costly
+  * start learning with relatively few labeled examples, and a large number of unlabeled ones
+  * labeled only those examples that contribue the most to the model quality
+  * (1) two strategies: data density and uncertainty based, (2) support vector based
+
+* Semi-supervised
+  * also have labeled a small fraction of the dataset
+  * most remaining unlabeled
+  * goal = leverage a large number of the unlabeled examples to improve model performance w/o asking for additional labeled examples
+  * self-learning = build initial model using labeled, apply model to unlabeled, labeled them using the model
+  * if confidence score of prediction is higher than threshold, then add it to labeled example, retrain model, and continue
+  * other semi-supervised techniques exist. example building the model using labeled data, clustering unlabeled and unlabeled using any clustering technique --> for each example, output as a prediction the majority label in the cluster
