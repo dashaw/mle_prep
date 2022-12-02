@@ -261,3 +261,22 @@ Gradient descent
   * self-learning = build initial model using labeled, apply model to unlabeled, labeled them using the model
   * if confidence score of prediction is higher than threshold, then add it to labeled example, retrain model, and continue
   * other semi-supervised techniques exist. example building the model using labeled data, clustering unlabeled and unlabeled using any clustering technique --> for each example, output as a prediction the majority label in the cluster
+
+## Chapter 8: Advanced practice
+
+* Handling imbalanced
+  * obvious choices --> use an algo that allows class weighting like SVM
+  * next choice, over-sample or undersample
+  * can also create synthetic samples via something like SMOTE
+
+* Advanced regularization
+  * besides obvious l1/l2: dropout, early stopping, batch-normalization
+  * for images, data augmentation = create synthetic example from original example by applying various transformations to the original image (zooming, rotating, flipping, darkening, etc.)
+
+
+* Transfer learning
+  * pick existing model on some dataset * adapt to predict example from another dataset
+  * train on original dataset, remove last one or several layers, freeze params of the layers from first model, train new layers
+
+* Algo efficiency
+  * i.e., use libraries that take advantage of operations on matrices and vectors vs. for loops :)
