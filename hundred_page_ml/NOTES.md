@@ -147,3 +147,50 @@ Gradient descent
   * when you don't have decent validation set to tune hyperparams, common to us cross-validation
   * e.g., 5 fold CV
 
+## Chapter 6: Neural networks
+
+* Activation fn
+  * Differentiable for gradient descent
+  * Nonlinear component = allow neural network to approximate nonlinear functions
+  * Without nonlinearities, _f_neural_network would be linear no matter how many layers
+  * I.e., linear function of a linear function = linear
+
+<img src="diagrams/nn_activation_fn.png" alt="drawing" width="700"/>
+
+* Historic problems
+  * exploding gradients: easier to deal with using easy techniques like gradient clipping, l1/l2 regularization
+  * vanishing gradients: traditionally more difficult to deal with
+
+* Vanishing radient
+  * in some cases, gradient will be vanishingly small = effectively preventing some parameters from changing their value
+  * worse case = completely stop NN from further training
+
+* Traditional activation functions
+  * E.g., hyperbolic tangent has gradients in range (0,1) and so backpropogation computes by chain rule
+  * Effect = multiplying n of these small numbers to compute gradients of the earlier (leftmost) layers in a _n_-layer network means that gradient decreases expoentially with _n_
+  * Result is that the effect that the earlier layers train very slow, if at all
+
+* Modern techniques
+  * Modern implementations allow to train very deep architectures
+  * This includes ReLU, LSTM (and other gated united), skip connections, + other advanced modifictions of gradient descent algo
+  * In practice, many business problems can be solved with NN having 2-3 layers b/w the input and output
+
+* Growing size
+  * as you add layers, you add (size_l-1 + 1)*size_l parameters
+  * E.g., if you add another 1000-unit layer to an existing network, then you add more than 1 million additional parameters to your model
+
+* Convolutional neural network
+  * significantly reduces number of parameters in DNN
+  * mostly used in imag eand text
+  * <see book for depictions on how convultional filters are used>
+
+* Recurrent neural network (RNN)
+  * used to label, classify, generate sequences
+  * sequence = a matrix, each row of which is a feature vector and the order of rows matters
+  * not feed-forward: contains loops
+  * each unit _u_ of a recurrent layer _l_ has a real-valued **state** h_l,u
+  * state can be seen as the memory of the unit
+  * in RNN, each unit _u_ in each layer _l_ receives two inputs: a vector of states from the previous layer _l_ - 1 and the vector of states from this same layer _l_ from the previous time state
+  * backpropagation through time = from pov of gradient calculation, longer the input sequence, the deeper is the unfolded network
+  * as length of the input sequence grows, the feature vectors from the beginning of the sequence tend to be "forgotten" because the state of each unit, which serves as the network's memory, becomes significantly affected by the feature vectors read more recently
+  * most effective are **gated RNNs**, which includes **long short-term memory (LSTM)** and networks based on the **gated recurrent unit (GRU)**
