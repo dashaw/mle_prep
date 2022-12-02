@@ -280,3 +280,42 @@ Gradient descent
 
 * Algo efficiency
   * i.e., use libraries that take advantage of operations on matrices and vectors vs. for loops :)
+
+## Chapter 9: Unsupervised
+
+* k-means
+  * choose k clusters, initialize k random centroids
+  * compute distance for each example to each centroid
+  * assign sample to closest centroid
+  * for each centroid, calculate average feature vector fo the examples
+  * average feature vectors become new centroids
+  * recompute distance --> modify assignments --> repeat until assignments do not change
+  * can use elbow plot to determine number of clusters
+
+* Gaussian mixture model (GMM)
+  * allows each example to be a member of several cluster with different membership score (kind of like possibilistic k-means)
+  * estimate n gaussian distribution for the _n_ clusters
+  * expectation maximization algo
+  * beginng = guess initial values for mu and sigma of the _n_ different clusters
+  * for each iteration
+  * calculate liliehood of each x_i using gaussian equation
+  * use bayes rule for each example to calculate lilihood
+  * then we have a parameter that reflects how lilely that our gaussian distribution produced the dataset
+  * compute new value of mu and sigma
+  * update params, etc. until params do not change > threshold
+  * EM very similar to k-means
+  * start with random, iteratively update each cluster params by averaging
+  * only difference is that in GMM the assignment of a data sample to the cluster is soft (i.e., sample belong to cluster i by a certain val and cluster j by another)
+  * then update to the new cluster values is not an average btu a **weight** average
+  * cluster in GMM can be form of ellipse that have arbitrary elongation & rotation (k-means they are only circular)
+
+* Hierarchical clustering
+  * not really mentioned here, look back at academic notes, straightforward & costly
+
+* Dimensionality reduction
+  * (1) principal component analysis
+  * (2) uniform manifold approximation & projection
+  * (3) autoencoder
+
+* Authencoder
+  * already mentioned, use low-dimensional bottleneck layer as a new vector
