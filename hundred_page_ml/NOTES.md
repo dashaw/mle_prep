@@ -107,3 +107,43 @@ Gradient descent
 <img src="images/gradient_descent_basic.png" alt="drawing" width="700"/>
 
 * The gradient descent algorithm is sensitive to the choice of the step –. It is also slow for large datasets. Fortunately, several significant improvements to this algorithm have been proposed. Stochastic gradient descent (SGD) is a version of the algorithm that speeds up the computation by approximating the gradient using smaller batches (subsets) of the training data. SGD itself has various “upgrades”. Adagrad is a version of SGD that scales – for each parameter according to the history of gradients.As a result, – is reduced for very large gradients and vice-versa. Momentum is a method that helps accelerate SGD by orientingthe gradient descent in the relevant direction and reducing oscillations. In neural network training, variants of SGD such as RMSprop and Adam, are most frequently used.
+
+## Chapter 5: basic practice
+
+* Standardization vs. normalization
+  * in practice for unsupervised standardization > normalization
+  * also preferred for a feature that can have extreme outliers as it will "squeeze" the normal values into small range
+  * most other cases, noramlization is preferred
+
+* Data imputation
+  * obviously can replace with average, median, etc.
+  * more advanced approach is to treat missing feature value as a regression problem
+
+* Three sets
+  * training set = biggest, build model
+  * validation set = roughly same size as test, use to choose learning algo and hyperparams
+  * test set = true gauge of model performance
+
+<img src="images/algo_cheat_sheet.png" alt="drawing" width="700"/>
+
+* Regularization
+  * l1 = lasso, sparse, feature selection
+  * l2 = ridge
+  * also elastic net which is combo ofboth
+
+* Evaluation
+  * preicsion = TP / (TP + FP)
+  * recall = TP / (TP + FN)
+  * if wanting to do these for multi-class, pick a class you care about, set to 1 and treat all other classes as 0
+  * accuracy = (TP + TN) / (TP + TN + FP + FN)
+  * area under roc curve:
+    * TPR = TP / (TP + FN)
+    * FPR = FP / (FP + TN)
+* Tuning
+  * easy approach is grid search on hyperparams
+  * train on train set, select params based on validation, understand performance on test
+
+* Cross-validation
+  * when you don't have decent validation set to tune hyperparams, common to us cross-validation
+  * e.g., 5 fold CV
+
