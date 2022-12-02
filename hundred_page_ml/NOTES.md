@@ -155,7 +155,7 @@ Gradient descent
   * Without nonlinearities, _f_neural_network would be linear no matter how many layers
   * I.e., linear function of a linear function = linear
 
-<img src="diagrams/nn_activation_fn.png" alt="drawing" width="700"/>
+<img src="images/nn_activation_fn.png" alt="drawing" width="700"/>
 
 * Historic problems
   * exploding gradients: easier to deal with using easy techniques like gradient clipping, l1/l2 regularization
