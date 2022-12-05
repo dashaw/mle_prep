@@ -47,3 +47,7 @@
 * cost function: $$- \dfrac{1}{m} \sum_{i=1}^m y*log(f_{w,b}(x)) + (1-y)*log(1 - f_{w,b}(x))$$
 * recall that we have the minus "-" sign here because the output of sigmoid function will always be [0, 1] and log(x) on this range is always negative. so, if we want a positive contribution to the overall cost we need to multiply by -1.
 * this is derived using maximum likelihood
+
+**gradient descent**
+* if using the above cost function, you will find that derivative of cost with respective to w_j (and including regularization terms) =
+$$\dfrac{1}{m} \sum_{i=1}^m (f_{w,b}(x)-y)*x_j + \dfrac{\lambda}{m}w_j$$
