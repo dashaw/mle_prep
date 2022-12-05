@@ -36,4 +36,4 @@
   * sigmoid function: $g(z) = \dfrac{1}{1+e^{-z}}$
   * if z very big --> g(z) ~1, if z very negative --> g(z) ~1
   * if z = 0 --> g(z) = 0.5
-  * so, $f(z) = \dfrac{1}{1+e^{-(wx + b)}}$
+  * so, $f_{w,b}(x) = \dfrac{1}{1+e^{-(wx + b)}}$
