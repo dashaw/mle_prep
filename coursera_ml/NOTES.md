@@ -37,3 +37,5 @@
   * if z very big --> g(z) ~1, if z very negative --> g(z) ~1
   * if z = 0 --> g(z) = 0.5
   * so, $f_{w,b}(x) = \dfrac{1}{1+e^{-(wx + b)}}$
+  * can have non-linear decision boundaries with polynomial features (i.e., using x_{1}^2, x_{2}^2
+  * but if you don't include polynomial features, decision boundary will always be linear
