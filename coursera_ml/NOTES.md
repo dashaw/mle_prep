@@ -42,9 +42,5 @@
 
 **cost function**
 * if we re-used squared error cost for the above $f(x)$ model, it would be non-convex
-* loss function: 
-$$L(f_{w,b}(x)) =
-\begin{cases}
--log(f_{w,b}(x)), if y = 1 \\
--log(1 - f_{w,b}(x)), if y = 0
-\end{cases}$$
+* loss function: $L(f_{w,b}(x)) =y*-log(f_{w,b}(x)) - (1-y)*log(1 - f_{w,b}(x))
+* if doing this, then const function will be convex when using this loss function and summing over all samples
