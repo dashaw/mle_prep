@@ -32,4 +32,8 @@
   * polynomial regression --> input features to some power (note: feature scaling becomes increasingly important)
 
 ## Logistic regression
-  * $g(z) = \dfrac{1}{1+e^{-z}}$
+  * i.e., need function with output between [0, 1]
+  * sigmoid function: $g(z) = \dfrac{1}{1+e^{-z}}$
+  * if z very big --> g(z) ~1, if z very negative --> g(z) ~1
+  * if z = 0 --> g(z) = 0.5
+  * so, $f(z) = \dfrac{1}{1+e^{-(wx + b)}}$
