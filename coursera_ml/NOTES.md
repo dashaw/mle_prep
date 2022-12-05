@@ -25,3 +25,6 @@
 ## Gradient descent in practice
   * feature scaling: look at two input features with very different scales. If you observe contour plot of cost function, you see it is very tall and small width. gradient descent can end up bouncing back & forth and take a long time to find minimum.
     * if you scale, gradient descent can find direct path more efficiently
+  * convergence: easy approach is to keep track of the cost function value for each iteration --> plot over time to see if it is continually decreasing by at least some $\epsilon$
+  * if cost value is bounding around --> could be too large learning rate that is bouncing to different low minimum bowls. **with small enough learning rate, should always continually decreasing**
+  * i.e., setting alpha to be _very_ small is a debugging step
