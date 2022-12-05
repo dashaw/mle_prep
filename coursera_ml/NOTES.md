@@ -49,5 +49,5 @@
 * this is derived using maximum likelihood
 
 **gradient descent**
-* if using the above cost function, you will find that derivative of cost with respective to w_j (and including regularization terms) =
+* if using the above cost function, you will find that derivative of cost with respective to $w_j$ (and including regularization terms) =
 $$\dfrac{1}{m} \sum_{i=1}^m (f_{w,b}(x)-y)*x_j + \dfrac{\lambda}{m}w_j$$
