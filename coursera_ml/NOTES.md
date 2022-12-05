@@ -28,3 +28,8 @@
   * convergence: easy approach is to keep track of the cost function value for each iteration --> plot over time to see if it is continually decreasing by at least some $\epsilon$
   * if cost value is bounding around --> could be too large learning rate that is bouncing to different low minimum bowls. **with small enough learning rate, should always continually decreasing**
   * i.e., setting alpha to be _very_ small is a debugging step
+  * feature engineering: always remember ability to explicitly create cross features (i.e., x1, x2 --> x3 = x1*x2)
+  * polynomial regression --> input features to some power (note: feature scaling becomes increasingly important)
+
+## Logistic regression
+  * $g(z) = \dfrac{1}{1+e^-z}$
