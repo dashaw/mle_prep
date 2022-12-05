@@ -32,4 +32,4 @@
   * polynomial regression --> input features to some power (note: feature scaling becomes increasingly important)
 
 ## Logistic regression
-  * $g(z) = \dfrac{1}{1+e^-z}$
+  * $g(z) = \dfrac{1}{1+e^{-z}}$
