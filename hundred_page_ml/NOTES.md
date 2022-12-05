@@ -96,7 +96,7 @@ where ||x - x'||^2 = squared euclidean distance between two feature vectors
 
 Three basic parts
 * a model e.g., $f(x) = wx + b$
-* a loss function
+* a loss function e.g., $(f(x) - y)^2$
 * an optimization criterion based on the loss function (e.g., cost function)
 * an optimization routine leveraging training data to find solution to optimization criterion
 
