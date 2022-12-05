@@ -44,4 +44,4 @@
 * if we re-used squared error cost for the above $f(x)$ model, it would be non-convex
 * log-loss function: $L(f_{w,b}(x)) = -y*-log(f_{w,b}(x)) - (1-y)*log(1 - f_{w,b}(x))$
 * if doing this, then cost function will be convex when using this loss function and summing over all samples
-* cost function: $$\dfrac{1}{m} \sum_{i=1}^m -y*-log(f_{w,b}(x)) - (1-y)*log(1 - f_{w,b}(x))$$
+* cost function: $$ -\dfrac{1}{m} \sum_{i=1}^m -y*-log(f_{w,b}(x)) - (1-y)*log(1 - f_{w,b}(x))$$
