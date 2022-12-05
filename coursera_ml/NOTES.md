@@ -39,3 +39,13 @@
   * so, $f_{w,b}(x) = \dfrac{1}{1+e^{-(wx + b)}}$
   * can have non-linear decision boundaries with polynomial features (i.e., using $x_{1}^2, x_{2}^2$)
   * but if you don't include polynomial features, decision boundary will always be linear
+
+**cost function**
+* if we re-used squared error cost for the above $f(x)$ model, it would be non-convex
+* loss function: 
+$$L(f_{w,b}(x)) =
+\begin{cases}
+-log(f_{w,b}(x)), if y = 1
+-log(1 - f_{w,b}(x)), if y = 0
+\end{cases}
+$$
