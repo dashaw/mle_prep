@@ -46,7 +46,7 @@
 $$
 L(f_{w,b}(x)) =
 \begin{cases}
--log(f_{w,b}(x)), if y = 1
+-log(f_{w,b}(x)), if y = 1 \\
 -log(1 - f_{w,b}(x)), if y = 0
 \end{cases}
 $$
