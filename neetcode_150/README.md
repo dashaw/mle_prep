@@ -54,9 +54,12 @@
 ##### Linked List
 * reverse-linked-list (easy): example how to use linkedlist class and reverse
 * merge-two-sorted-list (easy): oof I really do not like linkedlist questions, they're simply but I always seem to mess something up
+  * [Why is dummy node changing](https://stackoverflow.com/questions/72588124/why-is-dummy-node-changing-in-this-linked-list-problem-python3) seems to be the best explanation for what's happening under the hood. Super helpful
 * reorder (medium): this _seems_ like an easy problem in terms of getting an approach, but actually completing it is a tad confusing for me. I think I'm having troubles understandanding how
 manipulation in place is occuring
 * remove-nth-node-from-end-of-list (medium): this was more straightforward and pretty much got it, though use of the dummy node is still a bit fuzzy for me
+
+
 
 ##### Backtracking
 * subsets (medium): dfs, recursion, 2^n
