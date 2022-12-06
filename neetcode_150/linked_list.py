@@ -97,3 +97,38 @@ class Solution:
 
             second = nxt
             print_ids()
+
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        """
+        approach seems like -->
+        recursion until find end
+        when returned counter = target,
+        update pointers,
+        do nothing else
+        """
+        dummy = ListNode()
+        dummy.next = head
+
+        if n == 0:
+            return head
+        elif head.next is None and n == 1:
+            return head.next
+
+        
+
+        def recursion(node):
+            nonlocal end_cnt
+
+            if node.next:
+                res = recursion(node.next)
+                end_cnt += 1
+
+            if end_cnt == n:
+                # update stuff
+                node.next = res
+
+            return node.next
+
+        end_cnt = 0
+        recursion(dummy)
+        return dummy.next
