@@ -53,6 +53,7 @@
 
 ##### Linked List
 * reverse-linked-list (easy): example how to use linkedlist class and reverse
+* merge-two-sorted-list (easy): oof I really do not like linkedlist questions, they're simply but I always seem to mess something up
 
 ##### Backtracking
 * subsets (medium): dfs, recursion, 2^n
