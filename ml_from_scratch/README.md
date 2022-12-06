@@ -7,5 +7,5 @@
   * in the videos the author does a great job! but keeps referring to np.dot() operations when what they are really doing is using np.matmul() (note: when a,b in np.dot(a,b) are 2-d arrays then it defaults to np.matmul()) which can be confusing and I've updated in my samples 
 * naive bayes: recall that we treat feature as mutually independent, then when we look at Bayes theorem and simplify using logs it becomes
   * $y = argmax_{y} log(P(x_{1}|y)) + log(P(x_{2}|y) + ... + log(P(x_{n}|y)) + log(P(y))$
-  * i.e., for each feature in sample, compute log of probability for that feature and class, add all these together and also add log of probability of class (aka prior)
+  * i.e., for each feature in sample, compute log of probability for that feature and class (using gaussian pdf and mean and variance of training data), add all these together and also add log of probability of class (aka prior)
  
