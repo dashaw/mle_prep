@@ -9,5 +9,5 @@
   * $y = argmax_{y} log(P(x_{1}|y)) + log(P(x_{2}|y) + ... + log(P(x_{n}|y)) + log(P(y))$
   * i.e., for each feature in sample, compute log of probability for that feature and class (using gaussian pdf and mean and variance of training data), add all these together and also add log of probability of class (aka prior)
 * preceptron: for each training sample x_{i}:
-  * $w = w + delta_w$
-  * $delta_w = learning_rate * (y_{i} - y_{predicted}) * x_{i}$
+  * $w = w + {/delta w}$
+  * ${/delta w} = learning_rate * (y_{i} - y_{predicted}) * x_{i}$
