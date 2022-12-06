@@ -54,6 +54,8 @@
 ##### Linked List
 * reverse-linked-list (easy): example how to use linkedlist class and reverse
 * merge-two-sorted-list (easy): oof I really do not like linkedlist questions, they're simply but I always seem to mess something up
+* reorder (medium): this _seems_ like an easy problem in terms of getting an approach, but actually completing it is a tad confusing for me. I think I'm having troubles understandanding how
+manipulation in place is occuring
 
 ##### Backtracking
 * subsets (medium): dfs, recursion, 2^n

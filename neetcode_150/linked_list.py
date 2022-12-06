@@ -51,3 +51,49 @@ class Solution:
             curr.next = list2
 
         return dummy.next
+
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        """
+        Do not return anything, modify head in-place instead.
+        """
+
+        # find middle 
+        slow = fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        # reverse from the slow part onward
+        prev, curr = None, slow
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+
+        first, second = head, prev
+        def print_ids():
+            print('------------------')
+            print(f"first {id(first)}")
+            print(f'second {id(second)}')
+            print(f'head {id(head)}')
+            print(f'previous {id(prev)}')
+
+        while second.next:
+            nxt = first.next
+            print_ids()
+
+            first.next = second
+            print_ids()
+
+            first = nxt
+            print_ids()
+
+            nxt = second.next
+            print_ids()
+
+            second.next = first
+            print_ids()
+
+            second = nxt
+            print_ids()
