@@ -92,11 +92,3 @@
     * **performance (alpha)**
       * $\alpha = 0.5 * log((1-\epsilon)/\epsilon)$
   * **prediction**: $y = sign(\sum_{t} \alpha_{t} * h(X))$, aka across all weak learners
-  
-training
-  * initialize weights for each sample = 1/N
-  * choose number of weak learners and iterate
-  * train each decision stump
-  * claculate error of decision stump
-  * calculate performance (alpha)
-  * update weights
