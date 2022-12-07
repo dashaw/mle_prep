@@ -27,3 +27,4 @@
   * greedy search over all possible features and feature values
   * choose candidate split that maximizes IG
   * grow tree recursively until some condition
+  * [REVISIT] this is a good example of recursive ML coding
