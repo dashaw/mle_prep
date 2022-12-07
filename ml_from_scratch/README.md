@@ -65,3 +65,10 @@
   * aka, it is adding nothing new in terms of info
   * span of vectors = vector space that can be represented by some combination of vectors in the set
   * PCA ensures that features of data are independent (i.e., we cannot combine some subset of features to equal and existing feature)
+
+* K-Means
+  * recall approach
+    * randomly initialize cluster centers
+    * until convergence
+      * update labels (assign points to nearest center)
+      * update cluster centers (set to mean of each center)
