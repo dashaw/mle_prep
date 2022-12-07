@@ -19,7 +19,7 @@
   * one such approach is to use Entropy and Information Gain
   * $ Entropy = - {\sum} p(X)*log_{2}(p(X)) $ which is maximize when an even 50/50 split of each class
   * example: - (0.5*(-1) + 0.5*(-1)) = 1
-  * to determine the Information Gain for a candidate split, $ Information Gain = Entropy(parent) - ((weighted\_average)*E(children)) $
+  * to determine the Information Gain for a candidate split, $Information Gain = Entropy(parent) - ((weighted\_average)*E(children))$
   * greedy search over all possible features and feature values
   * choose candidate split that maximizes IG
   * grow tree recursively until some condition
