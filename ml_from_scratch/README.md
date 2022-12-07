@@ -81,8 +81,8 @@
     * combine weak learner in weighted sum approach to predict
     * either class [-1, +1]
     * error 
-      * $\eta_{0} = \dfrac{misclassifications}{number samples}$
-      * $\eta_{t} = \sum_{missclassified} weights$
+      * $\epsilon_{0} = \dfrac{misclassifications}{number samples}$
+      * $\epsilon_{t} = \sum_{missclassified} weights$
       * choose stump that minimizes $\eta$
       * $\eta between [0, 1]$
     * weights
