@@ -10,7 +10,7 @@
   * i.e., for each feature in sample, compute log of probability for that feature and class (using gaussian pdf and mean and variance of training data), add all these together and also add log of probability of class (aka prior)
 * Preceptron: for each training sample x_{i}:
   * $w = w + \delta w$
-  * $\delta w = learning-rate * (y_{i} - y_{predicted}) * x_{i}$
+  * $\delta w = learning\_rate * (y_{i} - y_{predicted}) * x_{i}$
 * SVM: recall that w is a unit vector from origin and perpendicular to hyperplane, b is offset from origin to decision boundary
   * if sample vector dot product with w is < b then classify negative, else classify positive
   * it can be shown taht if we minimize ||w|| then we maximize the distance of the decision boundary
