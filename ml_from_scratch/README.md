@@ -72,3 +72,30 @@
     * until convergence
       * update labels (assign points to nearest center)
       * update cluster centers (set to mean of each center)
+
+* Adaboost
+  * recall
+    * boosting = growing multiple weak learners sequentially to overcome misclassifications, weighing samples differently at each sequences
+  * approach
+    * weak learner (in adaboost = decision stump, decision tree w/ one split)
+    * combine weak learner in weighted sum approach to predict
+    * either class [-1, +1]
+    * error 
+      * $\eta_{0} = \dfrac{misclassifications}{number samples}$
+      * $\eta_{t} = \sum_{missclassified} weights$
+      * choose stump that minimizes $\eta$
+      * $\eta between [0, 1]$
+    * weights
+      * w_0 = 1/N for each sample
+      * $w = (w*exp(-alpha * y * h(X))) / sum(w)
+    * performance (alpha)
+      * alpha = 0.5 * log((1-error)/error)
+  * prediction = sign(sum(alpha*prediction)) for each weak learner
+  
+training
+  * initialize weights for each sample = 1/N
+  * choose number of weak learners and iterate
+  * train each decision stump
+  * claculate error of decision stump
+  * calculate performance (alpha)
+  * update weights
