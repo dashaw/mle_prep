@@ -19,7 +19,7 @@
   * it can be shown taht if we minimize ||w|| then we maximize the distance of the decision boundary
   * it can be hard to remember, refer to [this guide](https://www.analyticsvidhya.com/blog/2021/10/support-vector-machinessvm-a-complete-guide-for-beginners/) if wanting to bursh up 
 
-* Decision tree: recall that we grow tree/splits in a greedy fashion and have options on the mathematical approach for determining "best" split
+* Decision Tree: recall that we grow tree/splits in a greedy fashion and have options on the mathematical approach for determining "best" split
   * one such approach is to use Entropy and Information Gain
   * $Entropy = - {\sum} p(X)*log_{2}(p(X))$ which is maximize when an even 50/50 split of each class
   * example: - (0.5*(-1) + 0.5*(-1)) = 1
@@ -28,3 +28,11 @@
   * choose candidate split that maximizes IG
   * grow tree recursively until some condition
   * [REVISIT] this is a good example of recursive ML coding
+
+* Random Forest: recall able to leverage base DecisionTree class to form multiple
+  * bootstrap aggregating (aka, bagging):
+    * 1. multiple subsets of data samples selected with replacement
+    * 2. create model in parallel for each subset
+    * 3. combine all predictions
+    * 4. out-of-bag dataset = those not selected and can be used for eval on hold-out samples
+  * reduces overfitting (high variance)

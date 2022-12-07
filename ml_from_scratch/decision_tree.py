@@ -10,7 +10,6 @@ recall:
 * information gain = E(parent) - (weighted average)*E(children)
 * choose split which maximizes information gain
 * greedy search = over all possible features and feature values
-
 """
 
 import numpy as np
