@@ -32,6 +32,7 @@
 * Random Forest: recall able to leverage base DecisionTree class to form multiple
   * bootstrap aggregating (aka, bagging):
     * 1. multiple subsets of data samples selected with replacement
+    * 1a. also do bagging at feature level (i.e. at each split consider only subset of features)
     * 2. create model in parallel for each subset
     * 3. combine all predictions
     * 4. out-of-bag dataset = those not selected and can be used for eval on hold-out samples
