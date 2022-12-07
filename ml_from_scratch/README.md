@@ -12,7 +12,7 @@
 
 * Preceptron: for each training sample x_{i}:
   * $w = w + \delta w$
-  * $w = learning\_rate * (y_{i} - y_{predicted}) * x_{i}$
+  * $\delta w = learning\_rate * (y_{i} - y_{predicted}) * x_{i}$
 
 * SVM: recall that w is a unit vector from origin and perpendicular to hyperplane, b is offset from origin to decision boundary
   * if sample vector dot product with w is < b then classify negative, else classify positive
