@@ -80,17 +80,18 @@
     * weak learner (in adaboost = decision stump, decision tree w/ one split)
     * combine weak learner in weighted sum approach to predict
     * either class [-1, +1]
-    * error 
+    * **error**
       * $\epsilon_{0} = \dfrac{misclassifications}{number samples}$
       * $\epsilon_{t} = \sum_{missclassified} weights$
       * choose stump that minimizes $\eta$
       * $\eta between [0, 1]$
-    * weights
-      * w_0 = 1/N for each sample
-      * $w = (w*exp(-alpha * y * h(X))) / sum(w)
-    * performance (alpha)
-      * alpha = 0.5 * log((1-error)/error)
-  * prediction = sign(sum(alpha*prediction)) for each weak learner
+    * **weights**
+      * $\omega_{0} = \dfrac{1}/{number samples}$
+      * $\omega_{t} = \dfrac{\omega * y * h(X)}{sum(\omega)}
+      * for $h(X)$ = stump prediction
+    * **performance (alpha)**
+      * $\alpha = 0.5 * log((1-\epsilon)/\epsilon)$
+  * **prediction**: $y = sign(\sum_{t} \alpha_{t} * h(X))$, aka across all weak learners
   
 training
   * initialize weights for each sample = 1/N
