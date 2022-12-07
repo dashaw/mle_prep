@@ -36,3 +36,32 @@
     * 3. combine all predictions
     * 4. out-of-bag dataset = those not selected and can be used for eval on hold-out samples
   * reduces overfitting (high variance)
+
+* PCA
+  * recall motivation:
+    * linearly independent features
+    * dimensionality reduction
+    * find a transformation such that transformed features are linearly independent
+    * dimensionality can be reduced by using dimensions with highest importances
+    * should have maximum variance
+  * $VAR(X) = (1/n) \sum (X_{i} - X_{mean})^2$
+  * $Cov(X, Y) = (1/n) \sum (X_{i} - X_{mean})(Y_{i} - Y{mean})^T$
+  * $Cov(X, X) = (1/n) \sum (X_{i} - X_{mean})(X_{i} - X{mean})^T$
+  * Reduces to eigenvector/eigenvalue problem
+    * eigenvectors point in maximum variance
+    * corresponding eigenvalue indicate importance
+    * $Av = \lambda v$
+  * Approach
+    * substract mean from X
+    * calculate cov(X,X)
+    * calculate eigenvectors/values of covariance matrix
+    * sort eigenvectors descending
+    * choose k eigenvectors as the new k dimensions
+    * transform original n dimensional data into k dimensions (aka with dot product)
+  * new data will be linearly independent as dimensions are orthogonal
+
+* Lineary independent comments:
+  * linearly dependent vectors = there is some combination of vectors in the set that can be used to produce a subset of the vectors in the set
+  * aka, it is adding nothing new in terms of info
+  * span of vectors = vector space that can be represented by some combination of vectors in the set
+  * PCA ensures that features of data are independent (i.e., we cannot combine some subset of features to equal and existing feature)
