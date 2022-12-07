@@ -84,10 +84,10 @@
       * $\epsilon_{0} = \dfrac{misclassifications}{number samples}$
       * $\epsilon_{t} = \sum_{missclassified} weights$
       * choose stump that minimizes $\eta$
-      * $\eta between [0, 1]$
+      * $\eta  between  [0, 1]$
     * **weights**
-      * $\omega_{0} = \dfrac{1}/{number samples}$
-      * $\omega_{t} = \dfrac{\omega * y * h(X)}{sum(\omega)}
+      * $\omega_{0} = \dfrac{1}{number samples}$
+      * $\omega_{t} = \dfrac{\omega * y * h(X)}{sum(\omega)}$
       * for $h(X)$ = stump prediction
     * **performance (alpha)**
       * $\alpha = 0.5 * log((1-\epsilon)/\epsilon)$
