@@ -10,7 +10,7 @@
   * i.e., for each feature in sample, compute log of probability for that feature and class (using gaussian pdf and mean and variance of training data), add all these together and also add log of probability of class (aka prior)
 * Preceptron: for each training sample x_{i}:
   * $w = w + \delta w$
-  * $\delta w = learning\_rate * (y_{i} - y_{predicted}) * x_{i}$
+  * $\delta w = learningRate * (y_{i} - y_{predicted}) * x_{i}$
 * SVM: recall that w is a unit vector from origin and perpendicular to hyperplane, b is offset from origin to decision boundary
   * if sample vector dot product with w is < b then classify negative, else classify positive
   * it can be shown taht if we minimize ||w|| then we maximize the distance of the decision boundary
@@ -19,7 +19,7 @@
   * one such approach is to use Entropy and Information Gain
   * $ Entropy = - {\sum} p(X)*log_{2}(p(X)) $ which is maximize when an even 50/50 split of each class
   * example: - (0.5*(-1) + 0.5*(-1)) = 1
-  * to determine the Information Gain for a candidate split, $ Information Gain = Entropy(parent) - ((weighted\_average)*E(children))
+  * to determine the Information Gain for a candidate split, $ Information Gain = Entropy(parent) - ((weighted\_average)*E(children)) $
   * greedy search over all possible features and feature values
   * choose candidate split that maximizes IG
   * grow tree recursively until some condition
