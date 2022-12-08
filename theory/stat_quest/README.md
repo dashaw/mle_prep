@@ -46,7 +46,7 @@
     * i.e., $l(params) = \sum_{i=1} y_{i}*log(p(x_{i})) + (1-y_{i})*log(1-p(x_{i}))$
     * if we substitue p(x) with its exponent form then: $l(params) = \sum_{i=1} y_{i}*{\beta}*x_{i} - log(1+exp({\beta}*x_{i}))$
     * separately, we can convert objective function (to maximize) to cost function (to minimize): $J = -\sum_{samples} y_{i}*log(p(x)) + (1-y_{i})*log(1-p(x))
-    * for gradient descent, we can ultimately show that $dJ/dw$ for all samples becomes $dw = \dfrac{1}{#samples} * \sum X^T * (P(X) - Y)$ and for the bias term $db = \dfrac{1}{#samples} * \sum (P(X) - Y)$
+    * for gradient descent, we can ultimately show that $dJ/dw$ for all samples becomes $dw = \dfrac{1}{number\\ samples} * \sum X^T * (P(X) - Y)$ and for the bias term $db = \dfrac{1}{number\\ samples} * \sum (P(X) - Y)$
     * of course for gradient descen the update steps will be $w = w - learningRate*dw$
 
 ### [Gradient Boosting](https://www.youtube.com/watch?v=StWY5QWMXCw) (recall XGBoost is a specific implementation of Gradient Boosting)
