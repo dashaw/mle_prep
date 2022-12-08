@@ -7,7 +7,7 @@
   * in the videos the author does a great job! but keeps referring to np.dot() operations when what they are really doing is using np.matmul() (note: when a,b in np.dot(a,b) are 2-d arrays then it defaults to np.matmul()) which can be confusing and I've updated in my samples 
   * recall $log(odds) = log(p / (1-p)) = logit$
   * to recover probabilities from log(odds): --> $odds = p/1-p --> p = \dfrac{odds}{1+odds}$ 
-  * odds are just exp(log(odds)) so can also write $p = \drac{exp(log(odds))}{1+exp(log(odds))}$
+  * odds are just exp(log(odds)) so can also write $p = \dfrac{exp(log(odds))}{1+exp(log(odds))}$
 
 * Naive Bayes: recall that we treat feature as mutually independent, then when we look at Bayes theorem and simplify using logs it becomes
   * $y = argmax_{y} log(P(x_{1}|y)) + log(P(x_{2}|y) + ... + log(P(x_{n}|y)) + log(P(y))$
