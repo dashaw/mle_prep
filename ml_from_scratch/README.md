@@ -97,7 +97,7 @@
       * $\alpha = 0.5 * log((1-\epsilon)/\epsilon)$
   * **prediction**: $y = sign(\sum_{t} \alpha_{t} * h(X))$, aka across all weak learners
 
-* XGBoost (specific implementation of Gradient Boosting)
+* Gradient Boosting (recall XGBoost is a specific implementation of Gradient Boosting)
   * using [StatQuest](https://www.youtube.com/watch?v=3CC4N4z3GJc) vid
   * similar to adaboost, but typically larger than stumps
   * builds fixed-size trees based on previous trees errors
@@ -112,3 +112,13 @@
   * in this case we aren't in param-loss function space, we are in prediction-loss function space
   * so, we are taking the derivate of the loss function with respect to the previous prediction, then we are changing the target of our next iteration as a result!
   * instead of finding the $/omega, /beta$ **param update to minimize loss**, we are finding the **new target prediction** to minimize overall loss
+  * classification:
+    * when getting into the details this is quite complicated, but the important things to remember when thinking about motiviation:
+      * we are constantly switching in-between log(odds) space and probability space
+      * we grow regression trees (and therefore need to use log-odds space!), but when making predictions we want to convert from log(odds) --> p
+    * approach:
+      1. make an initial guess which turns out to be log(odds) = log(p/1-p), this turns out to be the guess that minimizes log-lilihood (which you can express in terms of prob and log-odds)
+      2. compute the gradient of loss with respect to function which trusn out to be $observed\\_value - \dfrac{e^log(odds)}{1+e^log(odds)}$ which is same as $observed\\_value - probability$. this is also the psuedo-residual. compute these psuedo-residuals for each sample.
+      3. fit a regression tree to pseudo-residuals. then, via lots of math we can show that the leaf value for any node that minimizes our overall loss = $\dfrac{\sum residuals}{\sum p*(1-p)}$ for all samples in the leaf node
+      4. **finally** $log-odds prediction = previous log-odds prediction + ((learningRate)*(new log-odds prediction))$
+      5. to convert new log-odds prediction to probability --> $probability = \dfrac{e^log(odds))}{1+e^log(odds)}$
