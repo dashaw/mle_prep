@@ -98,7 +98,7 @@
   * **prediction**: $y = sign(\sum_{t} \alpha_{t} * h(X))$, aka across all weak learners
 
 * Gradient Boosting (recall XGBoost is a specific implementation of Gradient Boosting)
-  * using [StatQuest](https://www.youtube.com/watch?v=3CC4N4z3GJc) vid
+  * using [StatQuest](https://www.youtube.com/watch?v=StWY5QWMXCw) vid
   * similar to adaboost, but typically larger than stumps
   * builds fixed-size trees based on previous trees errors
   * scales all trees by same amount
@@ -120,5 +120,5 @@
       1. make an initial guess which turns out to be log(odds) = log(p/1-p), this turns out to be the guess that minimizes log-lilihood (which you can express in terms of prob and log-odds)
       2. compute the gradient of loss with respect to function which truns out to be $observed\\_value - \dfrac{exp(log(odds))}{1+exp(log(odds))}$ which is same as $observed\\_value - probability$. this is also the psuedo-residual. compute these psuedo-residuals for each sample.
       3. fit a regression tree to pseudo-residuals **in the log-odds space**. then, via lots of math we can show that the leaf value for any node that minimizes our overall loss = $\dfrac{\sum residuals}{\sum p*(1-p)}$ for all samples in the leaf node, where $residuals$ are values in the leaf nodes and $p, 1-p$ is the most recent (prior) predicted probability for the sample.
-      4. **finally** $log-odds prediction = previous log-odds prediction + ((learningRate)*(new log-odds prediction))$
+      4. **finally** $prediction = previous prediction + ((learningRate)*(new prediction))$ this is in log-odds space.
       5. to convert new log-odds prediction to probability --> $probability = \dfrac{exp(log(odds)))}{1+e(log(odds))}$
