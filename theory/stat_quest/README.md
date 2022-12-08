@@ -35,7 +35,7 @@
     8. now update params and for new fit, compute log(likelihood)
     9. keep rotating log(odds) line to find what maximizes the log(likelihood)
 
-* **derivation**
+* **derivation** using [mle-gradient-descent](https://zlatankr.github.io/posts/2017/03/06/mle-gradient-descent)
   * assume log-odds of an observation can be expressed as a linear model
     * $log \dfrac{P(x)}{1-P(x)} = \sum_{j=0} b_{j}x_{j}$
     * from this we can solve for $P(x)$ explicitly as $P(x) = \dfrac{exp(z)}{1+exp(z)}$ for $z = \sum_{j=0} b_{j}x_{j}$
@@ -44,7 +44,10 @@
     * this can be simplified by taking $log(likelihood)$ and using fact that log(a*b) = log(a) + log
 (b)
     * i.e., $l(params) = \sum_{i=1} y_{i}*log(p(x_{i})) + (1-y_{i})*log(1-p(x_{i}))$
-    * if we substitue p(x) with its exponent form then: $l(params) = \sum_{i=1} y_{i}*{\beta}*x_{i} + log(\dfrac{1}{1+exp({\beta}*x_{i})})$
+    * if we substitue p(x) with its exponent form then: $l(params) = \sum_{i=1} y_{i}*{\beta}*x_{i} - log(1+exp({\beta}*x_{i}))$
+    * separately, we can convert objective function (to maximize) to cost function (to minimize): $J = -\sum_{samples} y_{i}*log(p(x)) + (1-y_{i})*log(1-p(x))
+    * for gradient descent, we can ultimately show that $dJ/dw$ for all samples becomes $dw = \dfrac{1}{#samples} * \sum X^T * (P(X) - Y)$ and for the bias term $db = \dfrac{1}{#samples} * \sum (P(X) - Y)$
+    * of course for gradient descen the update steps will be $w = w - learningRate*dw$
 
 ### [Gradient Boosting](https://www.youtube.com/watch?v=StWY5QWMXCw) (recall XGBoost is a specific implementation of Gradient Boosting)
   * similar to adaboost, but typically larger than stumps
