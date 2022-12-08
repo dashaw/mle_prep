@@ -99,6 +99,7 @@
 
 * Gradient Boosting (recall XGBoost is a specific implementation of Gradient Boosting)
   * using [StatQuest](https://www.youtube.com/watch?v=StWY5QWMXCw) vid
+    * must watch vid series if wanting to understand
   * similar to adaboost, but typically larger than stumps
   * builds fixed-size trees based on previous trees errors
   * scales all trees by same amount
