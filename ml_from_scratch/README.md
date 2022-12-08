@@ -123,3 +123,6 @@
       3. fit a regression tree to pseudo-residuals **in the log-odds space**. then, via lots of math we can show that the leaf value for any node that minimizes our overall loss = $\dfrac{\sum residuals}{\sum p*(1-p)}$ for all samples in the leaf node, where $residuals$ are values in the leaf nodes and $p, 1-p$ is the most recent (prior) predicted probability for the sample.
       4. **finally** $prediction = previous prediction + ((learningRate)*(new prediction))$ this is in log-odds space.
       5. to convert new log-odds prediction to probability --> $probability = \dfrac{exp(log(odds)))}{1+e(log(odds))}$
+
+* Feature Importance
+  * [COMPLETE THIS SECTION]
