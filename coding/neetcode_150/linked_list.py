@@ -132,3 +132,21 @@ class Solution:
         end_cnt = 0
         recursion(dummy)
         return dummy.next
+
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+
+        """ approach traverse linked-list, keep track of visited node, 
+        if see a node we ahve already visited before end of list, output false
+        
+        space-complexity & time = O(n) for the dictionary
+        """
+
+        visited = {}
+
+        while head:
+            if head in visited.keys():
+                return True
+            visited[head] = 1
+            head = head.next
+
+        return False

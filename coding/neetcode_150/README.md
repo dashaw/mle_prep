@@ -58,7 +58,7 @@
 * reorder (medium): this _seems_ like an easy problem in terms of getting an approach, but actually completing it is a tad confusing for me. I think I'm having troubles understandanding how
 manipulation in place is occuring
 * remove-nth-node-from-end-of-list (medium): this was more straightforward and pretty much got it, though use of the dummy node is still a bit fuzzy for me
-
+* linked-list-cycle (easy): keep track of visited nodes, if so return Tru
 
 
 ##### Backtracking
