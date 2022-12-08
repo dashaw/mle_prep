@@ -44,7 +44,7 @@
     * this can be simplified by taking $log(likelihood)$ and using fact that log(a*b) = log(a) + log
 (b)
     * i.e., $l(params) = \sum_{i=1} y_{i}*log(p(x_{i})) + (1-y_{i})*log(1-p(x_{i}))$
-    * if we substitue p(x) with its exponent form then --> $l(params) = \sum_{i=1} y_{i}*\beta*x_{i} + log(\dfrac{1}{1+exp(\beta*x_{i}))$
+    * if we substitue p(x) with its exponent form then --> $$l(params) = \sum_{i=1} y_{i}*\beta*x_{i} + log(\dfrac{1}{1+exp(\beta*x_{i}))$$
 
 ### [Gradient Boosting](https://www.youtube.com/watch?v=StWY5QWMXCw) (recall XGBoost is a specific implementation of Gradient Boosting)
   * similar to adaboost, but typically larger than stumps
