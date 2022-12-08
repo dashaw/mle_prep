@@ -111,7 +111,7 @@
   * then knowing we want to minimize the loss function, we move in the negative gradient by updating those params
   * in this case we aren't in param-loss function space, we are in prediction-loss function space
   * so, we are taking the derivate of the loss function with respect to the previous prediction, then we are changing the target of our next iteration as a result!
-  * instead of finding the $/omega$, $/beta$ **param update to minimize loss**, we are finding the **new target prediction** to minimize overall loss
+  * instead of finding the $\omega$, $\beta$ **param update to minimize loss**, we are finding the **new target prediction** to minimize overall loss
   * classification:
     * when getting into the details this is quite complicated, but the important things to remember when thinking about motiviation:
       * we are constantly switching in-between log(odds) space and probability space
