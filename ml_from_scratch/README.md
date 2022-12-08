@@ -119,6 +119,6 @@
     * approach:
       1. make an initial guess which turns out to be log(odds) = log(p/1-p), this turns out to be the guess that minimizes log-lilihood (which you can express in terms of prob and log-odds)
       2. compute the gradient of loss with respect to function which truns out to be $observed\\_value - \dfrac{exp(log(odds))}{1+exp(log(odds))}$ which is same as $observed\\_value - probability$. this is also the psuedo-residual. compute these psuedo-residuals for each sample.
-      3. fit a regression tree to pseudo-residuals. then, via lots of math we can show that the leaf value for any node that minimizes our overall loss = $\dfrac{\sum residuals}{\sum p*(1-p)}$ for all samples in the leaf node
+      3. fit a regression tree to pseudo-residuals **in the log-odds space**. then, via lots of math we can show that the leaf value for any node that minimizes our overall loss = $\dfrac{\sum residuals}{\sum p*(1-p)}$ for all samples in the leaf node
       4. **finally** $log-odds prediction = previous log-odds prediction + ((learningRate)*(new log-odds prediction))$
       5. to convert new log-odds prediction to probability --> $probability = \dfrac{exp(log(odds)))}{1+e(log(odds))}$
