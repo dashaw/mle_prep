@@ -54,7 +54,7 @@
 * see section, not going to take a/b notes
 * long-running a/b tests can be done via backtest: aka, see improvement in treatment --> deploy, but maintain a small holdout set with the previous control approach
 
-#### Embeddings
+## Embeddings
 * typically generated via neural network
 * transfer learning refers to transferring information from one ML task to another
 * e.g., building user embeddings from organic feed interactions on Twitter and using to rank ads
@@ -113,4 +113,39 @@
 
   <img src="diagrams/user_item_embedding.png" alt="drawing" width="700"/>
 
+## Transfer Learning
+* taking pre-trained model and applying to new task
+
+** techniques**
+* extract features from useful layers: keep initial layers of the pre-trained model and remove the final layer. Add the new layer to the remaining chunk and train them for final classification
+* fine-tuning: change or tune existing parameters in the pre-traing network, i.e., optimizing the model parameters during training for the supervised prediction task. how many layers to freeze and how many to fine-tune?
+
+* which to choose?
+  * if lots of training data --> option to unfreeze all and train
+  * if minimal training data --> best to freeze params or fine-tune only last layer
+
+## Debugging
+  <img src="diagrams/model_workflow.png" alt="drawing" width="700"/>
+
+#### Changing in feature distribution
+* change in feature distribution of training and evaluation set can negatively affect the model performance
+* e.g., train on wiki articles, serve on research papers --> feature distribution much different
+* e.g., seasonality such as train of december data and serve january requests
+
+#### Feature logging issues
+* we assume features of the model generated offline would be same as online
+* however way we generate features for online system might not be the same
+* e.g., sometimes we append features offline to our training data for training then add them to online model serving
+* check if feature generation logic is same
+
+#### Iterative improvement
+  <img src="diagrams/debug_flow.png" alt="drawing" width="700"/>
+
+**Missing important feature**
+* inspect missed predictions --> find useful feature (e.g., including feature with actor name to predict engagement)
+
+**Top-down approach**
+* view overall architecture and performance and big-block level
+* when finding a portion that is under-performing, dive deep to solve
+* repeat
 
