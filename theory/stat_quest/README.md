@@ -37,7 +37,7 @@
 
 * **derivation**
   * assume log-odds of an observation can be expressed as a linear model
-    * $log \dfrac{P(x)}{1-P(x)} = \sum_{j=0}^K b_{j}x_{j}$
+    * $log \dfrac{P(x)}{1-P(x)} = \sum_{j=0} b_{j}x_{j}$
 
 ### [Gradient Boosting](https://www.youtube.com/watch?v=StWY5QWMXCw) (recall XGBoost is a specific implementation of Gradient Boosting)
   * similar to adaboost, but typically larger than stumps
