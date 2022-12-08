@@ -15,6 +15,30 @@
 * log of ratio of probabilities = logit function = basis for logistic regression
 * probability in [0,1] and ratio of (# success / # total attempts)
 
+### [Logistic Regression series](https://www.youtube.com/watch?v=vN5cNN2-HWE)
+* cannot use least-squares like linear regression, so instead use maximum likelihood (i.e., update params to maximize this likelihood)
+* our target is in [0, 1], but in linear regression y-axis is [-inf, inf], to solve this problem the y-axis in logistic is transformed from probability to log(odds) meaning it can also go [-inf, inf]
+* where $log(odds) = log\dfrac{p}{1-p}$
+* coefficients are presented in terms of the log-odds graph
+* **fitting a line**
+  * when in log-odds space, we push negative and positive labels to -inf, +inf
+  * therefore we cannot use residuals (least squares) because residuals will also be -inf and +inf 
+  * solution = use maximum likelihood
+  * approach:
+    1. project original data points onto candidate line, so each sample will then have a candidate log(odds) value
+    2. then transform candidate log(odds) to probabilities via $p = \dfrac{exp(log(odds))}{1+exp(log(odds))}
+    3. now we are in probability space, compute the likelihood for each class: for each point, see it's probability (y-axis value)
+    4. for class 1 samples: take product of all y-axis probabilities (e.g., might be 0.49x0.9x0.91x0.92
+    5. do the same for class 0: take product of all y-axis 1-probabilities (e.g., might be 0.1x0.2x)
+    6. technically we usually do log(likelihood for compute math/compute purposes but either works)
+    7. so, log(likelihood) = log(0.49) + log(0.9) + log(0.91) + ... + log(0.2) = -3.77
+    8. now update params and for new fit, compute log(likelihood)
+    9. keep rotating log(odds) line to find what maximizes the log(likelihood)
+
+* **derivation**
+  * assume log-odds of an observation can be expressed as a linear model
+    * $log \dfrac{P(x)}{1-P(x)} = \sum_{j=0}{K} b_{j}x_{j}$
+
 ### [Gradient Boosting](https://www.youtube.com/watch?v=StWY5QWMXCw) (recall XGBoost is a specific implementation of Gradient Boosting)
   * similar to adaboost, but typically larger than stumps
   * builds fixed-size trees based on previous trees errors
