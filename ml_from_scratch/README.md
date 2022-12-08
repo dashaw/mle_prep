@@ -5,6 +5,9 @@
 * Linear & Logistic Regression: recall these have the same updates (i.e., for any $w_{i}$ we compute $dw_{i}$ as the dot product between the feature vector of $x_{i}$ across all samples and the error vector $(y_{predicted} - y_{true})$
   * $w -= learning rate * dw$
   * in the videos the author does a great job! but keeps referring to np.dot() operations when what they are really doing is using np.matmul() (note: when a,b in np.dot(a,b) are 2-d arrays then it defaults to np.matmul()) which can be confusing and I've updated in my samples 
+  * recall $log(odds) = log(p / (1-p)) = logit$
+  * to recover probabilities from log(odds): --> $odds = p/1-p --> p = \dfrac{odds}{1+odds}$ 
+  * odds are just exp(log(odds)) so can also write $p = \drac{exp(log(odds))}{1+exp(log(odds))}$
 
 * Naive Bayes: recall that we treat feature as mutually independent, then when we look at Bayes theorem and simplify using logs it becomes
   * $y = argmax_{y} log(P(x_{1}|y)) + log(P(x_{2}|y) + ... + log(P(x_{n}|y)) + log(P(y))$
@@ -93,3 +96,19 @@
     * **performance (alpha)**
       * $\alpha = 0.5 * log((1-\epsilon)/\epsilon)$
   * **prediction**: $y = sign(\sum_{t} \alpha_{t} * h(X))$, aka across all weak learners
+
+* XGBoost (specific implementation of Gradient Boosting)
+  * using [StatQuest](https://www.youtube.com/watch?v=3CC4N4z3GJc) vid
+  * similar to adaboost, but typically larger than stumps
+  * builds fixed-size trees based on previous trees errors
+  * scales all trees by same amount
+  * for regression:
+    1. grow tree
+    2. compute psuedo residual (actual - predicted)
+    3. fit tree to psuedo residuals
+    4. new predictions are prior + learning_rate*new_tree
+  * similar to gradient descent in linear/logistic regression recall that we take the derivative of the loss function with repspect to some params
+  * then knowing we want to minimize the loss function, we move in the negative gradient by updating those params
+  * in this case we aren't in param-loss function space, we are in prediction-loss function space
+  * so, we are taking the derivate of the loss function with respect to the previous prediction, then we are changing the target of our next iteration as a result!
+  * instead of finding the $/omega, /beta$ **param update to minimize loss**, we are finding the **new target prediction** to minimize overall loss
