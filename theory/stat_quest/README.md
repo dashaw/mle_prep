@@ -48,6 +48,10 @@
     * separately, we can convert objective function (to maximize) to cost function (to minimize): $J = -\sum_{samples} y_{i}*log(p(x)) + (1-y_{i})*log(1-p(x))$
     * for gradient descent, we can ultimately show that $dJ/dw$ for all samples becomes $dw = \dfrac{1}{number\\ samples} * \sum X^T * (P(X) - Y)$ and for the bias term $db = \dfrac{1}{number\\ samples} * \sum (P(X) - Y)$
     * of course for gradient descen the update steps will be $w = w - learningRate*dw$
+    * finally, **REMEMBER** [this blurb](https://towardsdatascience.com/cross-entropy-negative-log-likelihood-and-all-that-jazz-47a95bd2e81) 
+      * **Maximizing the likelihood is the same as maximizing the log of the likelihood (i.e., log-likelihood). Just to make things a little more complicated since “minimizing loss” makes more sense, we can instead take the negative of the log-likelihood and minimize that, resulting in the well known Negative Log-Likelihood Loss. To recap, our original goal was to maximize the likelihood of observing the data given some parametric settings \theta. The minimizing negative log-likelihood objective is the “same” as our original objective in the sense that both should have the same optimal solution (in a convex optimization setting to be pedantic).**
+      * also **negative log-likelihood above is the same as the cross-entropy**
+
 
 ### [Gradient Boosting](https://www.youtube.com/watch?v=StWY5QWMXCw) (recall XGBoost is a specific implementation of Gradient Boosting)
   * similar to adaboost, but typically larger than stumps
