@@ -38,6 +38,13 @@
 * **derivation**
   * assume log-odds of an observation can be expressed as a linear model
     * $log \dfrac{P(x)}{1-P(x)} = \sum_{j=0} b_{j}x_{j}$
+    * from this we can solve for $P(x)$ explicitly as $P(x) = \dfrac{exp(z)}{1+exp(z)} for z = \sum_{j=0} b_{j}x_{j}$
+    * our goal is then to find a fit (and therefore params) that maximizes the liklelihood of our data
+    * recall likelihood: $L(params) = \prod_{y=1} p(x) * \prod_{y=0} (1-p(x))
+    * this can be simplified by taking $log(likelihood)$ and using fact that log(a*b) = log(a) + log
+(b)
+    * i.e., $l(params) = \sum_{i=1} y_{i}*log(p(x_{i})) + (1-y_{i})*log(1-p(x_{i}))$
+    * if we substitue p(x) with its exponent form then --> $l(params) = \sum_{i=1} y_{i}*\beta*x_{i} + log(\dfrac{1}{1+exp(\beta*x_{i}))$
 
 ### [Gradient Boosting](https://www.youtube.com/watch?v=StWY5QWMXCw) (recall XGBoost is a specific implementation of Gradient Boosting)
   * similar to adaboost, but typically larger than stumps
