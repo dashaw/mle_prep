@@ -5,6 +5,11 @@
 * loss (error) function: $L(y_{pred}, y) = -(y*log(y_{pred}) + (1-y)log(y_{pred}))$
 * cost function = average of loss, goal = find $w$, $b$ that minimize the cost function 
 
+### Chain rule
+* recall that ultimately backprop always boils down for ability to take derivative of loss/cost function with respect to the given param we want to update
+* thus no matter which layer the weight/bias is in, we simply need to be able to express $\dfrac{dL}{dw_{l}} = \dfrac{dL}{dw_{L}} * \dfrac{dw_{L}}{da_{l}} * \dfrac{da_{l}}{dw_{l}}$
+* tl;dr lots of multiplication of gradients
+ 
 ### Exploding/Vanishing Gradients
 * if weight values slightly greater than 1 --> you can run into scenario where this slightly greater than 1 number is being put to power of L --> thus large number
 * similarly if weights slightly less than 1 --> power of L layers --> thus small number
