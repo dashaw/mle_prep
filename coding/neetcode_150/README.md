@@ -59,7 +59,7 @@
 manipulation in place is occuring
 * remove-nth-node-from-end-of-list (medium): this was more straightforward and pretty much got it, though use of the dummy node is still a bit fuzzy for me
 * linked-list-cycle (easy): keep track of visited nodes, if so return Tru
-
+* add-two-numbers (medium): basic traversal of two lists, but need to do some math tricks. nailed this one.
 
 ##### Backtracking
 * subsets (medium): dfs, recursion, 2^n

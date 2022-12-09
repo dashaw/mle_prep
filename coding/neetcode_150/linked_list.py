@@ -150,3 +150,68 @@ class Solution:
             head = head.next
 
         return False
+
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        """
+        traverse both lists working essentially from right to left of the number
+        whenever adding the two digits > 10, then do <something> to reflect 
+        time complexity = O(N) for N larger length of the two lists
+	space complexity = O(N)
+
+        l1 =
+        [2,4,9]
+        l2 =
+        [5,6,4,9]
+
+        Output
+        [7,0,4,5]
+        Expected
+        [7,0,4,0,1]
+        """
+        carry = 0
+        dummy = ListNode(-1)
+        curr = dummy
+
+        while l1 or l2:
+            if not l1:
+                v1 = 0
+                v2 = l2.val
+            elif not l2:
+                v1 = l1.val
+                v2 = 0
+            else:
+                v1 = l1.val
+                v2 = l2.val
+
+            # get new result
+            v3 = v1 + v2 + carry
+
+            # see if there is a carry issue and append result
+            if v3 > 9:
+                keep = v3 - 10
+                if keep > 0:
+                    carry = v3//10
+                else:
+                    carry = 1
+            else:
+                keep = v3
+                carry = 0
+
+            # add new ListNode and update curr pointer
+            curr.next = ListNode(keep)
+            curr = curr.next
+            
+            # update pointers
+            if not l1:
+                l2 = l2.next
+            elif not l2:
+                l1 = l1.next
+            else:
+                l1 = l1.next
+                l2 = l2.next
+
+        if carry > 0:
+            curr.next = ListNode(carry)
+
+        return dummy.next
+
