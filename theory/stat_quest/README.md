@@ -52,6 +52,19 @@
       * **Maximizing the likelihood is the same as maximizing the log of the likelihood (i.e., log-likelihood). Just to make things a little more complicated since “minimizing loss” makes more sense, we can instead take the negative of the log-likelihood and minimize that, resulting in the well known Negative Log-Likelihood Loss. To recap, our original goal was to maximize the likelihood of observing the data given some parametric settings $\theta$. The minimizing negative log-likelihood objective is the “same” as our original objective in the sense that both should have the same optimal solution (in a convex optimization setting to be pedantic).**
       * also **negative log-likelihood above is the same as the cross-entropy**
 
+### [Neural Network / Backprop](https://www.youtube.com/watch?v=IN2XmBhILt4&list=PLblh5JKOoLUIxGDQs4LFFD--41Vzf-ME1&index=4)
+* start at output node and move backwards to update params using chain rule
+* tl;dr when updating a weight you'll need to both work your way back and to know the input to that portion of the weight/bias (i.e., for a given weight what are the input (aka output of previous layer activation)
+* **softmax** $= \dfrac{e^{x_{i}}}{\sum{j=1:k} e^{x_{j}}}
+  * all outputs will sum to 1
+  * can be interpreted as predicted "probabilities"
+  * $softmax' = p*(1-p)$
+* **binary cross-entropy** = $- \sum y*log(p) + (1-y)*(log(1-p))$
+  * exploding penalty for worst predictions
+  * updates depend on derivates so derivates using CE will have larger updates
+  * same as log-loss
+  * **REMEMBER THAT MAXIMIZING LIKELIHOOD = SAME AS MINIMIZING CROSS-ENTROPY**
+
 
 ### [Gradient Boosting](https://www.youtube.com/watch?v=StWY5QWMXCw) (recall XGBoost is a specific implementation of Gradient Boosting)
   * similar to adaboost, but typically larger than stumps
