@@ -7,7 +7,7 @@
 
 ### Chain rule
 * recall that ultimately backprop always boils down for ability to take derivative of loss/cost function with respect to the given param we want to update
-* thus no matter which layer the weight/bias is in, we simply need to be able to express $\dfrac{dL}{dw_{l}} = \dfrac{dL}{dw_{L}} * \dfrac{dw_{L}}{da_{l}} * \dfrac{da_{l}}{dw_{l}}$
+* thus no matter which layer the weight/bias is in, we simply need to be able to express (made up example by me) $\dfrac{dL}{dw_{l}} = \dfrac{dL}{dw_{L}} * \dfrac{dw_{L}}{da_{l}} * \dfrac{da_{l}}{dw_{l}}$
 * tl;dr lots of multiplication of gradients
  
 ### Exploding/Vanishing Gradients
