@@ -32,3 +32,8 @@
   * e.g., ReLU = $R(z) = max(0,z)$, but this can suffer from "dying ReLUs where some neurons simply go to 0"
   * e.g., Leaky ReLU $LReLU = max(\alpha * z, z)$
 * batch normalization: adding an operating in the model just before or after activiation functionf or each hidden layer, ensure inputs are 0 centered and unit deviation. Does so by evaluating params for the current mini batch --> hence "batch normalization"
+
+### Optimization
+* batch gradient descent = take into account all samples before updating params
+* stochastic gradient descent = take into account only 1 sample before updating params
+* mini batch gradient descent = take into account a batch of N samples
