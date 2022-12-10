@@ -10,6 +10,7 @@
 * encode-and-decode-strings (medium): array, hashing, pretty easy
 * *longest-consecutive-sequence (medium/hard): array, hashing, O(n) time constraint, tricky to start then easy
 * *product-of-array-except (medium/hard): array, hashing, O(n) time constraint, tricky then easy
+* valid-anagram (easy)
 
 ##### Two Pointers
 * valid-palindrome (easy): string manipulation, reverse array
@@ -102,6 +103,7 @@ manipulation in place is occuring
 * [Towards Data Science: How to get an MLE job](https://towardsdatascience.com/how-to-get-a-machine-learning-job-in-6-months-5aaa61b13af2)
 
 #### Questions
+* recall python foundational data structures as well as how python uses linked lists to implement other data structures
 * remember the time/space complexity for heapq heap build, insert, remove
 * practice other sort/search algos
 * backtracking: need to clear up space/time complexity for some approachs. also remember permutation and combination equations

@@ -234,3 +234,31 @@ class Codec:
                 ind_str = ""
                 
         return decode_array
+
+    def isAnagram(self, s: str, t: str) -> bool:
+        """
+        1. all of chars of t in s
+        2. all original letters in s used exactly once
+
+        linear time and space complexity as we have to loop through and store dictionary --> O(n) for n = length of s, t
+        """
+        s_dict = {}
+        for char in list(s):
+            if char in s_dict:
+                s_dict[char] += 1
+            else:
+                s_dict[char] = 1
+
+        for char in list(t):
+            if char in s_dict:
+                if s_dict[char] == 1:
+                    del s_dict[char]
+                else:
+                    s_dict[char] -= 1
+            else:
+                return False
+
+        if len(s_dict.keys()) == 0:
+            return True
+        else:
+            return False
