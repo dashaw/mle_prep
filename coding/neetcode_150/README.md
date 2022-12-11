@@ -11,6 +11,7 @@
 * *longest-consecutive-sequence (medium/hard): array, hashing, O(n) time constraint, tricky to start then easy
 * *product-of-array-except (medium/hard): array, hashing, O(n) time constraint, tricky then easy
 * valid-anagram (easy)
+* group-anagrams (medium)
 
 ##### Two Pointers
 * valid-palindrome (easy): string manipulation, reverse array

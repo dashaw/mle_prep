@@ -262,3 +262,31 @@ class Codec:
             return True
         else:
             return False
+
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        """
+        approach
+        1. sort
+        2. hash
+        3. group same hashes
+
+        time complexity = O(N*log(N)) due to python sort
+        space = O(N)
+        """
+        sorted_dict = {}
+
+        for w in strs:
+            w_sorted = sorted(w)
+            w_key = str(w_sorted)
+            if w_key in sorted_dict:
+                sorted_dict[w_key].append(w)
+            else:
+                sorted_dict[w_key] = [w]
+
+        
+        # format result
+        res = []
+        for k,v in sorted_dict.items():
+            res.append(v)
+
+        return res
