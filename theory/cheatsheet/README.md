@@ -44,7 +44,7 @@
   * feature selection because it drives weights to 0, to understand this look at grid of l1 and l2 for same bias generated and observe that the cost function intersects with the pointy part of l1 which happens to be typically in spots where at least 1 axis is = 0
   * another way to think of it is like so, in minimizing a cost function if an example weight is 0.05 then when this weight is squared it gets even smaller, thus it contribues less to the overall cost and there is less value in making it 0
   * another way is also to view the gradients of the two and see that for l1 the gradient is +/- 1 thus we step in constant direction, while for l2 derivative = w and so we move in smaller steps
-  [l1/l2 image](https://i.stack.imgur.com/sBFdb.png)
+  * [l1/l2 image](https://i.stack.imgur.com/sBFdb.png)
 * l2 = $\sum (w)^2$
 * dropout
 * pruning
