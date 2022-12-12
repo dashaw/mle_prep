@@ -35,7 +35,7 @@
 * grid search (basic approach)
 * random search
 
-#### Initialization strategies
+#### Initialization Strategies
 * random normal is an easy standard (i.e., initialize weights/bias to be from random unit-normal distribution)
 
 #### Regularizaiton
