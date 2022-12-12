@@ -27,9 +27,9 @@
 * $FPR = \dfrac{FP}{FP + TN}$, rate of false positives, aka our false positives vs. all negative class examples
 
 ##### Ranking
-* discount cumulative gain = $\sum_{for all i positions} \dfrac{rel_{i}}{log_{2}(i+1)}
-* normalized discount cumulative gain = $\dfrac{discount cumulative gain}{ideal discount cumulative gain}$
-  * i.e., compute dicount cumulative gain for the ideal ordering case and call this $IDCG$
+* discount cumulative gain = $\sum_{for all i positions} \dfrac{rel_{i}}{log_{2}(i+1)}$
+* normalized discount cumulative gain = $\dfrac{DCG}{IDCG}$
+  * i.e., compute dicount cumulative gain for the ideal ordering case and call this ideal discount cumulative gain $IDCG$
 
 #### Hyperparam Search
 * grid search (basic approach)
