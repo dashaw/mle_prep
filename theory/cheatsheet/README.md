@@ -1,4 +1,6 @@
 ## Cheatsheet
+* source = primarily Burkov's [Machine Learning Engineering](http://www.mlebook.com/wiki/doku.php)
+
 
 ### Training
 * **data bias**: many forms, but e.g., we are training recsys model using historical data which is biased by the prior recommendation system as those are the impression/engagement samples users saw. **solution** --> small sample of users receive random recommendations.
@@ -61,4 +63,20 @@
 * current solutions = shrink and perturb --> shrink weights/bias by value between 0 and 1 --> applying random gaussian noise --> continue learning using new samples
 * **new data beats clever features** i.e., don't let models be stale
 
+#### Modes of Serving
 
+**Serving in Batch Mode**
+A model is usually served in batch mode when it is applied to large quantities of input data. One example could be when the model is used to exhaustively process the data of all users of a product or service. Or, when it systematically applies to all incoming events, such as tweets, or comments to online publications. Batch mode is more resource-efficient compared to an on-demand mode, and is employed when some latency can be tolerated. When served in batch mode, the model usually accepts between a hundred and a thousand feature vectors at once. Experiment to find the optimal batch size for speed. Typical sizes are powers of two: 32,64,128,etc
+
+**Serving on Demand to a Human**
+Sex steps of serving the model **on demand**:
+1. validate the request
+2. gather the context
+3. transform the context into model input
+4. apply the model to the input and get the output
+5. make sure output makes sense
+6. present the output to the user
+
+* feature extractor transform context into the model input
+
+<img src="images/on_demand_serving.png" alt="drawing" width="700"/>
