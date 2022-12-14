@@ -17,6 +17,7 @@
 * valid-palindrome (easy): string manipulation, reverse array
 * two-sum-ii-input-array-is-sorted (medium): two pointers, use sorted property
 * 3sum (medium): next step of two-step ii, hash, left & right pointer
+* container-with-most-water (medium)
 
 ##### Sliding Window
 * best-time-to-buy-and-sell-stock (easy): iterate, compare mins and maxs

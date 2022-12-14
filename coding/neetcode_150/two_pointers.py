@@ -95,3 +95,45 @@ class Solution:
                 right_pointer -= 1
 
         return -1
+
+    def maxArea(self, height: List[int]) -> int:
+        """
+        approach
+        - we want to find the max water that can be held for these combinations
+        - the max water will be (window width)*(min(left window height, right window height))
+        - we can take a sliding window approach to find the values
+
+        brute force:
+        for every element
+          for every index 1:end
+
+        this will probably be some O(N^2) approach
+        what is a better way to find the combinations?
+
+        left pointer = 0
+        right pointer = end
+        move inward accordingly
+        water_held = get_water_held()
+
+        time complexity = O(N) as we still are visiting elements only once
+        space complexity = O(1)
+
+        """
+        def get_max_water(index_left,index_right):
+            return min(height[index_left],height[index_right])*(index_right-index_left)
+
+        left_pointer = 0
+        len_height = len(height)
+        right_pointer = len_height - 1
+        max_water = 0
+
+        while left_pointer < right_pointer:
+            water_held = get_max_water(left_pointer,right_pointer)
+            max_water = max(max_water, water_held)
+
+            if height[left_pointer] < height[right_pointer]:
+                left_pointer += 1
+            else:
+                right_pointer -= 1
+
+        return max_water
