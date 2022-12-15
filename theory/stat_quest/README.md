@@ -26,7 +26,7 @@
   * solution = use maximum likelihood
   * approach:
     1. project original data points onto candidate line, so each sample will then have a candidate log(odds) value
-    2. then transform candidate log(odds) to probabilities via $p = \dfrac{exp(log(odds))}{1+exp(log(odds))}
+    2. then transform candidate log(odds) to probabilities via $p = \dfrac{exp(log(odds))}{1+exp(log(odds))}$
     3. now we are in probability space, compute the likelihood for each class: for each point, see it's probability (y-axis value)
     4. for class 1 samples: take product of all y-axis probabilities (e.g., might be 0.49x0.9x0.91x0.92
     5. do the same for class 0: take product of all y-axis 1-probabilities (e.g., might be 0.1x0.2x)
