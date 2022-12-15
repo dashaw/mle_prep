@@ -55,7 +55,7 @@
 ### [Neural Network / Backprop](https://www.youtube.com/watch?v=IN2XmBhILt4&list=PLblh5JKOoLUIxGDQs4LFFD--41Vzf-ME1&index=4)
 * start at output node and move backwards to update params using chain rule
 * tl;dr when updating a weight you'll need to both work your way back and to know the input to that portion of the weight/bias (i.e., for a given weight what are the input (aka output of previous layer activation)
-* **softmax** $= \dfrac{e^{x_{i}}}{\sum{j=1:k} e^{x_{j}}}$
+* **softmax** $= \dfrac{e^{x_{i}}}{\sum{j=1\\:k} e^{x_{j}}}$
   * all outputs will sum to 1
   * can be interpreted as predicted "probabilities"
   * $softmax' = p*(1-p)$
