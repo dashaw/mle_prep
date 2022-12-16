@@ -288,6 +288,8 @@ class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         """
         DFS both trees and confirm nodes are the same?
+
+	time complexity / space complexity = O(N)
         """
         # vars
         stack_p = []
