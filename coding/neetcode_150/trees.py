@@ -284,3 +284,39 @@ class Solution:
         dfs(root)
             
         return output
+
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        """
+        DFS both trees and confirm nodes are the same?
+        """
+        # vars
+        stack_p = []
+        stack_q = []
+        stack_p.append([p,'root'])
+        stack_q.append([q,'root'])
+
+        if p is None and q is None:
+            return True
+        if p is None and q is not None:
+            return False
+        if p is not None and q is None:
+            return False
+
+        # iterative dfs
+        while stack_p and stack_q:
+            curr_p = stack_p.pop()
+            curr_q = stack_q.pop()
+
+            # check
+            if curr_p[0].val != curr_q[0].val or curr_p[1] != curr_q[1]:
+                return False
+            else:
+                if curr_p[0].left: stack_p.append([curr_p[0].left,'left'])
+                if curr_p[0].right: stack_p.append([curr_p[0].right,'right'])
+                if curr_q[0].left: stack_q.append([curr_q[0].left,'left'])
+                if curr_q[0].right: stack_q.append([curr_q[0].right,'right'])
+
+        if len(stack_p) > 0 or len(stack_q) > 0:
+            return False
+
+        return True
