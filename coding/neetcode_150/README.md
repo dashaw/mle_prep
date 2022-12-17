@@ -23,6 +23,7 @@
 * best-time-to-buy-and-sell-stock (easy): iterate, compare mins and maxs
 * longest-substring-without-repeating-characters (medium): great problem, usage of hash to reduce duplicated computing
 * longest-repeating-character-replacement (medium): window, efficiency
+* permutation-in-string (medium): window, hashmap
 
 ##### Stack
 * *generate-parentheses (medium): backtracking, recursion, dfs

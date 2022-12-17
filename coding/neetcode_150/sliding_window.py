@@ -133,3 +133,81 @@ class Solution:
                 start += 1
         
         return max_substring
+
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        """
+        approach
+        - feels like a straightforward iterative scan problem
+        - once we find a letter, start searching for each successive in s2, if doesn't work then restart exploration
+
+        time complexity = O(n) --> sliding window through s2 of size s1
+        space complexity = O(26?) --> O(1)
+        """
+        # found var
+        found = False
+        max_ind = 0
+        len_s1 = len(s1)
+        len_s2 = len(s2)
+
+        # edge case
+        if len_s1 > len_s2:
+            return False
+
+        # else work to get basic info on s1 and s2 chars
+        def _compute_dict(str_subset):
+            subset_dict = {}
+            for i in range(len(str_subset)):
+                c = str_subset[i]
+                if c in subset_dict.keys():
+                    subset_dict[c] += 1
+                else:
+                    subset_dict[c] = 1
+            return subset_dict
+
+        def _compute_matches(candidate_dict, target_dict):
+            for i in target_dict.keys():
+                if i not in candidate_dict:
+                    return False
+                else:
+                    if candidate_dict[i] != target_dict[i]:
+                        return False
+            
+            return True
+
+
+        # sliding window
+        left_pointer = 0
+        right_pointer = len_s1
+        num_slides = len_s2 - right_pointer
+        s1_dict = _compute_dict(s1)
+        new_window_dict = {}
+
+        # initialize
+
+        for i in range(num_slides+1):
+            # get sample
+            new_window = s2[left_pointer:right_pointer]
+
+            # character dropoff
+            c_old = s2[left_pointer-1]
+            c_new = s2[right_pointer-1]
+
+            # update dict
+            if left_pointer == 0:
+                new_window_dict = _compute_dict(new_window)
+            else:
+                new_window_dict[c_old] -= 1
+                if c_new in new_window_dict.keys():
+                    new_window_dict[c_new] += 1
+                else:
+                    new_window_dict[c_new] = 1
+
+            # compare to s1
+            if _compute_matches(new_window_dict, s1_dict):
+                found = True
+                break
+            
+            left_pointer += 1
+            right_pointer += 1
+
+        return found
