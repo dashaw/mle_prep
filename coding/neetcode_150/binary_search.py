@@ -169,3 +169,81 @@ class Solution:
 
         return min_k
 
+    def search(self, nums: List[int], target: int) -> int:
+
+        """
+        approach: 4 pointers
+        for given input list:
+            - 1 equal far left
+            - 1 equal middle left
+            - 1 equal middle right
+            - 1 equal far right
+
+        time complexity = O(logn)
+        space complexity = O(1)
+        
+        """
+
+        def binary_search(left, right):
+            print(left)
+            print(right)
+
+            # base case
+            if left > right:
+                return
+
+            nonlocal target_ind
+            # vars
+            mid = ((right-left)//2) + left
+            mid_val = nums[mid]
+            left_val = nums[left]
+            right_val = nums[right]
+
+            # return case
+            if mid_val == target:
+                target_ind = mid
+                return
+
+            """
+            [0,1,2,4,5,6,7,10,12]
+            [7,10,12,1,4,5,6]
+
+            target = 7
+
+            mid_ind = 3 --> 1
+            13 > target # so normally would search left, but here we should know that 
+            but 13 > end value
+            but also end of left value is greater than the target so still search left
+
+            """
+
+            if mid_val > target:
+                if mid_val > right_val and left_val > target:
+                    # search right
+                    binary_search(mid+1, right)
+                elif mid_val > right_val and left_val < target:
+                    # search left
+                    binary_search(left, mid-1)
+                else:
+                    # search left
+                    binary_search(left, mid-1)
+
+            elif mid_val < target:
+                if mid_val < left_val and right_val < target:
+                    # search left
+                    binary_search(left, mid-1)
+                elif mid_val > right_val and  right_val > target:
+                    # search right
+                    binary_search(mid+1, right)
+                else:
+                    # search right
+                    binary_search(mid+1, right)
+            
+        left = 0
+        right = len(nums) - 1
+        target_ind = -1
+
+        binary_search(left, right)
+
+        return target_ind
+
