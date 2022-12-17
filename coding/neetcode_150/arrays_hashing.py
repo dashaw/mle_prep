@@ -290,3 +290,25 @@ class Codec:
             res.append(v)
 
         return res
+
+    def findDuplicate(self, paths: List[str]) -> List[List[str]]:
+        fn_dict = {}
+        for i in paths:
+            foo = i.split(" ")
+            root = foo[0]
+            files = foo[1:]
+            for f in files:
+                fn_content = f.split("(")[1].split(")")[0]
+                fn = f.split("(")[0]
+
+                if fn_content in fn_dict:
+                    fn_dict[fn_content].append(root+"/"+fn)
+                else:
+                    fn_dict[fn_content] = [root+"/"+fn]
+        
+        res = []
+        for k,v in fn_dict.items():
+            if len(v) > 1:
+                res.append(v)
+        
+        return res
