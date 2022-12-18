@@ -31,6 +31,7 @@
 * car-fleet (medium): stack, monotonic stack, math
 * daily-temperature (medium): monotonic decreasing stack, [GOOD]
 * valid-parantheses (easy): stack
+* min-stack (medium)
 
 ##### Trees
 * invert-binary-tree (easy): classic, bfs, revisit this for warmup!

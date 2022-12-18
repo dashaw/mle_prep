@@ -170,3 +170,23 @@ class Solution:
                 return True
             else:
                 return False
+
+    def __init__(self):
+        self.stack = []
+        self.min = math.inf
+        
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+        self.min = min(self.min, val)
+
+    def pop(self) -> None:
+        self.stack.pop()
+        self.min = math.inf
+        for i in self.stack:
+            self.min = min(self.min, i)
+
+    def top(self) -> int:
+        return self.stack[-1]
+        
+    def getMin(self) -> int:
+        return self.min
