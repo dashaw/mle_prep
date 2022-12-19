@@ -58,6 +58,7 @@
 * search-a-2d-matrix (medium): binary search, 2d
 * koko-eating-bananas (medium): binary search, math tricks
 * search-in-rotated-sorted-array (medium): binary search with rotation
+* find-minimum-in-rotated-sorted-array (medium): binary search but need to check on rotation
 
 ##### Linked List
 * reverse-linked-list (easy): example how to use linkedlist class and reverse

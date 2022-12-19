@@ -247,3 +247,42 @@ class Solution:
 
         return target_ind
 
+    def findMin(self, nums: List[int]) -> int:
+        """
+	time complexity = O(logn)
+        space complexity = O(logn)
+        """
+        min_val = math.inf
+
+        # [4,5,6,7,0,1,2]
+
+        def binary_search(left_ind: int, right_ind: int) -> None:
+            nonlocal min_val
+
+            # base cases
+            if left_ind > right_ind:
+                return
+            
+            mid_ind = (right_ind + left_ind)//2
+
+            left_val = nums[left_ind]
+            right_val = nums[right_ind]
+            mid_val = nums[mid_ind]
+
+            # new min?
+            min_val = min(min_val, mid_val)
+
+            # either our mid val is in the rotated side or not
+            if mid_val >= left_val and right_val < left_val:
+                # explore right
+                binary_search(mid_ind + 1, right_ind)
+            elif mid_val > left_val:
+                # explore left
+                binary_search(left_ind, mid_ind - 1)
+            elif mid_val < left_val:
+                # [6,0,1,2,3,4,5]
+                # explore left
+                binary_search(left_ind, mid_ind - 1)
+        
+        binary_search(0,len(nums)-1)
+        return min_val
