@@ -1,4 +1,6 @@
-### [Course](https://www.coursera.org/learn/classification-vector-spaces-in-nlp/home/week/4)
+### Courses 
+* [NLP Course 1](https://www.coursera.org/learn/classification-vector-spaces-in-nlp/home/week/4)
+
 
 #### Locality sensitive hashing
 * given kNN doing N comparisons for a given eval sample, this is one way to simplify
