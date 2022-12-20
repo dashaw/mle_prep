@@ -207,3 +207,92 @@ class Solution:
 
         dfs([],new_candidates)
         return output
+
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        """
+        approach:
+        DFS for each cell as a starting point
+
+        1. for every cell, initialize DFS
+        2. explore in 4 directions for every cell (up, down, left right)
+        3. if explored cell is out of bounds, return
+        4. go at most N steps where N = length word
+        5. there will be lots of duplication here
+        6. 
+
+	O(n*m + len(word) + n*m*4^len(word))
+
+        """
+        # initial vars
+        len_word = len(word)
+        m = len(board)
+        n = len(board[0])
+        found_word = False
+        target_ind = 0
+        board_counts = {}
+        word_counts = {}
+
+        # do we even have a chance? if it doesn't even make sense then return False
+        for i in range(m):
+            for j in range(n):
+                c = board[i][j]
+                if c in board_counts:
+                    board_counts[c] += 1
+                else:
+                    board_counts[c] = 1
+
+        for c in word:
+            if c in word_counts:
+                word_counts[c] += 1
+            else:
+                word_counts[c] = 1
+
+        
+        for k in word_counts:
+            if (k not in board_counts or
+                board_counts[k] < word_counts[k]):
+                return False
+                
+
+        # dfs
+        def dfs(row: int, column: int, target_ind: int):
+            nonlocal found_word
+
+            # happy condition
+            if target_ind == len(word):
+                found_word = True
+                return
+
+            # combine stop conditions
+            if (row < 0 or 
+                column < 0 or 
+                row >= m or 
+                column >= n or
+                board[row][column] != word[target_ind] or
+                found_word):
+                return
+
+            # continue exploration
+            temp = board[row][column] 
+            board[row][column] = "#" # prior i was using a hash to determine if the new coordinate is already explored, but this is much quicker
+            # explored_dict[str([row,column])] = 1
+
+            """
+            I've tried this with both hashmap and just setting the board char to "#",
+            hash map still gets a timeout. I don't understand
+            """
+
+            dfs(row+1, column, target_ind+1)
+            dfs(row-1, column, target_ind+1)
+            dfs(row, column+1, target_ind+1)
+            dfs(row, column-1, target_ind+1)
+            
+            board[row][column] = temp
+            # del explored_dict[str([row,column])]
+
+
+        for i in range(m):
+            for j in range(n):
+                dfs(i, j, target_ind)
+
+        return found_word 

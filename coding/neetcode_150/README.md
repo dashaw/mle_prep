@@ -76,6 +76,7 @@ manipulation in place is occuring
 * combination-sum (medium): backtracking + needing to simplfy exploration space
 * permutations (medium): backtracking, permutation, N!/(N-k)!
 * combination-sum-ii (medium): backtracking combinations, O(2^N)
+* word-search (medium)
 
 ##### Graphs:
 * number-of-islands (medium): dfs, O(MxN)
