@@ -26,4 +26,4 @@
 * example of creating word embeddings from scratch using CBOW architecture
 * 1 hidden layer with activation function = ReLU
 * Oupter layer with softmax activation predictions
-* Using cross entropy loss $J = - \sum{k=1}{V} y_{k}*log(\hat{y}_{k})$
+* Using cross entropy loss $J = - \sum_{k=1}^{V} y_{k}*log(\hat{y}_{k})$
