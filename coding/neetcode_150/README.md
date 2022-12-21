@@ -77,6 +77,7 @@ manipulation in place is occuring
 * permutations (medium): backtracking, permutation, N!/(N-k)!
 * combination-sum-ii (medium): backtracking combinations, O(2^N)
 * word-search (medium)
+* rotting-oranges (medium)
 
 ##### Graphs:
 * number-of-islands (medium): dfs, O(MxN)

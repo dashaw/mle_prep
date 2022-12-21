@@ -369,3 +369,65 @@ class Solution:
 
         # return
         return board
+
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        """
+        approach
+        for every rotten cell
+        perform 1 iteration of bfs, mark as rotten
+        continue until all cells are bad
+        time complexity = (On*m + n*m), space = O(n*m)
+        """
+
+        # initial vars
+        good_cell_dict = {}
+        rotten_cell_dict = {}
+        m = len(grid)
+        n = len(grid[0])
+
+        def _check_status():
+            good_dict = {}
+            rotten_dict = {}
+
+            for i in range(m):
+                for j in range(n):
+                    if grid[i][j] == 1:
+                        good_dict[str([i,j])] = [i,j]
+                    
+                    elif grid[i][j] == 2:
+                        rotten_dict[str([i,j])] = [i,j]
+
+            return good_dict, rotten_dict
+
+        def _make_rotten(i,j):
+            if i < 0 or j < 0 or i >= m or j >= n or grid[i][j] == 0:
+                pass
+            else:
+                grid[i][j] = 2
+
+        good_cell_dict, rotten_cell_dict = _check_status()
+        num_good = len(good_cell_dict.keys()) 
+        cnt = 0
+
+        if num_good == 0:
+            return 0
+
+        while num_good > 0 and cnt < 10*10:
+            for rotten in rotten_cell_dict:
+                cell = rotten_cell_dict[rotten]
+                row = cell[0]
+                column = cell[1]
+
+                _make_rotten(row+1, column)
+                _make_rotten(row-1, column)
+                _make_rotten(row, column+1)
+                _make_rotten(row, column-1)
+            
+            cnt += 1
+
+            # re-check rotten count
+            good_cell_dict, rotten_cell_dict = _check_status()
+            num_good = len(good_cell_dict.keys()) 
+
+        return cnt if num_good == 0 else -1
+        
