@@ -1,6 +1,7 @@
 ### Courses 
 * [NLP Course 1](https://www.coursera.org/learn/classification-vector-spaces-in-nlp/home/week/4)
 * [NLP Course 2](https://www.coursera.org/learn/probabilistic-models-in-nlp/lecture/i8pZr/n-grams-and-probabilities)
+* [NLP Course 3](https://www.coursera.org/learn/sequence-models-in-nlp/lecture/SgnFd/recurrent-neural-networks)
 
 #### Course 1
 ##### Locality sensitive hashing
@@ -27,3 +28,46 @@
 * 1 hidden layer with activation function = ReLU
 * Oupter layer with softmax activation predictions
 * Using cross entropy loss $J = - \\sum\limits_{k=0}^V y_{k}*log(\hat{y}_{k})$
+
+#### Course 3
+##### RNNs
+* recurrent neural networks
+* recall that we typically see these "through time" with repeated blocks, but really the weights we are learning are just for a single NN. Instead, we are continually feeding inputs into the same block "recurrently"
+* propagates information through the sentence (for example)
+* different architectures
+  * 1:1 i.e., single input and single output
+  * multi:1 i.e., multi input words and predict good/bad sentiment
+  * multi:muli i.e., multi input words and multiple output words like language translation (aka, encoder/decoder)
+  * 1:many i.e., image input and output sentence describing image
+* loss/cost function: can use same cross-entropy loss function, but this time you'll also want to average not just over all samples, but also through time (in case of vanilla RNN)
+* for long sequences of words, the information tends to vanish
+* bi-directional = feed information from left->right and right->left, then output for a given time step is combination of the two hidden states fed through an activation function
+  * information is ascylic and flows independently (i.e., don't need to first forward propogate left->right then right->, can do both in parallel)
+
+##### GRUs
+* gated recurrent units
+* uses relevance and update gaes
+* RNNs with some additional steps
+* has keep/update gates, determines which context to keep
+* relevance and update gates
+
+##### LSTM
+* why?
+  * RNNs: captures dependencies w/in short range, less RAM vs. n-gram models
+    * cons: struggles to capture long term dependencies
+    * prone to vanishing/exploding gradients
+    * backpropogation through time --> chain rule through time = vanishing/exploding gradients
+  * solution to vanishing/exploding gradients
+    * identity weight matrix with ReLU activation
+    * gradient clipping
+    * skip connections
+* long-term solution memory = solution to issues found in RNNs
+* learns what to remember and what to forget
+* anatomy: cell state, hidden state, multiple gates
+* cell state, hidden state, input
+* inside: 1. forget gate (info that is no longer important), 2. input gate (info to be stored), 3. output gate (info to use at current state
+
+##### Siamese networks
+* e.g., determine if two questions are duplicates
+* architecture: two networks: 1 takes question 1 --> embedding --> lstm --> output, then two ouputs of the two questions take cosine similarity
+* one shot learning e.g., using siamese networks to compare similarity between e.g., two signature (1 input = known signature, 1 input = proposed signature) --> compute similarity --> based on this threshold as same or not
