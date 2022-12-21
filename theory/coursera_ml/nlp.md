@@ -2,6 +2,7 @@
 * [NLP Course 1](https://www.coursera.org/learn/classification-vector-spaces-in-nlp/home/week/4)
 * [NLP Course 2](https://www.coursera.org/learn/probabilistic-models-in-nlp/lecture/i8pZr/n-grams-and-probabilities)
 * [NLP Course 3](https://www.coursera.org/learn/sequence-models-in-nlp/lecture/SgnFd/recurrent-neural-networks)
+* [NLP Course 4](https://www.coursera.org/learn/attention-models-in-nlp/lecture/LLvlj/seq2seq-model-with-attention)
 
 #### Course 1
 ##### Locality sensitive hashing
@@ -71,3 +72,53 @@
 * e.g., determine if two questions are duplicates
 * architecture: two networks: 1 takes question 1 --> embedding --> lstm --> output, then two ouputs of the two questions take cosine similarity
 * one shot learning e.g., using siamese networks to compare similarity between e.g., two signature (1 input = known signature, 1 input = proposed signature) --> compute similarity --> based on this threshold as same or not
+
+#### Course 4
+##### Attention
+**Why**
+* Attention: with LSTM between encoder and decoder, the decoder is taking the last hidden state and trying to use it to predict all decoder outputs (thus context is often lost)
+  * we solve for this by updating transfer of info between encoder and decoder
+  * instead of using final hidden state, pass all hidden states by combining into a **context vector**
+  * i.e., weighted sum of hidden states
+  * decoder can set weighted-sum to focus on proper hidden states
+* also critical because attention allows for parallelization! i.e., we don't need to feed things sequencially, we can
+
+###### Outline
+* queries, keys, and values
+  * keys, values can be thought of as lookup table
+  * query tells us which key, value to retrieve
+
+##### Transformers
+* RNNs: 
+  * sequential steps to input, decode sequentially as well
+  * i.e., no parallel computation
+  * loss of information: vanishing gradients problem still even with LSTM and GRUs
+* We can help these problems with an attention mechanism
+* Transformers rely fully on attention (i.e., "attention is all you need")
+
+**Overview**
+* scaled dot-product attention
+  * matmul operations between queries, keys, values
+* multi-head attention layer: in parallel & dot-product attention
+* encoder: multi-head attention = every item in the input attends to every other item
+  * followed by feed forward NN
+* decoder: multi-head attention modules 
+  * one is masked (attends to previous positions)
+  * one can use all positions
+* positional encoding: encodes position of input within entire sequence
+* easy to parallelize!
+
+<img src="transformer.png" alt="drawing" width="700"/>
+
+**Attention**
+* encoder-decoder attention: queries from one sentence, keys & values from another
+* self-attention: queries, keys, & values come from the same sentence (meaning of each word within the sentence)
+* masked self-attention: queries, keys, & values come from same setence, but queries don't attend to future positions (ensures predictions only depend on known outputs)
+
+**Multi-head Attention**
+* intuition
+  * using different sets of queries, keys, values = learn multiple representations
+  * then concatenate results of each scaled dot-product attention
+  * every linear transformation has learnable parameters
+
+<img src="multi_head_attention.png" alt="drawing" width="700"/>
