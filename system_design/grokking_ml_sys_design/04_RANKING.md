@@ -1,6 +1,6 @@
 ### [Link](https://www.educative.io/courses/grokking-the-machine-learning-interview/YQZR9pOMXJ9)
 
-* \[Skipping to candidate generation step]\
+* \[Skipping to candidate generation step]
 
 #### Candidate generation techniques
 1. Collaborate filtering
