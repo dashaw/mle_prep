@@ -86,6 +86,9 @@ manipulation in place is occuring
 * pacific-atlantic-water-flow (medium): dfs or bfs, O(RxC), early stopping
 * surrounded-regions (medium): dfs, islands, change board in memory, O(RxC), solved in < 30 min!
 
+##### Dynamic Programming:
+* climbing-stairs (easy): good fundamental problem
+
 ##### Greedy:
 * maximum-subarray (medium): sliding window mixed with dynamic programming
 * jump-game (medium): dfs backtracking option, takes tweak to get in time limit
