@@ -88,6 +88,7 @@ manipulation in place is occuring
 
 ##### Dynamic Programming:
 * climbing-stairs (easy): good fundamental problem
+* min-cost-climbing-stairs (easy)
 
 ##### Greedy:
 * maximum-subarray (medium): sliding window mixed with dynamic programming

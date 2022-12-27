@@ -14,4 +14,18 @@ class Solution:
 
         return one
 
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        """
+        start from back
+        cost = end cost
+        [1,100,1,1,1,100,1,1,100,1]
+                             1+min(),100,1
+        """
+        min_cost = [0]*len(cost)
+        min_cost[-1] = cost[-1]
+        min_cost[-2] = cost[-2]
 
+        for i in range(len(cost) - 2)[::-1]:
+            min_cost[i] = min(min_cost[i+1],min_cost[i+2]) + cost[i]
+        
+        return min(min_cost[0], min_cost[1])
