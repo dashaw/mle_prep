@@ -29,3 +29,36 @@ class Solution:
             min_cost[i] = min(min_cost[i+1],min_cost[i+2]) + cost[i]
         
         return min(min_cost[0], min_cost[1])
+
+    def rob(self, nums: List[int]) -> int:
+        """
+        [2,7,9,3,1]
+        [2,7,11,11]
+
+        left = 7
+        right = 11
+        we iterate left --> right and keep a cumulative(ish) result based on our constraints
+        at each iteration we look to the left, apply our constraint, and make a decision that maximizes value to that point
+        """
+        # edge case
+        if len(nums) == 1:
+            return nums[0]
+
+        # vars 
+        left = nums[0]
+        right = nums[1]
+
+        if len(nums) == 2:
+            return max(left, right)
+
+        # happy-case logic
+        for i in range(2,len(nums)):
+            if left + nums[i] > right:
+                temp = max(left, right)
+                right = left + nums[i]
+                left = temp
+            else:
+                # do something else
+                left = right
+
+        return right
