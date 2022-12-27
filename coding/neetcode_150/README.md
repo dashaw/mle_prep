@@ -91,6 +91,7 @@ manipulation in place is occuring
 * min-cost-climbing-stairs (easy)
 * house-robber (medium)
 * word-break (medium): can also be dfs + memoization
+* coin-change (medium): great problem, do again before interviews!
 
 ##### Greedy:
 * maximum-subarray (medium): sliding window mixed with dynamic programming
