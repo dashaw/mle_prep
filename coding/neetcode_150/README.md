@@ -90,6 +90,7 @@ manipulation in place is occuring
 * climbing-stairs (easy): good fundamental problem
 * min-cost-climbing-stairs (easy)
 * house-robber (medium)
+* word-break (medium): can also be dfs + memoization
 
 ##### Greedy:
 * maximum-subarray (medium): sliding window mixed with dynamic programming

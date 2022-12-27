@@ -62,3 +62,45 @@ class Solution:
                 left = right
 
         return right
+
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        """
+        s = "applepenapple", 
+        wordDict = ["apple","pen"]
+
+        - is word in s
+        - if yes, essentially remove that part of s
+        -
+        """
+        len_s = len(s)
+        cnd = False
+        memo = {}
+
+        def dfs(ind):
+            nonlocal cnd
+            if ind == len_s:
+                cnd = True
+
+            if cnd == True:
+                return
+
+            if ind in memo.keys():
+                return
+
+            else:
+                for w in wordDict:
+                    len_w = len(w)
+                    candidate_s = s[ind:ind+len_w]
+                    if ind + len_w <= len_s and candidate_s == w:
+                        dfs(ind+len_w)
+
+                if cnd == False:
+                    memo[ind] = False
+                    
+                
+
+        
+        # search
+        dfs(0)
+
+        return cnd
