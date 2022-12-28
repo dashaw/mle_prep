@@ -104,6 +104,7 @@ manipulation in place is occuring
 ##### Math & Geometry:
 * plus-one (easy): basic for loop and check condition
 * happy-number (easy): basic for loop, detect cycle
+* statistics-from-a-large-sample (medium): good practice combining code and math knowledge
 
 ##### Bit Manipulation
 * single-numer (easy): xor tricky
