@@ -430,4 +430,63 @@ class Solution:
             num_good = len(good_cell_dict.keys()) 
 
         return cnt if num_good == 0 else -1
-        
+
+    def wallsAndGates(self, rooms: List[List[int]]) -> None:
+        """
+        Do not return anything, modify rooms in-place instead.
+
+        Approach high-level:
+        - feels like a straightforward BFS problem as we want the shortest distance
+        - for each empty room, perform BFS until you reach a gate, keep track of how many iterations you've performed, once you reach a gate insert the iteration tracker # into the mxn grid
+        - if there are no gates that can be reached then impute INF
+          - how to tell if it is impossible to reach, check to see if there is any progress made for a given iteration and if nothing then stop BFS (or perhaps do check condition when coming back from BFS)
+          BFS:
+          create via queue O(1)
+
+        Test cases
+        assert wallsAndGates(rooms_mat) == expected_output
+        """
+        def _update_grid(row: int, col: int, bfs_cnt: int) -> None:
+            curr_val = rooms[row][col]
+            cand_val = bfs_cnt
+            rooms[row][col] = min(curr_val, cand_val)
+
+        def _add_rooms(row: int, col: int, bfs_cnt: int) -> None:
+            if row < 0 or col < 0 or row >= m or col >= n or \
+            rooms[row][col] == -1 or bfs_cnt > rooms[row][col]:
+                return
+            else:
+                q.append([row,col,bfs_cnt])
+
+        # initialize vars
+        q = deque()
+        visited = []
+        m = len(rooms)
+        n = len(rooms[0])
+
+        # figure out where all the gates are
+        for i in range(m):
+            for j in range(n):
+                if rooms[i][j] == 0:
+                    q.append([i,j,0])
+                    visited.append([i,j])
+
+        # edge cases
+        if len(q) == 0:
+            return # come back to this
+                     
+        # for each gate, perform bfs and update grid cells as we go
+        while q:
+            # pop left
+            foo = q.popleft()
+            row, col, bfs_cnt = foo[0], foo[1], foo[2]
+            pos_str = str([row,col])
+
+            # update dist
+            _update_grid(row, col, bfs_cnt)
+
+            # continue bfs
+            _add_rooms(row+1,col,bfs_cnt+1)
+            _add_rooms(row-1,col,bfs_cnt+1)
+            _add_rooms(row,col+1,bfs_cnt+1)
+            _add_rooms(row,col-1,bfs_cnt+1)

@@ -85,6 +85,7 @@ manipulation in place is occuring
 * max-area-of-island (medium): dfs, O(RxC), next version of number-of-islands
 * pacific-atlantic-water-flow (medium): dfs or bfs, O(RxC), early stopping
 * surrounded-regions (medium): dfs, islands, change board in memory, O(RxC), solved in < 30 min!
+* walls-and-gates (medium): trick to explore from gates instead of rooms, then use straightforward BFS
 
 ##### Dynamic Programming:
 * climbing-stairs (easy): good fundamental problem
