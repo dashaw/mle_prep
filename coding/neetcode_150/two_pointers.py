@@ -137,3 +137,35 @@ class Solution:
                 right_pointer -= 1
 
         return max_water
+
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        https://leetcode.com/problems/rotate-array
+        Do not return anything, modify nums in-place instead.
+        Examples
+        1. nums = [-1,-100,3,99], k = 2
+        k = 1 --> [99,-1,-100,3]
+        k = 2 --> [3,99,-1,-100]
+        time = O(n)
+        space = O(n)
+        """
+
+        # initial vars
+        len_nums = len(nums)
+        helper_nums = [0]*len_nums
+
+        if k > len_nums:
+            k = k % len_nums
+
+        # perform rotations
+        for i in range(len_nums):
+            new_ind = i + k
+            if new_ind > len_nums - 1:
+                new_ind = new_ind % len_nums
+
+            # update helper
+            helper_nums[new_ind] = nums[i]
+
+        # copy back
+        for i in range(len_nums):
+            nums[i] = helper_nums[i]

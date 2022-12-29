@@ -21,6 +21,7 @@
 * two-sum-ii-input-array-is-sorted (medium): two pointers, use sorted property
 * 3sum (medium): next step of two-step ii, hash, left & right pointer
 * container-with-most-water (medium)
+* rotate-array (medium): not really two pointers? use a helper array to update new values
 
 ##### Sliding Window
 * best-time-to-buy-and-sell-stock (easy): iterate, compare mins and maxs
