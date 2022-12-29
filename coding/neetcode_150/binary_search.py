@@ -286,3 +286,83 @@ class Solution:
         
         binary_search(0,len(nums)-1)
         return min_val
+
+    def singleNonDuplicate(self, nums: List[int]) -> int:
+        """
+        https://leetcode.com/problems/single-element-in-a-sorted-array/description/
+        [1,1,2,3,3,4,4,8,8]
+
+        len = 9 [0, 8]
+        mid = 9//2 --> 4
+
+        - approach is to find mid point and look left and right by one index
+        - mid_val = 3, left_val = 3, right_val = 4
+        - mid_ind = 4, left_ind = 3, right_ind = 5
+        - check if oddity is in upper
+         - find which side has the agreement with mid val
+         - in this case left
+         - plus we see that len(left) = 5 --> odd --> keep exploring left
+
+         [1,2,2,3,3]
+
+         mid_ind = 5//2 = 2
+         mid_val = 2
+         left_val = 1
+         right_val = 3
+         no agreement --> output 2
+
+         mid_ind = 5//2 = 2
+         mid_val = 2
+         left_val = 2
+         right_val = 3
+         look at left --> len([1,2,2]) --> odd --> keep exploring left
+
+
+
+        nums = [1,1,2,3,3,4,4,8,8]
+        len_nums = 9
+        left = 0
+        right = 8 --> 4
+        mid = 4 --> 2
+        mid_val = 3 --> 2
+        left_val = 3 --> 1
+        right_val = 4 --> 3
+        (mid - left + 1) % 2 --> 1
+        time complexity = O(logn)
+        space complexity = O(1)
+
+        """
+
+        # initial vars
+        len_nums = len(nums)
+        left = 0
+        right = len_nums - 1
+        mid = ((right - left)//2) + left
+
+        while mid < len_nums:
+            mid = ((right - left)//2) + left
+
+            if mid == 0 or mid == len_nums - 1:
+                return nums[mid]
+
+            mid_val = nums[mid]
+            left_val = nums[mid-1]
+            right_val = nums[mid+1]
+
+            if mid_val == left_val:
+                # something
+                if (mid - left + 1) % 2 == 1:
+                    # explore left
+                    right = mid
+                else:
+                    # explore right
+                    left = mid + 1
+            elif mid_val == right_val:
+                if (right - mid + 1) % 2 == 1:
+                    # explore right
+                    left = mid
+                else:
+                    # explore left
+                    right = mid - 1
+            else:
+                return mid_val
