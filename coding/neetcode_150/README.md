@@ -22,6 +22,7 @@
 * 3sum (medium): next step of two-step ii, hash, left & right pointer
 * container-with-most-water (medium)
 * rotate-array (medium): not really two pointers? use a helper array to update new values
+* boats-to-save-people (medium): set pointer at front and back, check constraint and update left pointer while always decrementing right pointer. remember that at most this is O(n) in scan. do this for left_pointer <= right_pointer
 
 ##### Sliding Window
 * best-time-to-buy-and-sell-stock (easy): iterate, compare mins and maxs

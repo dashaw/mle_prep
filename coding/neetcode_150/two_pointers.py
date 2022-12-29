@@ -169,3 +169,54 @@ class Solution:
         # copy back
         for i in range(len_nums):
             nums[i] = helper_nums[i]
+
+    def numRescueBoats(self, people: List[int], limit: int) -> int:
+        """
+	https://leetcode.com/problems/boats-to-save-people
+        Examples:
+        people = [3,5,3,4], limit = 5
+        -> [3], [3], [4], [5]
+
+        people = [3,2,2,1], limit = 3
+        [1,2,2,3,4,6] limit = 5
+        [4,1]
+        [2,2]
+        [3]
+        [6]
+        -> find if there are two pairs that can fit under limit = [1,2]
+        -> remaining = [2,3] --> find if there are two pairs taht can fit under limit --> no
+        [[1,2],[2],[3]]
+        
+        Approach:
+        1. sort list of people
+        2. left_pointer = start, right_pointer = end
+        3. see if sum <= limit --> yes then put those in a boat
+        4. else move right_pointer to left, check again, etc.
+        5. if left_pointer >= right_pointer there are no combinations so output individually
+        time ~ O(n) + O(nlogn) for sort = O(nlogn)
+        space ~ O(1)
+        """
+
+        # initial vars
+        boat_cnt = 0
+        people.sort()
+        num_people = len(people)
+        left_pointer = 0
+        right_pointer = num_people - 1
+
+        while left_pointer <= right_pointer:
+            # potential value
+            val = people[left_pointer] + people[right_pointer]
+
+            # increment boat count
+            boat_cnt += 1
+
+            if val <= limit:
+                # this is a combination that works, so also update left pointer to represent this
+                left_pointer += 1
+
+            # continue iterating backward
+            right_pointer -=1
+
+        # return
+        return boat_cnt
