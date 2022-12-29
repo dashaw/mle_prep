@@ -490,3 +490,49 @@ class Solution:
             _add_rooms(row-1,col,bfs_cnt+1)
             _add_rooms(row,col+1,bfs_cnt+1)
             _add_rooms(row,col-1,bfs_cnt+1)
+
+    def countSubIslands(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
+        """
+        Approach
+        1. locate islands in grid2
+          - iterate through all elements and keep track
+          - perform DFS to find which 1's are part of which islands
+        2. iterate through the islands in grid2
+            - for each element, see if its value in grid1 is 1
+            - if true for all cells in the island, then add to sub-count
+        """
+        # initial vars
+        sub_island_cnt = 0
+        island_marked = []
+        m = len(grid2)
+        n = len(grid2[0])
+
+        # perform DFS to figure out which 1s map to which island
+        def _dfs(row, col):
+            if row < 0 or col < 0 or row >= m or col >= n or [row, col] in island_marked or grid2[row][col] == 0:
+                return True
+
+            # mark in list
+            island_marked.append([row,col])
+
+            # should we explore this later on to see if it is a valid sub-island?
+            res = True
+            if grid1[row][col] == 0:
+                res = False
+
+            # explore
+            res = _dfs(row+1, col) and res
+            res = _dfs(row-1, col) and res
+            res = _dfs(row, col-1) and res
+            res = _dfs(row, col+1) and res
+
+            return res
+
+        for i in range(m):
+            for j in range(n):
+                # see if we haven't mapped this to an island yet
+                if grid2[i][j] == 1 and [i, j] not in island_marked and _dfs(i, j):
+                    sub_island_cnt += 1
+
+        # return result
+        return sub_island_cnt
