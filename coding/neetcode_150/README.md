@@ -13,6 +13,7 @@
 * valid-anagram (easy)
 * group-anagrams (medium)
 * find-duplicate-file-in-system (medium): tagged dropbox
+* valid-sudoku (medium): basic iterating through grid and adding to hash + checking for collisons
 
 ##### Two Pointers
 * valid-palindrome (easy): string manipulation, reverse array

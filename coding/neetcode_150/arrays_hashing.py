@@ -312,3 +312,80 @@ class Codec:
                 res.append(v)
         
         return res
+
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        """
+        https://leetcode.com/problems/valid-sudoku/
+        constraints:
+        1. each row much contain the digits 1-9 w/o repetition
+        2. each column must contain the digits 1-9 w/o repetition
+        3. each of the nine 3x3 sub-boxes must contian the digits 1-9 w/o repetition
+
+        -can be partially filled (but still must meet constraints)
+        -board is always 9x9
+
+        brute force:
+        go through each row and see if constaint 1 is met
+        go through each column and see if constaint 2 is met
+        go through each 3x3 box and see if constraint 3 is met
+
+        time O(n*m)
+        space O(n*m)
+        """
+        # initial vars
+        valid_solution = True
+        sub_box_constraint = {}
+        row_constraint = {}
+        column_constraint = {}
+        sub_box_map = {}
+        m = len(board)
+        n = len(board[0])
+
+        # initialize dicts
+        for i in range(m):
+            row_constraint[i] = []
+            column_constraint[i] = []
+
+        for i in range(9):
+            sub_box_constraint[i] = []
+
+        sub_box_cnt = 0
+        for i in range(3):
+            for j in range(3):
+                sub_box_map[str([i,j])] = sub_box_cnt
+                sub_box_cnt += 1
+
+        for i in range(m):
+            for j in range(n):
+                val = board[i][j]
+
+                if val != ".":
+                    # check row
+                    if val in row_constraint[i]:
+                        valid_solution = False
+                        break
+                    else:
+                        row_constraint[i].append(val)
+
+                    # check column
+                    if val in column_constraint[j]:
+                        valid_solution = False
+                        break
+                    else:
+                        column_constraint[j].append(val)
+
+                    # check sub-grid
+                    # get sub-grid number
+                    sub_row = i//3
+                    sub_column = j//3
+                    box_str = str([sub_row,sub_column])
+                    box_num = sub_box_map[box_str]
+                    if val in sub_box_constraint[box_num]:
+                        valid_solution = False
+                        break
+                    else:
+                        sub_box_constraint[box_num].append(val)
+
+
+        # return
+        return valid_solution
