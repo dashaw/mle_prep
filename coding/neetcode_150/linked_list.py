@@ -215,3 +215,29 @@ class Solution:
 
         return dummy.next
 
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+
+        """
+	https://leetcode.com/problems/copy-list-with-random-pointer/
+        #### Approach
+        1. create hash map linking old node to new node
+        2. iterate through linked list again but create full structure now that we have every node mapped
+        """
+        # initial vars
+        old_copy = {None:None}
+        curr = head
+
+        while curr:
+            old_copy[curr] = Node(curr.val)
+            curr = curr.next
+
+        # new linked list
+        curr = head
+
+        while curr:
+            copy = old_copy[curr]
+            copy.next = old_copy[curr.next]
+            copy.random = old_copy[curr.random]
+            curr = curr.next
+
+        return old_copy[head]
