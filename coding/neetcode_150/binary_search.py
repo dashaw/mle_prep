@@ -444,3 +444,68 @@ class Solution:
             return res
         else:
             return _find_bounds(target_ind, target)
+
+class TimeMap:
+    """
+    #### Approach
+    https://leetcode.com/problems/time-based-key-value-store/
+    * we will rely on two key data structures
+    * first: key-value -> dictionary with key as key, within that key is another dictionary with timestamp-value
+    * second: key-timestamp -> for a given key we store all timestamps and sort when set
+        * when get we search for the nearest timestamp relative to that timestamp
+    """
+    def __init__(self):
+        self.key_value = {}
+
+    def set(self, key: str, value: str, timestamp: int) -> None:
+            # add value to key
+            # add timestamp to key and sort
+        if key in self.key_value:
+            self.key_value[key][timestamp] = value
+            self.key_value[key]['timestamps'].append(timestamp)
+
+        else:
+            self.key_value[key] = {timestamp: value}
+            self.key_value[key]['timestamps'] = [timestamp]
+
+
+    def _binary_search(self, key: string, timestamp: int) -> int:
+        # if self.key_set[key]:
+        #     self.key_value[key]['timestamps'].sort()
+
+        # # for a given timestamp, find the timestamp closest to it for that key
+        len_timestamps = len(self.key_value[key]['timestamps'])
+        left_pointer = 0
+        right_pointer = len_timestamps - 1
+        closest_ts_ind = -1
+
+        # edge cases where we can end early as there is no chance of finding a ts
+        if self.key_value[key]['timestamps'][0] > timestamp:
+            return closest_ts_ind
+        
+        if self.key_value[key]['timestamps'][-1] < timestamp:
+            return self.key_value[key]['timestamps'][-1]
+
+        while left_pointer <= right_pointer:
+            mid_pointer = left_pointer + ((right_pointer - left_pointer)//2)
+            mid_val = self.key_value[key]['timestamps'][mid_pointer]
+
+            if mid_val < timestamp:
+                # do something
+                closest_ts_ind = max(closest_ts_ind,mid_val)
+                left_pointer = mid_pointer + 1
+
+            elif mid_val > timestamp:
+                # do something else
+                right_pointer = mid_pointer - 1
+
+        return closest_ts_ind
+
+    def get(self, key: str, timestamp: int) -> str:
+        if key in self.key_value and timestamp in self.key_value[key]:
+            return self.key_value[key][timestamp]
+        elif key in self.key_value:
+            closest_timestamp = self._binary_search(key, timestamp)
+            return self.key_value[key][closest_timestamp] if closest_timestamp != -1 else ""
+        else:
+            return ""

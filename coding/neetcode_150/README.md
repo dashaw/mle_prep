@@ -67,6 +67,7 @@
 * find-minimum-in-rotated-sorted-array (medium): binary search but need to check on rotation
 * single-element-in-sorted-array (medium): perform binary search but need to locate which side of array is odd-numbered, then search that direction to figure out single element
 * find-first-and-last-position-of-element-in-sorted-array (medium): straightforward practice of key concept, minimal tricks, perform binary search then do some extra searching on top. O(logn)
+* time-based-key-value-store (medium): straightfowartd OOP and binary search problem, need to pay attention that timestamps are always increasing
 
 ##### Linked List
 * reverse-linked-list (easy): example how to use linkedlist class and reverse
