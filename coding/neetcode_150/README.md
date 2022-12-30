@@ -66,6 +66,7 @@
 * search-in-rotated-sorted-array (medium): binary search with rotation
 * find-minimum-in-rotated-sorted-array (medium): binary search but need to check on rotation
 * single-element-in-sorted-array (medium): perform binary search but need to locate which side of array is odd-numbered, then search that direction to figure out single element
+* find-first-and-last-position-of-element-in-sorted-array (medium): straightforward practice of key concept, minimal tricks, perform binary search then do some extra searching on top. O(logn)
 
 ##### Linked List
 * reverse-linked-list (easy): example how to use linkedlist class and reverse

@@ -366,3 +366,81 @@ class Solution:
                     right = mid - 1
             else:
                 return mid_val
+
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        """
+        https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array
+        #### Examples
+        * nums = [5,7,7,8,8,10], target = 8
+        * find index of 8 = 3, find upper index = 4
+
+        * nums = [5,7,7,7,7,8,8,10], target = 7
+        * find index of a 7 = 4
+        * look right to see if it continues that direction --> no, retain 4 as max
+        * look to right to see if it continues in that direction --> yes, contain until reaching end
+
+        #### Approach
+        1. _binary_search(array, target)
+        2. if not in index, output [-1, -1]
+        3. else call _find_bounds(ind, target) to get lower and upper indices
+
+	time complexity = O(logn) binary search + O(low n) for bounds
+	space complexity ~ O(1) because in place
+        """
+
+        # initial vars
+        res = [-1, -1]
+        len_nums = len(nums)
+
+        # check edge case
+        # e.g., if target is below lower val or above upper val
+        if len(nums) == 1 and nums[0] == target:
+            return [0,0]
+
+        def _find_bounds(ind: int, target: int) -> List[int]:
+            left_ind = ind
+            right_ind = ind
+
+            # explore to left
+            for i in range(ind)[::-1]:
+                if nums[i] == target:
+                    left_ind = min(left_ind, i)
+                else:
+                    break
+
+            # explore to right
+            for i in range(ind,len_nums):
+                if nums[i] == target:
+                    right_ind = max(right_ind, i)
+                else:
+                    break
+
+            return [left_ind, right_ind]
+
+        def _binary_search(arr, target):
+            # initial vars
+            len_arr = len(arr)
+            left_pointer = 0
+            right_pointer = len_arr - 1
+
+            while left_pointer <= right_pointer:
+                mid_pointer = left_pointer + ((right_pointer - left_pointer)//2)
+                mid_val = arr[mid_pointer]
+
+                if mid_val == target:
+                    return mid_pointer
+                elif mid_val < target:
+                    left_pointer = mid_pointer + 1
+                elif mid_val > target:
+                    right_pointer = mid_pointer - 1
+
+            return -1
+
+        # get target index
+        target_ind = _binary_search(nums, target)
+
+        # bad case
+        if target_ind == -1:
+            return res
+        else:
+            return _find_bounds(target_ind, target)
