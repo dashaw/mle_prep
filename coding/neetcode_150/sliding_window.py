@@ -211,3 +211,81 @@ class Solution:
             right_pointer += 1
 
         return found
+
+    def maxFrequency(self, nums: List[int], k: int) -> int:
+        """
+        https://leetcode.com/problems/frequency-of-the-most-frequent-element
+        #### Examples
+        nums = [1,4,8,13], k = 5
+        * look at [1,4] see that we can add 3 to 1 to make equal
+        * expand to 8, see that we can not do changes with remaining balance
+
+        * look at [4,8] see that we can add 4 to 8
+        * expand to [4,8,13] see we cannot do anything
+        
+        * look at [8, 13] see we can add 5 to make equal, balance = 0 stop
+
+        * max is 2 across these windows
+
+        nums = [1,2,4], k = 5
+        [1,2] use 1 to make [2,2]
+        expand [2,2,4] use 2 to make [4,2,4]
+        use 2 to make [4,4,4] # duplicates = length array --> stop --> output 3
+
+        nums = [1,2,4,7,10], k = 6
+        [1,2] --> use 1 --> [2,2]
+        [2,2,4] --> use 4 --> [4,4,4]
+        [4,4,4,7] --> nothing --> stop
+        res = 3
+
+        [2,4] --> use 2 --> [4,4]
+        [4,4,7] --> use 3 --> [7,4,7] --> stop --> res = 2
+
+        [4,7] --> use 3 --> [7,7]
+        [7,7,10] --> use 3 --> [10,7,10] --> stop --> res = 2
+        total res = 3
+
+        #### Note 
+        * always try to update begining number to equal end number and move right
+        * if length of remaining array <= max res thus far then stop
+        time ~ O(n) ish? maybe O(nlogn)?
+        space ~ O(n)
+        """
+
+        # initial vars
+        len_nums = len(nums)
+        max_freq = 1
+        min_diff = 0
+        nums.sort()
+
+        # sliding window
+        for start in range(len_nums):
+            # initial vars
+            if min_diff == 0:
+                end = start + 2
+            else:
+                end = start + min_diff
+            
+            if end > len_nums:
+                break
+                
+            window = nums[start:end]
+            total = sum(window)
+            end_val = window[-1]
+
+            if len_nums - start < max_freq:
+                break
+
+            while (end_val*len(window) <= total+k):
+                max_freq = max(max_freq, len(window))
+                end += 1
+                min_diff = max(end-start, min_diff)
+
+                if end <= len(nums):
+                    window.append(nums[end-1])
+                    total += window[-1]
+                    end_val = window[-1]
+                else:
+                    break
+
+        return max_freq
