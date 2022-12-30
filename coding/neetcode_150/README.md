@@ -37,6 +37,7 @@
 * daily-temperature (medium): monotonic decreasing stack, [GOOD]
 * valid-parantheses (easy): stack
 * min-stack (medium)
+* asteroid-collison (medium): need to understand that all asteroid move same speed, so collisions will happen right to left. therefore need to identify that using a stack is best as it will be O(1)
 
 ##### Trees
 * invert-binary-tree (easy): classic, bfs, revisit this for warmup!

@@ -190,3 +190,67 @@ class Solution:
         
     def getMin(self) -> int:
         return self.min
+
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
+        """
+        https://leetcode.com/problems/asteroid-collision
+        #### Examples
+        * asteroids = [5,10,-5]
+          * [5,10]
+          * abs(10) > abs(-5) --> [5,10]
+
+        * asteroids = [11,2,-5,-12]
+          * res = [11]
+          * res = [11,2]
+          * [11,-5] -> [11]
+          * [-12]
+
+
+
+        #### Approach
+        * sliding window move from left to right and evaluate conditions
+
+        #### Test
+
+
+
+        """
+        # initial vars
+        len_asteroids = len(asteroids)
+        res = []
+        cnt = 0
+
+        """
+        asteroids = [5,10,-5]
+        res = [] -> [5] -> [5,10]
+        val = -5
+        compare_val = 5
+        change_flag = True
+        """
+
+        # iterate through asteroids
+        for val in asteroids:
+            if len(res) == 0:
+                res.append(val)
+            else:
+                # do comparisons
+                change_flag = True
+                while change_flag:
+                    change_flag = False
+                    if len(res) == 0:
+                        res.append(val)
+                        break
+
+                    compare_val = res[-1]
+
+                    if (compare_val > 0 and val < 0):
+                        if compare_val*-1 == val:
+                            res.pop()
+                        elif abs(val) > abs(compare_val):
+                            res.pop()
+                            change_flag = True
+                    else:
+                        res.append(val)
+                
+        # return
+        return res
