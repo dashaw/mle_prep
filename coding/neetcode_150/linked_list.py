@@ -241,3 +241,37 @@ class Solution:
             curr = curr.next
 
         return old_copy[head]
+
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        """
+        https://leetcode.com/problems/swap-nodes-in-pairs/
+        #### Approach
+        1. iterate through linked list, for every two nodes swap their node.nexts
+        2. do not modify the values in the list's nodes
+
+        curr = head
+        tmp_back -> 1
+        curr -> 2
+        tmp_ahead -> 3
+        tmp_back.next -> 3
+
+        """
+        # initial vars
+        dummy = ListNode(0, head)
+        prev, curr = dummy, head
+
+        while curr and curr.next:
+            # save
+            next_pointer = curr.next.next
+            second = curr.next
+
+            # reverse
+            second.next = curr
+            curr.next = next_pointer
+            prev.next = second
+
+            # update
+            prev = curr
+            curr = next_pointer
+
+        return dummy.next

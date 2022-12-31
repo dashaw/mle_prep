@@ -79,6 +79,7 @@ manipulation in place is occuring
 * linked-list-cycle (easy): keep track of visited nodes, if so return Tru
 * add-two-numbers (medium): basic traversal of two lists, but need to do some math tricks. nailed this one.
 * copy-list-with-random-pointer (medium): need to take 2 passes through the linked list. on the first one map the old node to a new node with same value via a dict. one second pass then update new nodes' next and random attributes to appropriate nodes
+* swap-nodes-in-pairs (medium): typical linked list medium problem which I really just hate doing
 
 ##### Backtracking
 * subsets (medium): dfs, recursion, 2^n
