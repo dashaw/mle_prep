@@ -322,3 +322,55 @@ class Solution:
             return False
 
         return True
+
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        """
+        https://leetcode.com/problems/sum-root-to-leaf-numbers
+        #### Examples
+        * root = [4,9,0,5,1]
+            * 495 + 491 + 40 = 1026
+        
+        * root = [1,3,2,null,1,3,null]
+            * 131 + 123 = 254
+
+        #### Approach
+        * DFS
+        * keep track of previous nodes
+        * when you have hit the end of a node-path, add it to the sum, pop the last number off
+        * 495 -> 49 -> 491 -> 
+        * [4,9,5] -> convert to num -> [4,9] -> [4,9,1] -> conver tto num -> [4,9] -> [4] -> [4,0]
+        """
+
+        # initial vars
+        res = 0
+
+        def _convert_list_to_num(num_list: List[int]) -> int:
+            res = 0
+            len_num = len(num_list) # 3
+            for i in range(len(num_list)):
+                res += (10**i)*num_list[len_num - 1 - i]
+
+            return res
+
+        def _dfs(node: TreeNode, num_list: List[int]) -> None:
+            nonlocal res
+
+            # visit
+            val = node.val
+
+            # new list
+            new_num_list = num_list + [val]
+
+            # continue
+            if node.left: _dfs(node.left, new_num_list) #num_list + [val])
+            if node.right: _dfs(node.right, new_num_list) #num_list + [val])
+
+            # convert to number and add to sum
+            if not node.left and not node.right:
+                res += _convert_list_to_num(new_num_list) #num_list + [val])
+
+        # call dfs
+        _dfs(root, [])
+
+        # return
+        return res

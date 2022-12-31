@@ -48,6 +48,7 @@
 * binary-tree-right-side-view (medium): bfs or dfs with trick
 * kth-smallest-element-in-a-bst (medium): binary search tree, in-order traversal
 * same-tree (blind75, easy)
+* sum-root-to-leaf-numbers (medium): recall how stack, frames, and variables work in recursion. if done incorrectly, you can reference the same object location in memory which will not allow you to access the "version" of variables you want within the DFS
 
 ##### Tries
 * implement-trie-prefix-tree (medium): basic prefix trie, oop
