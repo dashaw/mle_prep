@@ -59,6 +59,7 @@
 * last-stone-weight (easy): max heap
 * k-closest-points-to-origin (medium): min heap
 * kth-largest-element-in-an-array (medium): min heap (k-th largest)
+* task-scheduler: need to think of a clever way to use both a heap and a queue. increase time counter, extract element from root of heap, push onto queue, extract from queue based on time counter constraint. O(n) because can only have size 26 nodes in heap.
 
 ##### Binary Search
 * binary-search (easy): basic binary search implementation
