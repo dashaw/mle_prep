@@ -296,3 +296,61 @@ class Solution:
                 dfs(i, j, target_ind)
 
         return found_word 
+
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        """
+	https://leetcode.com/problems/combinations
+        ### Examples
+        1. n = 4, k = 2
+            * range = [1,2,3,4]
+            * combinations of 2 -> [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
+        2. n = 4, k = 3
+            * range = [1,2,3,4]
+            * combinations of 3 -> [[1,2,3],[2,3,4],[1,3,4],[1,2,4]]
+
+        ### Approach
+        * backtracking
+        * start at root = []
+        * choose from remaining vals
+        * once size of candidate solution = k -> add to solution set
+        * stop dfs
+        * time complexity = O(number of choices at each level ^ height)
+        * = O(n^k)
+
+        ### Test
+        nums_range = [1,2,3,4]
+        visited = [] -> [[], [1], [1,2], [1,2,3], [1,2,4], [1,3]]
+        res = [[1,2,3], [1,2,4]]
+        _dfs([], [1,2,3,4])
+        _dfs([1], [2,3,4])
+        _dfs([1,2], [3,4])
+        _dfs([1,2,3], [4])
+        _dfs([1,2,4], [3])
+        _dfs([1,3], [2,4])
+        _dfs([1,3,2]) -> don't go
+        _
+        """
+        # init vars
+        res = []
+        visited = []
+
+        # dfs helper function
+        def _dfs(candidate: List[int], eligible_start_ind: int) -> None:
+            nonlocal res, visited
+
+            # see if length = k and if so add to candidate_soln
+            if len(candidate) == k:
+                res.append(candidate.copy())
+                return
+
+            # continue searching
+            for i in range(eligible_start_ind, n + 1):
+                candidate.append(i)
+                _dfs(candidate, i+1)
+                candidate.pop()
+
+        # call dfs
+        _dfs([], 1)
+
+        # return
+        return res

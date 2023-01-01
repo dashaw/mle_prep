@@ -91,6 +91,7 @@ manipulation in place is occuring
 * combination-sum-ii (medium): backtracking combinations, O(2^N)
 * word-search (medium)
 * rotting-oranges (medium)
+* combinations (medium): remember to be careful with how you are passing params in recursive calls and/or reusing variable names (i.e., .copy(), .append(), .pop()) as needed. Remember that for a tree there are typically (number choices)^(height) nodes, so for binary tree there are 2^(height) nodes
 
 ##### Graphs:
 * number-of-islands (medium): dfs, O(MxN)
