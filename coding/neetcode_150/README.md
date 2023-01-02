@@ -127,6 +127,10 @@ manipulation in place is occuring
 * number-of-1-bits (easy): bit shift number and use mod to see if ends in 0 or 1
 * counting-bits (easy): same as number-of-1-bits, use modulus and bitshift right
 
+##### Matrix
+* toeplitz-matrix (easy): easy once you realize you only need to two inner loops and you only need to compare [r][c] to [r+1][c+1] go slow on these
+* diagonal-traverse (medium): same idea with these matrix problems, go slow, it almost always boils down to 2 inner loops
+
 ##### Object Oriented Programming
 * design-a-text-editor (hard): example past dropbox oa
 
