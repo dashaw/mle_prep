@@ -101,6 +101,7 @@ manipulation in place is occuring
 * surrounded-regions (medium): dfs, islands, change board in memory, O(RxC), solved in < 30 min!
 * walls-and-gates (medium): trick to explore from gates instead of rooms, then use straightforward BFS
 * number-of-islands (medium): efficient trick to reduce complexity but then DFS over a grid of islands
+* reorder-routes-to-make-all-paths-lead-to-the-city (medium): figure out all neighbors (whether correct direction or not) if an edge leads away from a path-to-0 then increment counter because we need more changes
 
 ##### Dynamic Programming:
 * climbing-stairs (easy): good fundamental problem

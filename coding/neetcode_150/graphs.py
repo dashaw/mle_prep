@@ -536,3 +536,62 @@ class Solution:
 
         # return result
         return sub_island_cnt
+
+    def minReorder(self, n: int, connections: List[List[int]]) -> int:
+        """
+        ### Examples
+        https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero
+        n = 6, connections = [[0,1],[1,3],[2,3],[4,0],[4,5]], happy_state_sum = 0 -> 1 -> 2
+        {0: True, 1: True, 3: True, 2: True, 4: True, }
+        * traverse from start -> 1, see that we encountered 0 and make note, update connection to go the other direction
+        * traverse 1 to 3 see that it is leading away from 0 so update connection
+        * see 3 doesn't go to any other node
+
+        * see 4->5, need to switch
+
+        n = 5, connections = [[1,0],[1,2],[3,2],[3,4]]
+        start traversal:
+        * 1 goes to 0, mark 1 as OK
+        * 1 goes to 2, see that if we reverse we satisfy 2, so reverse
+        * see 3 goes to 2 and is fine
+        * see 3 goes to 4, reverse
+
+        ### Approach
+        1. iterate through connections and create hashmap of city-city connections
+        2. begin by DFS from hashmap key = 0
+        3. reverse connections as needed, keep a dictionary that maintains the status of each node 
+
+        time O(n)
+        space O(n)
+        """
+        # initialize vars
+        connection_start = {}
+        connection_end = {}
+        num_happy_cities = 1
+        num_changes = 0
+        status_map = {}
+        visited = set()
+        edges = {(a,b) for a,b in connections}
+        neighbors = {city:[] for city in range(n)}
+
+        for a,b in connections:
+            neighbors[a].append(b)
+            neighbors[b].append(a)
+
+        # dfs
+        def _dfs(city):
+            nonlocal num_changes, edges, neighbors, visited
+
+            # outgoing
+            for neigh in neighbors[city]:
+                if neigh in visited:
+                    continue
+                if (neigh, city) not in edges:
+                    num_changes += 1
+
+                visited.add(city)   
+                _dfs(neigh)
+
+        visited.add(0)
+        _dfs(0)
+        return num_changes
