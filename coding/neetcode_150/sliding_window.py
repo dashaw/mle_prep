@@ -289,3 +289,30 @@ class Solution:
                     break
 
         return max_freq
+
+    def strStr(self, haystack: str, needle: str) -> int:
+        """
+        https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string
+        # basic sliding window problem
+        # start at positions 0 and right = len of needle
+        # move to left and see if this equals substring at each point
+        O(n) at most
+        space = O(n)
+        """
+        len_str = len(haystack)
+        len_needle = len(needle)
+        left = 0
+        right = len_needle
+
+        if len(haystack) == len(needle) == 1 and haystack == needle:
+            return 0
+
+        for i in range(len_str - len_needle + 1):
+            candidate = haystack[left:right]
+            if candidate == needle:
+                return left
+
+            left += 1
+            right += 1
+
+        return -1

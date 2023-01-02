@@ -30,6 +30,7 @@
 * longest-repeating-character-replacement (medium): window, efficiency
 * permutation-in-string (medium): window, hashmap
 * frequency-of-the-most-frequent-element (medium): this appears to be a basic sliding window problem with constraints, but there are subtle steps needed to meet time constaints which I do not think anyone would get in an actual interview
+* find-the-index-of-the-first-occurence-in-a-string (medium): sliding window, looking for a target word within a larger. use a sliding window of length target word and check for match
 
 ##### Stack
 * *generate-parentheses (medium): backtracking, recursion, dfs
