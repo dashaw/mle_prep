@@ -60,7 +60,7 @@
   * can be interpreted as predicted "probabilities"
   * $softmax' = p*(1-p)$
 * **binary cross-entropy** 
-  * $$
+  * $test$
   * $y*log(p)+(1-y)*(log(1-p))$
   * exploding penalty for worst predictions
   * updates depend on derivates so derivates using CE will have larger updates
