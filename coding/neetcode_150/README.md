@@ -133,6 +133,7 @@ manipulation in place is occuring
 * single-numer (easy): xor tricky
 * number-of-1-bits (easy): bit shift number and use mod to see if ends in 0 or 1
 * counting-bits (easy): same as number-of-1-bits, use modulus and bitshift right
+* reverse-bits (easy): need to combine bitshift left, bitshift right, logic and (&) logic or (|). to reverse start with 32bit number of all zeros. figure out what the ith position is in the number by bit-shifting by i and & with 1. then add to result by bit-shifting the bit by 31-i and or with current solution
 
 ##### Matrix
 * toeplitz-matrix (easy): easy once you realize you only need to two inner loops and you only need to compare [r][c] to [r+1][c+1] go slow on these

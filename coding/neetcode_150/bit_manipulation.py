@@ -42,3 +42,19 @@ class Solution:
             output.append(cnt)
 
         return output
+
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        """
+        https://leetcode.com/problems/reverse-bits/
+        reverse it -> so 1 -> 0
+        0 -> 1
+
+        so xor with a mask of FFFFF?
+        """
+        res = 0
+
+        for i in range(32):
+            bit = (n >> i) & 1
+            res = res | (bit << (31-i))
+        return res
