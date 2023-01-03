@@ -121,6 +121,7 @@ manipulation in place is occuring
 ##### Intervals:
 * meeting-rooms (easy): sort, basic math
 * meeting-rooms-ii (medium): good practice! [DO THIS AGAIN]
+* insert-interval (medium): here the brute-force approach is actually the best, and you need to come to this realization by comparing time complexity for binary-search + linear search, vs. just doing linear. you'll see it is easier to just iterate linearly. from here you need to deduce some basic logic to figure out if we insert the interval at a position, combine it with the existing, etc.
 
 ##### Math & Geometry:
 * plus-one (easy): basic for loop and check condition
