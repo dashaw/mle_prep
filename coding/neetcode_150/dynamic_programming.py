@@ -126,3 +126,43 @@ class Solution:
 
         res = dfs(amount)
         return res if res != math.inf else -1
+
+    def numDecodings(self, s: str) -> int:
+        """
+	https://leetcode.com/problems/decode-ways
+        ### Examples
+        s = "226", output = 3
+        note: do not need to output the solutions, just the number
+
+        #### option 1
+        solution space:
+        -> 2 -> 2 -> 6 (end)
+             -> 26 (end)
+        -> 22 
+            -> 6 (end)
+
+        can use dfs to determine eligible solutions
+
+        #### option 2
+        from left to right
+        dp[0] = 1
+        [2]
+        dp[1] = 1
+        [22]
+        
+        """
+        # base case
+        dp = [0]*(len(s) + 1)
+        dp[0] = 1
+        dp[1] = 0 if s[0] == '0' else 1
+
+        for i in range(2,len(dp)):
+            if s[i-1] != "0":
+                dp[i] = dp[i-1]
+
+            two_digits = s[i-2:i]
+            if int(two_digits) >= 10 and int(two_digits) <= 26:
+                dp[i] += dp[i-2]
+
+
+        return dp[-1]

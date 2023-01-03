@@ -110,6 +110,7 @@ manipulation in place is occuring
 * house-robber (medium)
 * word-break (medium): can also be dfs + memoization
 * coin-change (medium): great problem, do again before interviews!
+* decode-ways (medium): recursive way is obvious, iterative way less so. as usual find a base case to a subproblem and then iterate to find additional solutions. here as we iterate in the string we know at minimum the solution is dp[i-1] but also that if this character and the one prior can form a solution of itself then you also add dp[i-2]
 
 ##### Greedy:
 * maximum-subarray (medium): sliding window mixed with dynamic programming
