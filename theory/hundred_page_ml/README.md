@@ -107,7 +107,7 @@ Gradient descent
 
 <img src="images/gradient_descent_basic.png" alt="drawing" width="700"/>
 
-* The gradient descent algorithm is sensitive to the choice of the step –. It is also slow for large datasets. Fortunately, several significant improvements to this algorithm have been proposed. Stochastic gradient descent (SGD) is a version of the algorithm that speeds up the computation by approximating the gradient using smaller batches (subsets) of the training data. SGD itself has various “upgrades”. Adagrad is a version of SGD that scales – for each parameter according to the history of gradients.As a result, – is reduced for very large gradients and vice-versa. Momentum is a method that helps accelerate SGD by orientingthe gradient descent in the relevant direction and reducing oscillations. In neural network training, variants of SGD such as RMSprop and Adam, are most frequently used.
+* The gradient descent algorithm is sensitive to the choice of the step. It is also slow for large datasets. Fortunately, several significant improvements to this algorithm have been proposed. Stochastic gradient descent (SGD) is a version of the algorithm that speeds up the computation by approximating the gradient using smaller batches (subsets) of the training data. SGD itself has various “upgrades”. Adagrad is a version of SGD that scales – for each parameter according to the history of gradients.As a result, – is reduced for very large gradients and vice-versa. Momentum is a method that helps accelerate SGD by orientingthe gradient descent in the relevant direction and reducing oscillations. In neural network training, variants of SGD such as RMSprop and Adam, are most frequently used.
 
 ## Chapter 5: basic practice
 
