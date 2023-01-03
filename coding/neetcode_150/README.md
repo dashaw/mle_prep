@@ -103,6 +103,7 @@ manipulation in place is occuring
 * walls-and-gates (medium): trick to explore from gates instead of rooms, then use straightforward BFS
 * number-of-islands (medium): efficient trick to reduce complexity but then DFS over a grid of islands
 * reorder-routes-to-make-all-paths-lead-to-the-city (medium): figure out all neighbors (whether correct direction or not) if an edge leads away from a path-to-0 then increment counter because we need more changes
+* course-scheduled-ii (medium): topological sort, sort through courses, detect cycles via a set that we remove and add from, visit which we mark as having been explored, and output array
 
 ##### Dynamic Programming:
 * climbing-stairs (easy): good fundamental problem

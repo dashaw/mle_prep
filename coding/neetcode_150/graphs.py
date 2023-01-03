@@ -595,3 +595,81 @@ class Solution:
         visited.add(0)
         _dfs(0)
         return num_changes
+
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        """
+        https://leetcode.com/problems/course-schedule-ii/
+        ### Examples
+        numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]
+        [1: [0]
+         2: [0]
+         3: [1,2]
+        ]
+        [0,1,2,3]
+
+        ### Approach
+        1. create dictionary identifying all prereq for a given course
+        2. dfs and once reaching a leaf, add to order array
+        3. mark node as visited
+
+        we need 3 core data strucute
+        res = [] will be our output order
+        cycle = set() will determine if we have encountered a cycle
+        visit = [] if we have finished DFS on that nodes reqs and we know there are no dependencies
+        time = O(V+E)
+        space = O(V+E)
+        """
+        # init vars
+        res = []
+        course_dict = {}
+        visit = set()
+        cycle = set()
+        cycle_flag = False
+        total_courses = [i for i in range(numCourses)]
+
+        # create initial mapping
+        for val in prerequisites:
+            course = val[0]
+            prereq = val[1]
+            if course in course_dict:
+                course_dict[course].append(prereq)
+            else:
+                course_dict[course] = [prereq]
+
+        # miss any?
+        for i in range(numCourses):
+            if i not in course_dict:
+                course_dict[i] = []
+
+        # edge case
+        if prerequisites == []:
+            return [i for i in range(numCourses)]
+
+        # dfs
+        def _dfs(course):
+            if course in cycle:
+                return False
+            if course in visit:
+                return True
+
+            cycle.add(course)
+            for prereq in course_dict[course]:
+                if _dfs(prereq) == False:
+                    return False
+            
+            cycle.remove(course)
+            visit.add(course)
+            res.append(course)
+            return True
+
+        # iterate and call dfs
+        for course in course_dict:
+            if not _dfs(course):
+                return []
+
+        # miss anything?
+        for i in range(numCourses):
+            if i not in res:
+                res.append(i)
+
+        return res
