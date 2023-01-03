@@ -11,7 +11,7 @@ builds a model implicitly or explicitly creates a decision boundary. The decisio
 can be straight, or curved, or it can have a complex form, or it can be a superposition of
 some geometrical figures.
 
-In practice, there are two other essential dierentiators of learning algorithms to consider:
+In practice, there are two other essential differentiators of learning algorithms to consider:
 speed of model building and prediction processing time. In many practical cases, you would
 prefer a learning algorithm that builds a less accurate model fast. Additionally, you might
 prefer a less accurate model that is much quicker at making predictions.
