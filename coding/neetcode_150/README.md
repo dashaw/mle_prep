@@ -116,6 +116,7 @@ manipulation in place is occuring
 ##### Greedy:
 * maximum-subarray (medium): sliding window mixed with dynamic programming
 * jump-game (medium): dfs backtracking option, takes tweak to get in time limit
+* gas-station (medium): there is an easy O(~n^2) solution via brute force, but to meet this time complexity you need to identify some simplifications of the problem. problem states if a solution exists it is unique. you create a diff array which is gas[i] - cost[i] for all i. then you iterate through with different starting points and need to establish the understanding that if you iterate through diff array then the result is the first index for which you can continue through the rest of the array without cumulative gas dipping below 0
 
 ##### Intervals:
 * meeting-rooms (easy): sort, basic math
