@@ -139,3 +139,139 @@ class Solution:
         median = _calculate_medium(pos1, pos2, index_tracker)
 
         return [minimum, maximum, mean, median, mode]
+
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        """
+        https://leetcode.com/problems/spiral-matrix
+        ### Examples
+        * mxn matrix
+        * return elements in spiral order
+
+        matrix = [
+                [1,2,3],
+                [4,5,6],
+                [7,8,9]
+                ]
+        * [1,2,3,6,9,8,7,4,5]
+
+        matrix = [
+            [1,2,3,4],
+            [5,6,7,8],
+            [9,10,11,12]
+        ]
+        * [1,2,3,4,8,12,11,10,9,5,6,7]
+        * go across top row, go down last column, go across bottom row, go up to [0+1] row and go across, go down [3-1] column, repeat
+
+        matrix = [
+                [1,2,3,4],
+                [5,6,7,8],
+                [9,10,11,12],
+                [13,14,15,16,17]
+                ]        
+        * row = 0, go from column 0:n
+            * [1,2,3,4]
+        * column = n -> go down column
+            * [1,2,3,4,8,12,17]
+        * column = n, row = m -> go right->across row = m ->
+            * [1,2,3,4,8,12,17,16,15,14,13]
+        * increase bottom_row += 1 --> 1 go across this to n-1 position
+            * [1,2,3,4,8,12,17,16,15,14,13,]
+        * column = 0 -> go up until lower_row marker 
+            * [1,2,3,4,8,12,17,16,15,14,13,9,5]
+        * continue
+
+        seems we have at least 4 ints we need to maintain:
+        row_lower = 0
+        row_upper = m - 1
+        column_lower = 0
+        column_upper = n - 1
+        * pattern:
+            1. print(row_lower from column_lower:column_upper), row_lower += 1
+            2. print(column_upper from row_lower:row_upper), column_upper -= 1
+            3. print(row_upper, column_upper:column_lower), row_upper -= 1
+            4. print(column_lower, row_upper:row_lower), column_lower += 1
+
+        ### Approach
+        fix row_lower: iterate across columns
+        fix column_upper: iterate across rows
+        fix row_upper: iterate across columns
+        fix column_lower: iterate across columns
+
+        while row_lower < row_upper and column_lower < column_upper:
+            # do left_right traversal row
+            # do top bottom traversal column
+            # do right to left traversal row
+            # do bottom to top traversal column
+
+        ### Test
+        matrix = [
+        [1,2,3],
+        [4,5,6],
+        [7,8,9]
+        ]
+        m = 3
+        n = 3
+        row_lower = 0 -> 1 -> 2
+        row_upper = 3 -> 2 -> 2
+        column_lower = 0 -> 1
+        column_upper = 3 -> 2 -> 1
+
+        row_lower = 0, c:[0,1,2]
+        [1,2,3]
+
+        column_upper = 3-1 = 2, r:[1,2]
+        [1,2,3,6,9]
+
+        row_upper = 3-1=2, c:[0,1] -> [1,0]
+        [1,2,3,6,9,8,7]
+
+        column_lower = 0,: r:[1]
+        [1,2,3,6,9,8,7,4]
+
+        row_lower = 1, c:[1]
+        [1,2,3,6,9,8,7,4]
+
+        column_upper = 2, r:
+        """
+        # init vars
+        m = len(matrix)
+        n = len(matrix[0])
+        row_lower = 0
+        row_upper = m
+        column_lower = 0
+        column_upper = n
+        res = []
+        visited = {}
+
+        while row_lower < row_upper and column_lower < column_upper: # and or or condition?
+            # do left->right traversal row
+            for c in range(column_lower,column_upper):
+                res.append(matrix[row_lower][c])
+            row_lower += 1
+
+            if not (row_lower < row_upper and column_lower < column_upper):
+                break
+
+            # do top->bottom traversal column
+            for r in range(row_lower,row_upper):
+                res.append(matrix[r][column_upper-1])
+            column_upper -= 1
+
+            if not (row_lower < row_upper and column_lower < column_upper):
+                break
+
+            # do right->left traversal row
+            for c in range(column_lower, column_upper)[::-1]:
+                res.append(matrix[row_upper-1][c])
+            row_upper -= 1
+
+            if not (row_lower < row_upper and column_lower < column_upper):
+                break
+
+            # do bottom->top traversal column
+            for r in range(row_lower, row_upper)[::-1]:
+                res.append(matrix[r][column_lower])
+            column_lower += 1
+
+        # return
+        return res
