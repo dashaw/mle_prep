@@ -220,3 +220,54 @@ class Solution:
 
         # return
         return boat_cnt
+
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        """
+        https://leetcode.com/problems/4sum
+        ### Example
+        #### 1
+        * nums = [1,0,-1,0,-2,2], target = 0
+        [1,0,-1,0]
+        [-2,2,0,0]
+        [1,-1,-2,2]
+        * what if this was sorted?
+        * [-2,-1,0,0,1,2]
+        * [-2], [-1,0,0,1,2]
+        * [-2,-1], [0,0,1,2] -> [-2,-1,1,2]
+        * [-2,0], [0,1,2] -> [-2,0,0,2]
+        * [-2,0], [1,2] -> none
+        * [-1], [0,0,1,2]
+        * [-1,0], [0,1,2] - > [-1,0,0,1]
+        time = O(n^3)
+        space = O(n)?
+        """
+        # init vars
+        len_nums = len(nums)
+        nums.sort()
+        res = []
+        quad = []
+
+        def _helper(k, start, target):
+            if k != 2:
+                for i in range(start, len_nums - k + 1):
+                    quad.append(nums[i])
+                    _helper(k-1, i+1, target - nums[i])
+                    quad.pop()
+                return
+            l, r = start, len(nums)-1
+            while l < r:
+                l_val = nums[l]
+                r_val = nums[r]
+                if l_val + r_val > target:
+                    r -= 1
+                elif l_val + r_val < target:
+                    l += 1  
+                else:
+                    cand = quad+ [l_val, r_val]
+                    if cand not in res: res.append(quad+ [l_val, r_val])
+                    l += 1
+
+        # call search
+        _helper(4, 0, target)
+
+        return res

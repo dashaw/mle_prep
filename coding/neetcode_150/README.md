@@ -23,6 +23,7 @@
 * container-with-most-water (medium)
 * rotate-array (medium): not really two pointers? use a helper array to update new values
 * boats-to-save-people (medium): set pointer at front and back, check constraint and update left pointer while always decrementing right pointer. remember that at most this is O(n) in scan. do this for left_pointer <= right_pointer
+* 4sum (medium): we need to find combinations of four numbers, this can be done by abstacting from the general 2sum problem. what we do is take all combinations of the matrix minus the last 3 elements and then find what those combination targets need to be, then perform 2sum on the remaining portion. time = O(n^3), space O(n) due to recursive calls.
 
 ##### Sliding Window
 * best-time-to-buy-and-sell-stock (easy): iterate, compare mins and maxs
