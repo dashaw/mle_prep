@@ -275,3 +275,27 @@ class Solution:
 
         # return
         return res
+
+class Solution:
+    # https://leetcode.com/problems/random-pick-with-weight
+    # O(n)
+
+    def __init__(self, w: List[int]):
+        self.w = w
+        self.len_w = len(w)
+        self.cum_weights = []
+        self.total = 0
+
+        # [1,5,2]
+        # [1, 6, 8]
+
+        for i in range(self.len_w):
+            self.cum_weights.append(w[i] + self.total)
+            self.total += self.w[i]
+
+    def pickIndex(self) -> int:
+        target = self.total*random()
+        res = 0
+        for ind, val in enumerate(self.cum_weights):
+            if target < val:
+                return ind

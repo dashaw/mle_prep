@@ -130,6 +130,7 @@ manipulation in place is occuring
 * happy-number (easy): basic for loop, detect cycle
 * statistics-from-a-large-sample (medium): good practice combining code and math knowledge
 * spiral-matrix (medium): go slow in the example/approach section to figure out logic, then code up and 90% of the way there. there is a testcase that fails, so step through and see slight gap in solution and update. boom.
+* random weight number (medium): integer of weights representing prob of selecting that ind. recall that we can create a cumulative sum of this array and then index into it by doing random*total sum where random [0, 1] and then find the first position in the cumulative array where target < val
 
 ##### Bit Manipulation
 * single-numer (easy): xor tricky
