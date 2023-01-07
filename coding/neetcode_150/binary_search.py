@@ -509,3 +509,44 @@ class TimeMap:
             return self.key_value[key][closest_timestamp] if closest_timestamp != -1 else ""
         else:
             return ""
+
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+        """
+	https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size
+        we want to find where secret[k] - target == 0
+        if this val is > 0 then search right
+        else search left
+        O(log2**31) + O(logn) --> O(logn)
+        """
+        
+        # random initialization?
+        right = 10**4
+        left = 0
+
+        # find right bounds
+        while left < right:
+            mid_point = left + ((right-left)//2)
+            
+            if reader.get(mid_point) == 2**31 - 1:
+                # go left
+                right = mid_point - 1
+            else:
+                # go right
+                left = mid_point + 1
+
+        left = 0
+
+        while left <= right:
+            mid_point = left + ((right - left)//2)
+            val = reader.get(mid_point)
+
+            if target == val:
+                return mid_point
+
+            elif val < target:
+                # search right
+                left = mid_point + 1
+            else:
+                right = mid_point - 1
+
+        return -1
