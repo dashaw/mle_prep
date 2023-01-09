@@ -1,6 +1,7 @@
 ## Cheatsheet
 * source = primarily Burkov's [Machine Learning Engineering](http://www.mlebook.com/wiki/doku.php)
-
+* other
+  *  [complete guide to recommender system tutorial with sklearn, keras](https://towardsdatascience.com/a-complete-guide-to-recommender-system-tutorial-with-sklearn-surprise-keras-recommender-5e52e8ceace1)
 
 ### Training
 * **data bias**: many forms, but e.g., we are training recsys model using historical data which is biased by the prior recommendation system as those are the impression/engagement samples users saw. **solution** --> small sample of users receive random recommendations.
@@ -80,3 +81,27 @@ A model is usually served in batch mode when it is applied to large quantities o
 * feature extractor transform context into the model input
 
 <img src="images/on_demand_serving.png" alt="drawing" width="700"/>
+
+#### Recommender Systems
+* Example specific architectures: neural collaborative filtering
+  * [keras tutorial](https://keras.io/examples/structured_data/collaborative_filtering_movielens/)
+
+<img src="images/neural_collaborative_filtering.png" alt="drawing" width="700"/>
+
+#### Assumptions
+* linear regression: linear relationship between independent x's and dependent y, residual are independent (no correlationship b/w consecutive residuals), homoscendasticty (residuals have constant varaince through x), residuals are normally distributed
+  * independence = mostly relevant for time-series data, don't want there to be a pattern for consecutive residuals (e.g., shouldn't steadily grow over time)
+  * heteroscedasticty = would mean varaiance of regression coefficient increases, but model does not pick it up = likely to declare a term statistically significant
+  * normality
+* logistic regression
+  * binary response
+  * independent observations
+  * no multicolinearity
+  * no extreme outliers
+  * linear relationship between explanatory variables and the logit of the response
+
+#### Misc notes
+* $error = bias + variance + noise$
+* boosting based on weak learners (high bias, low varaince), reduces error mainly by reducing bias
+* random forest reduces error in the opposite way: reducing variance while leaving the bias unchanged
+  * uses modification of bagging to build de-correlated trees and then averages output. bias for random forest is the same as that of any individual tree = has low bias. on the other hand it is fine if these each have high variance, because when averaging the trees it reduces variance
