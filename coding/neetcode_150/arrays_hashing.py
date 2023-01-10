@@ -422,3 +422,65 @@ class Codec:
                     sorted_flag = True
 
         return nums
+
+    def leastBricks(self, wall: List[List[int]]) -> int:
+        """
+        https://leetcode.com/problems/brick-wall/discussion/
+        [
+        [1,2,2,1],
+        [3,1,2],
+        [1,3,2],
+        [2,4],
+        [3,1,2],
+        [1,3,1,1]
+        ]
+
+        [1,3,5,6],
+        [3,4,6],
+        [1,4,6],
+        [2,6],
+        [3,4,6],
+        [1,4,5,6]
+
+        ind = 1
+        cnt = 3
+
+        ind = 2
+        cnt = 5
+
+        ind = 3
+        cnt = 3
+
+        ind = 4
+        cnt = 2
+
+        O(n^2)
+
+        is there a simpler approach?
+        """
+
+        # init vars
+        cum_val = sum(wall[0])
+        m = len(wall)
+        n = len(wall[0])
+        max_cells = 0
+        res = 0
+        width_dict = {}
+
+        # form cumulative
+        for i in range(m):
+            width = 0
+            max_cells = max(max_cells,len(wall[i]))
+            for j in range(0,len(wall[i])):
+                width += wall[i][j]
+                width_dict.update({width: width_dict.get(width,0)+1})
+
+        if max_cells == 1:
+            return m
+
+        # figure out lowest val
+        for key in width_dict:
+            if key != cum_val:
+                res = max(res, width_dict[key])
+
+        return m - res

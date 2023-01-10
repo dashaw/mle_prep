@@ -15,6 +15,7 @@
 * find-duplicate-file-in-system (medium): tagged dropbox
 * valid-sudoku (medium): basic iterating through grid and adding to hash + checking for collisons
 * sort-colors (medium): straightforward bubble sort
+* brick-wall (medium): i was there with the idea of keeping a cumulative sum for each row and had a working solution, but with admitted large complexity of O(n^2), needed to know that I can continually hash how often that width mark appears and use that to deduce answer
 
 ##### Two Pointers
 * valid-palindrome (easy): string manipulation, reverse array
